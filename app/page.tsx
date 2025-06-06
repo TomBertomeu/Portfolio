@@ -1,12 +1,15 @@
-import Header from "@/components/Header";
-import Badge from "@/components/Badge";
-import {HomeIcon} from "lucide-react";
+import AboutSection from "@/components/AboutSection";
+import SkillsetSection from "@/components/SkillsetSection";
+import ProjectsSection from "@/components/ProjectsSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
     return (
-        <>
-            <Header />
-            <Badge icon={HomeIcon} text="Home" />
-        </>
+        <div className="mx-auto max-w-6xl">
+            <AboutSection />
+            <ProjectsSection />
+            <SkillsetSection />
+            <ContactSection />
+        </div>
     );
 }

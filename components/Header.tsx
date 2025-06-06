@@ -2,7 +2,9 @@
 
 import Link from "next/link"
 import {Menu, X} from "lucide-react"
-import {useState} from "react"
+import {useEffect, useState} from "react"
+import {Button} from "@/components/ui/button"
+import {Sheet, SheetContent, SheetTrigger, SheetTitle} from "@/components/ui/sheet"
 import "@/styles/shimmer-effect.css"
 
 const navLinks = [
@@ -11,57 +13,72 @@ const navLinks = [
     { href: "#projects", label: "Projets" },
     { href: "#skills", label: "Compétences" },
     { href: "#contact", label: "Contact" },
-]
+] as const
 
 export default function Header() {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
-        <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md">
-            <div className="flex items-center justify-between max-w-7xl mx-auto md:px-16 px-8 py-8">
+        <header className={`sticky top-0 z-50 w-full bg-transparent ${
+            isScrolled && "backdrop-blur bg-white/50"
+        }`}>
+            <div className="flex items-center justify-between max-w-6xl mx-auto px-8 md:px-0 py-4 bg-white md:bg-transparent transition-all duration-300">
                 {/* Nom + prénom */}
                 <Link href="/" className="text-2xl font-bold tracking-tight text-gray-900 hover:text-blue-600 transition-colors shimmer">
-                    Tom Bertomeu
+                    TB.
                 </Link>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex gap-8 text-base font-medium text-gray-600">
+                <nav className="hidden md:flex gap-8 text-base font-medium">
                     {navLinks.map(({ href, label }) => (
-                        <Link
+                        <Button
                             key={href}
-                            href={href}
-                            className="hover:text-blue-500 transition-colors"
+                            variant="ghost"
+                            asChild
                         >
-                            {label}
-                        </Link>
+                            <Link href={href}>
+                                {label}
+                            </Link>
+                        </Button>
                     ))}
                 </nav>
 
-                {/* Mobile Burger Icon */}
-                <button
-                    className="md:hidden text-gray-700 hover:text-blue-600"
-                    onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Toggle Menu"
-                >
-                    {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
+                {/* Mobile Navigation */}
+                <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                    <SheetTrigger asChild>
+                        <Button variant="ghost" className="md:hidden">
+                            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="right" className="w-full max-w-sm">
+                        <SheetTitle className="sr-only">Menu principal</SheetTitle>
+                        <nav className="flex flex-col gap-4">
+                            {navLinks.map(({ href, label }) => (
+                                <Button
+                                    key={href}
+                                    variant="ghost"
+                                    asChild
+                                    className="w-full justify-start"
+                                >
+                                    <Link href={href} onClick={() => setIsOpen(false)}>
+                                        {label}
+                                    </Link>
+                                </Button>
+                            ))}
+                        </nav>
+                    </SheetContent>
+                </Sheet>
             </div>
-
-            {/* Mobile Navigation Drawer */}
-            {isOpen && (
-                <div className="w-full fixed z-50 bg-white px-8 py-4 shadow-lg md:hidden flex flex-col gap-8 text-md font-medium text-gray-600">
-                    {navLinks.map(({ href, label }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            onClick={() => setIsOpen(false)}
-                            className="hover:text-blue-600 transition-colors w-full"
-                        >
-                            {label}
-                        </Link>
-                    ))}
-                </div>
-            )}
         </header>
     )
 }
