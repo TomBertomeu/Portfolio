@@ -10,8 +10,9 @@ import "@/styles/shimmer-effect.css"
 const navLinks = [
     { href: "/", label: "Accueil" },
     { href: "#about", label: "À propos" },
-    { href: "#projects", label: "Projets" },
     { href: "#skills", label: "Compétences" },
+    { href: "#projects", label: "Projets" },
+    { href: "#experience", label: "Expérience" },
     { href: "#contact", label: "Contact" },
 ] as const
 
@@ -20,12 +21,12 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
+        const checkScroll = () => {
             setIsScrolled(window.scrollY > 0);
         };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        checkScroll(); // Initialize on mount
+        window.addEventListener('scroll', checkScroll);
+        return () => window.removeEventListener('scroll', checkScroll);
     }, []);
 
     return (
