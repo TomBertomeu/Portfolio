@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Over mij",
+    "skills": "Vaardigheden",
+    "projects": "Projecten",
+    "experience": "Ervaring",
+    "contact": "Contact"
+  },
+  "lang": {
+    "en": "Engels",
+    "fr": "Frans"
+  },
+  "about": {
+    "greeting": "Hallo! Ik ben",
+    "name": "Tom Bertomeu",
+    "subtitle": "Gepassioneerd Full Stack Developer die moderne en krachtige digitale ervaringen bouwt.",
+    "school": "HBO Informatica",
+    "institution": "Opleidingsinstituut",
+    "institutionName": "IUT de Belfort-Montbéliard",
+    "period": "Periode",
+    "periodValue": "September 2022 - Heden",
+    "downloadCv": "Download mijn CV",
+    "interest1": "Autosport",
+    "interest2": "Sciencefiction",
+    "interest3": "Informatica",
+    "profileImageAlt": "Mijn profielfoto"
+  },
+  "skills": {
+    "title": "Vaardigheden",
+    "groups": {
+      "languages": "Programmeertalen",
+      "frontend": "Frontend Ontwikkeling",
+      "backend": "Backend Ontwikkeling",
+      "database": "Databanken",
+      "tools": "Tools & Technologieën",
+      "design": "Ontwerp & Prototyping",
+      "devops": "DevOps",
+      "other": "Overig"
+    }
+  },
+  "projects": {
+    "title": "Recente Projecten",
+    "intro": "Hier zijn enkele projecten waar ik aan heb gewerkt, die mijn vaardigheden in verschillende technologische domeinen laten zien.",
+    "seeAll": "Bekijk al mijn projecten"
+  },
+  "experience": {
+    "title": "Werkervaring",
+    "labelTitle": "Functie",
+    "labelPeriod": "Periode",
+    "labelJob": "Werk"
+  },
+  "contact": {
+    "title": "Neem contact op"
+  },
+  "contactForm": {
+    "infoTitle": "Contactgegevens",
+    "infoSubtitle": "Neem gerust contact met mij op via een van de onderstaande methoden",
+    "labelName": "Naam",
+    "placeholderName": "Uw naam",
+    "labelEmail": "E-mail",
+    "placeholderEmail": "uw.email@voorbeeld.com",
+    "labelMessage": "Bericht",
+    "placeholderMessage": "Schrijf hier uw bericht...",
+    "labelGithub": "GitHub",
+    "labelLinkedin": "LinkedIn",
+    "send": "Verstuur bericht",
+    "sending": "Bezig met verzenden...",
+    "success": "Uw bericht is succesvol verzonden!",
+    "error": "Er is een fout opgetreden bij het verzenden van uw bericht.",
+    "privacy": "De informatie die u verstrekt is strikt vertrouwelijk en wordt alleen gebruikt om op uw bericht te reageren. Uw gegevens worden nooit gedeeld of voor andere doeleinden gebruikt."
+  },
+  "footer": {
+    "github": "GitHub",
+    "navigation": "Navigatie",
+    "socials": "Sociale Netwerken",
+    "linkedin": "LinkedIn",
+    "email": "E-mail",
+    "copyright": "Alle rechten voorbehouden."
+  }
+}

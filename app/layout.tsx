@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Background from "@/components/Background";
 import Footer from "@/components/Footer";
+import { LanguageProvider, useLanguage } from "@/contexts/LanguageProvider";
 
 export const metadata: Metadata = {
     title: "Portfolio - Tom Bertomeu",
@@ -16,23 +17,19 @@ export const viewport = {
     maximumScale: 1,
 };
 
-export default function RootLayout(
-    {
-        children,
-    }: Readonly<{
-        children: React.ReactNode;
-    }>
-) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="fr">
-        <body className="min-h-screen">
-        <Background />
-        <Header/>
-        <main className="flex-grow">
-            {children}
-        </main>
-        <Footer />
-        </body>
-        </html>
+        <LanguageProvider>
+            <html lang="en">
+                <body className="min-h-screen">
+                    <Background />
+                    <Header/>
+                    <main className="flex-grow">
+                        {children}
+                    </main>
+                    <Footer />
+                </body>
+            </html>
+        </LanguageProvider>
     );
 }

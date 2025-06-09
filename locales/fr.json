@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "experience": "Expérience",
+    "contact": "Contact"
+  },
+  "lang": {
+    "en": "Anglais",
+    "fr": "Français"
+  },
+  "about": {
+    "greeting": "Bonjour ! Je suis",
+    "name": "Tom Bertomeu",
+    "subtitle": "Développeur Full Stack passionné par la création d'expériences numériques modernes et performantes.",
+    "school": "BUT Informatique",
+    "institution": "Établissement",
+    "institutionName": "IUT de Belfort-Montbéliard",
+    "period": "Période",
+    "periodValue": "Septembre 2022 - Aujourd'hui",
+    "downloadCv": "Télécharger mon CV",
+    "interest1": "Sport automobile",
+    "interest2": "Science-fiction",
+    "interest3": "Informatique",
+    "profileImageAlt": "Ma photo de profil"
+  },
+  "skills": {
+    "title": "Compétences",
+    "groups": {
+      "languages": "Langages de programmation",
+      "frontend": "Développement Frontend",
+      "backend": "Développement Backend",
+      "database": "Bases de données",
+      "tools": "Outils & Technologies",
+      "design": "Conception & Prototypage",
+      "devops": "DevOps",
+      "other": "Autre"
+    }
+  },
+  "projects": {
+    "title": "Projets Récents",
+    "intro": "Voici quelques-uns des projets sur lesquels j'ai travaillé, mettant en valeur mes compétences dans différents domaines technologiques.",
+    "seeAll": "Voir tous mes projets"
+  },
+  "experience": {
+    "title": "Expérience Professionnelle",
+    "labelTitle": "Poste",
+    "labelPeriod": "Période",
+    "labelJob": "Emploi"
+  },
+  "contact": {
+    "title": "Me Contacter"
+  },
+  "contactForm": {
+    "infoTitle": "Coordonnées",
+    "infoSubtitle": "N'hésitez pas à me contacter par l'un des moyens ci-dessous",
+    "labelName": "Nom",
+    "placeholderName": "Votre nom",
+    "labelEmail": "E-mail",
+    "placeholderEmail": "votre.email@exemple.com",
+    "labelMessage": "Message",
+    "placeholderMessage": "Écrivez votre message ici...",
+    "labelGithub": "GitHub",
+    "labelLinkedin": "LinkedIn",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "success": "Votre message a été envoyé avec succès !",
+    "error": "Une erreur est survenue lors de l'envoi de votre message.",
+    "privacy": "Les informations que vous fournissez sont strictement confidentielles et ne seront utilisées que pour répondre à votre message. Elles ne seront jamais partagées ou utilisées à d'autres fins."
+  },
+  "footer": {
+    "github": "GitHub",
+    "navigation": "Navigation",
+    "socials": "Réseaux Sociaux",
+    "linkedin": "LinkedIn",
+    "email": "E-mail",
+    "copyright": "Tous droits réservés."
+  }
+}

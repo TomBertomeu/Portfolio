@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "lang": {
+    "en": "English",
+    "fr": "French"
+  },
+  "about": {
+    "greeting": "Hello! I am",
+    "name": "Tom Bertomeu",
+    "subtitle": "Passionate Full Stack Developer building modern and performant digital experiences.",
+    "school": "BUT Computer Science",
+    "institution": "Institution",
+    "institutionName": "IUT de Belfort-Montbéliard",
+    "period": "Period",
+    "periodValue": "September 2022 - Present",
+    "downloadCv": "Download my CV",
+    "interest1": "Motorsport",
+    "interest2": "Science Fiction",
+    "interest3": "Computer Science",
+    "profileImageAlt": "My profile picture"
+  },
+  "skills": {
+    "title": "Skills",
+    "groups": {
+      "languages": "Programming Languages",
+      "frontend": "Frontend Development",
+      "backend": "Backend Development",
+      "database": "Databases",
+      "tools": "Tools & Technologies",
+      "design": "Design & Prototyping",
+      "devops": "DevOps",
+      "other": "Other"
+    }
+  },
+  "projects": {
+    "title": "Recent Projects",
+    "intro": "Here are some of the projects I've worked on, showcasing my skills in different technologies and domains.",
+    "seeAll": "See all my projects"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "labelTitle": "Title",
+    "labelPeriod": "Period",
+    "labelJob": "Job"
+  },
+  "contact": {
+    "title": "Contact Me"
+  },
+  "contactForm": {
+    "infoTitle": "Contact Information",
+    "infoSubtitle": "Feel free to contact me using any of the methods below",
+    "labelName": "Name",
+    "placeholderName": "Your name",
+    "labelGithub": "GitHub",
+    "labelLinkedin": "LinkedIn",
+    "error": "An error occurred while sending your message.",
+    "labelEmail": "Email",
+    "placeholderEmail": "your.email@example.com",
+    "labelMessage": "Message",
+    "placeholderMessage": "Write your message here...",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully!",
+    "privacy": "The information you provide is strictly confidential and used only to respond to your message. It will never be shared or used for other purposes."
+  },
+  "footer": {
+    "github": "GitHub",
+    "navigation": "Navigation",
+    "socials": "Social Networks",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "copyright": "All rights reserved."
+  }
+}

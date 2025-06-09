@@ -1,3 +1,4 @@
+"use client";
 import Title from "@/components/Title";
 import ProjectGrid from "@/components/ProjectGrid";
 import SeeAllProjectsButton from "@/components/SeeAllProjectsButton";
@@ -37,13 +38,15 @@ const projects = [
     }
 ];
 
+import { useLanguage } from "@/contexts/LanguageProvider";
+
 export default function ProjectsSection() {
+    const { t } = useLanguage();
     return (
         <Section id="projects">
-            <Title text="Projets récents" />
+            <Title text={t('projects.title')} />
             <p className="mb-4 text-gray-600">
-                Voici quelques-uns des projets sur lesquels j’ai travaillé,
-                mettant en valeur mes compétences dans différentes technologies et domaines.
+                {t('projects.intro')}
             </p>
             <ProjectGrid projects={projects}/>
             <SeeAllProjectsButton/>
