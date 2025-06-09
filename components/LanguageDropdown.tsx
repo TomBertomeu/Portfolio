@@ -1,12 +1,12 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, ReactElement } from "react";
 import GB from 'country-flag-icons/react/3x2/GB';
 import FR from 'country-flag-icons/react/3x2/FR';
 import NL from 'country-flag-icons/react/3x2/NL';
 
 import type { Language } from "@/contexts/LanguageProvider";
 
-const flagMap: Record<Language, JSX.Element> = {
+const flagMap: Record<Language, ReactElement> = {
   en: <GB title="English" className="absolute inset-0 w-full h-full" />,
   fr: <FR title="Français" className="absolute inset-0 w-full h-full" />,
   nl: <NL title="Nederlands" className="absolute inset-0 w-full h-full" />,
