@@ -15,7 +15,7 @@ const flagMap: Record<Language, JSX.Element> = {
 interface LanguageDropdownProps {
   language: Language;
   setLanguage: (lang: Language) => void;
-  availableLanguages: Language[];
+  availableLanguages: readonly Language[];
 }
 
 export default function LanguageDropdown({ language, setLanguage, availableLanguages }: LanguageDropdownProps) {
