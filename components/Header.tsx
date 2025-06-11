@@ -1,5 +1,4 @@
 "use client"
-"use client"
 
 import Link from "next/link"
 import {Menu, X} from "lucide-react"
@@ -8,12 +7,13 @@ import {Button} from "@/components/ui/button"
 import {Sheet, SheetContent, SheetTrigger, SheetTitle} from "@/components/ui/sheet"
 import "@/styles/shimmer-effect.css"
 import { useLanguage } from "@/contexts/LanguageProvider"
+import { useActiveSection } from "@/contexts/ActiveSectionContext";
 import GB from 'country-flag-icons/react/3x2/GB'
 import FR from 'country-flag-icons/react/3x2/FR'
 import LanguageDropdown from './LanguageDropdown';
 
 const navLinks = [
-    { href: "/#about", key: "about" },
+    { href: "/#", key: "about" },
     { href: "/#skills", key: "skills" },
     { href: "/#projects", key: "projects" },
     { href: "/#experience", key: "experience" },
@@ -25,6 +25,7 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     
     const { language, setLanguage, t, availableLanguages } = useLanguage();
+    const { activeSection } = useActiveSection();
 
     useEffect(() => {
         const checkScroll = () => {
@@ -41,23 +42,39 @@ export default function Header() {
         }`}>
             <div className="flex items-center justify-between max-w-6xl mx-auto px-8 md:px-0 py-4 bg-white md:bg-transparent transition-all duration-300">
                 {/* Nom + prénom */}
-                <Link href="/" className="text-2xl font-bold tracking-tight text-gray-900 hover:text-blue-600 transition-colors shimmer">
+                <Link 
+                    href="/#" 
+                    className="text-2xl font-bold tracking-tight text-gray-900 hover:text-blue-600 transition-colors shimmer"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                >
                     TB.
                 </Link>
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex gap-8 text-base font-medium items-center">
                     {navLinks.map(({ href, key }) => (
-  <Button
-    key={href}
-    variant="ghost"
-    asChild
-  >
-    <Link href={href}>
-      {t(`nav.${key}`)}
-    </Link>
-  </Button>
-))}
+                        <Button
+                            key={href}
+                            variant="ghost"
+                            asChild
+                            className={`${activeSection === key ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'} transition-colors`}
+                        >
+                            <Link 
+                                href={href}
+                                onClick={(e) => {
+                                    if (key === 'about') {
+                                        e.preventDefault();
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }
+                                }}
+                            >
+                                {t(`nav.${key}`)}
+                            </Link>
+                        </Button>
+                    ))}
                     <div className="relative ml-4">
                         {/* Language Dropdown Button */}
                         <LanguageDropdown 
@@ -79,17 +96,26 @@ export default function Header() {
                         <SheetTitle className="sr-only">{t('header.mainMenu')}</SheetTitle>
                         <nav className="flex flex-col gap-4">
                             {navLinks.map(({ href, key }) => (
-  <Button
-    key={href}
-    variant="ghost"
-    asChild
-    className="w-full justify-start"
-  >
-    <Link href={href} onClick={() => setIsOpen(false)}>
-      {t(`nav.${key}`)}
-    </Link>
-  </Button>
-))}
+                                <Button
+                                    key={href}
+                                    variant="ghost"
+                                    asChild
+                                    className={`w-full justify-start ${activeSection === key ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'}`}
+                                >
+                                    <Link 
+                                        href={href}
+                                        onClick={(e) => {
+                                            if (key === 'about') {
+                                                e.preventDefault();
+                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                            }
+                                            setIsOpen(false);
+                                        }}
+                                    >
+                                        {t(`nav.${key}`)}
+                                    </Link>
+                                </Button>
+                            ))}
                             <div className="mt-4">
                                 <LanguageDropdown 
                                     language={language} 

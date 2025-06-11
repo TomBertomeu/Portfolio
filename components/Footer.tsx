@@ -14,12 +14,20 @@ export default function Footer() {
                     <div className="flex-1 flex flex-col items-center md:items-start mb-6 md:mb-0">
                         <h3 className="text-lg font-semibold mb-4">{t('footer.navigation')}</h3>
                         <nav className="flex flex-wrap gap-4 justify-center md:justify-start">
-  <Link href="/" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.home')}</Link>
-<Link href="/#about" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.about')}</Link>
-<Link href="/#projects" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.projects')}</Link>
-<Link href="/#skills" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.skills')}</Link>
-<Link href="/#contact" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.contact')}</Link>
-</nav>
+                            <Link 
+                                href="/#" 
+                                className="text-sm text-gray-700 hover:text-blue-600 transition-colors"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                            >
+                                {t('nav.about')}
+                            </Link>
+                            <Link href="/#projects" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.projects')}</Link>
+                            <Link href="/#skills" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.skills')}</Link>
+                            <Link href="/#contact" className="text-sm text-gray-700 hover:text-blue-600 transition-colors">{t('nav.contact')}</Link>
+                        </nav>
                     </div>
 
                     {/* Social Links */}
@@ -27,29 +35,31 @@ export default function Footer() {
                         <h3 className="text-lg font-semibold mb-4">{t('footer.socials')}</h3>
                         <div className="flex gap-6">
                             <a 
-                                href="mailto:contact@example.com" 
+                                href="mailto:tom.bertomeu.pro@gmail.com" 
                                 className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <Mail className="w-5 h-5" />
-                                <span>{t('footer.email')}</span>
+                                <span>tom.bertomeu.pro@gmail.com</span>
                             </a>
                             <a 
-                                href="https://github.com/username" 
+                                href="https://github.com/TomBertomeu" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors"
                             >
                                 <Github className="w-5 h-5" />
-                                <span>{t('footer.github')}</span>
+                                <span>GitHub</span>
                             </a>
                             <a 
-                                href="https://linkedin.com/in/username" 
+                                href="https://www.linkedin.com/in/tom-bertomeu/" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition-colors"
                             >
                                 <Linkedin className="w-5 h-5" />
-                                <span>{t('footer.linkedin')}</span>
+                                <span>LinkedIn</span>
                             </a>
                         </div>
                     </div>

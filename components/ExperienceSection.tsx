@@ -1,6 +1,7 @@
 "use client";
-import { Briefcase, GraduationCap } from "lucide-react";
+import { Briefcase } from "lucide-react";
 import Title from "@/components/Title";
+import Section from "@/components/Section";
 
 const professionalExperiences = [
   {
@@ -25,7 +26,7 @@ import { useLanguage } from "@/contexts/LanguageProvider";
 export default function ExperienceSection() {
   const { t } = useLanguage();
   return (
-    <section className="max-w-6xl mx-auto px-8 md:px-0 py-16" id="experience">
+    <Section id="experience">
       <Title text={t('experience.title')} />
       <div className="flex flex-col gap-8">
         {/* Professional Experiences */}
@@ -51,6 +52,6 @@ export default function ExperienceSection() {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

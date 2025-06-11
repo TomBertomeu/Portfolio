@@ -1,6 +1,7 @@
 "use client";
 import { Code, Layout, Database, Server, Settings, PenTool } from "lucide-react";
 import Title from "@/components/Title";
+import Section from "@/components/Section";
 
 import { useLanguage } from "@/contexts/LanguageProvider";
 
@@ -91,7 +92,7 @@ export default function SkillsetSection() {
   // --- END skillGroups definition ---
 
   return (
-    <section className="py-16 px-8 md:px-0 max-w-6xl mx-auto" id="skills">
+    <Section id="skills">
       <Title text={t('skills.title')} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillGroups.map((group) => (
@@ -116,6 +117,6 @@ export default function SkillsetSection() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

@@ -4,7 +4,8 @@ import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Background from "@/components/Background";
 import Footer from "@/components/Footer";
-import { LanguageProvider, useLanguage } from "@/contexts/LanguageProvider";
+import { LanguageProvider } from "@/contexts/LanguageProvider";
+import { ActiveSectionProvider } from "@/contexts/ActiveSectionContext";
 
 export const metadata: Metadata = {
     title: "Portfolio - Tom Bertomeu",
@@ -20,16 +21,18 @@ export const viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <LanguageProvider>
-            <html lang="en">
-                <body className="min-h-screen">
-                    <Background />
-                    <Header/>
-                    <main className="flex-grow">
-                        {children}
-                    </main>
-                    <Footer />
-                </body>
-            </html>
+            <ActiveSectionProvider>
+                <html lang="en">
+                    <body className="min-h-screen">
+                        <Background />
+                        <Header/>
+                        <main className="flex-grow">
+                            {children}
+                        </main>
+                        <Footer />
+                    </body>
+                </html>
+            </ActiveSectionProvider>
         </LanguageProvider>
     );
 }

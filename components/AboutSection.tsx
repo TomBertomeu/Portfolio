@@ -13,9 +13,9 @@ export default function AboutSection() {
     const { t } = useLanguage();
     return (
         <Section id="about">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Left Column - Information */}
-                <div>
+            <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8">
+                {/* Right Column - Information */}
+                <div className="mt-8 md:mt-0">
                     <div>
                         <p className="text-2xl font-bold text-gray-800">{t('about.greeting')}</p>
                         <span className="shimmer inline-block">
@@ -56,7 +56,7 @@ export default function AboutSection() {
 
                 </div>
 
-                {/* Right Column - Profile Image and Resume Button */}
+                {/* Left Column - Profile Image and Resume Button */}
                 <div className="flex flex-col items-center gap-4">
                     <Image 
                         src="/images/profile.png" 
