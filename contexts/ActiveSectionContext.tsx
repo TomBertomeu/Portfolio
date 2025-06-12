@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode, useEffect, useRef } from 'react';
+import { usePathname } from "next/navigation";
 
 type Section = 'home' | 'about' | 'skills' | 'projects' | 'experience' | 'contact';
 
@@ -14,11 +15,14 @@ const ActiveSectionContext = createContext<ActiveSectionContextType | undefined>
 
 export function ActiveSectionProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState<Section>('home');
+  const [isHashNavigation, setIsHashNavigation] = useState(false);
   const sectionRefs = useRef<{ [key in Section]?: HTMLElement }>({});
+  const pathname = usePathname();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        if (isHashNavigation) return;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id as Section;
@@ -33,7 +37,6 @@ export function ActiveSectionProvider({ children }: { children: ReactNode }) {
       }
     );
 
-    // Observe all section elements
     Object.values(sectionRefs.current).forEach((section) => {
       if (section) {
         observer.observe(section);
@@ -47,7 +50,40 @@ export function ActiveSectionProvider({ children }: { children: ReactNode }) {
         }
       });
     };
+  }, [isHashNavigation]);
+
+  useEffect(() => {
+    if (pathname === "/" && window.scrollY === 0) {
+      setActiveSection("about");
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (["about", "skills", "projects", "experience", "contact"].includes(hash)) {
+        setActiveSection(hash as Section);
+        setIsHashNavigation(true);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isHashNavigation) {
+        setIsHashNavigation(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHashNavigation]);
 
   return (
     <ActiveSectionContext.Provider value={{ activeSection, setActiveSection, sectionRefs }}>

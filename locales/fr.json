@@ -25,7 +25,7 @@
     "profileImageAlt": "Ma photo de profil"
   },
   "skills": {
-    "title": "Compétences",
+    "title": "Mes compétences",
     "groups": {
       "languages": "Langages de programmation",
       "frontend": "Développement Frontend",
@@ -38,12 +38,12 @@
     }
   },
   "projects": {
-    "title": "Projets Récents",
+    "title": "Mes projets récents",
     "intro": "Voici quelques-uns des projets sur lesquels j'ai travaillé, mettant en valeur mes compétences dans différents domaines technologiques.",
     "seeAll": "Voir tous mes projets"
   },
   "experience": {
-    "title": "Expérience Professionnelle",
+    "title": "Mon Expérience Professionnelle",
     "labelTitle": "Poste",
     "labelPeriod": "Période",
     "labelJob": "Emploi"

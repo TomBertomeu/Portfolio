@@ -1,4 +1,4 @@
-import { CheckCircle, Star, Wrench } from "lucide-react";
+import { CheckCircle, Star, Wrench, Cpu, LayoutGrid } from "lucide-react";
 import { LucideIcon } from "lucide-react";
 
 export interface ProjectBadge {
@@ -17,46 +17,37 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    id: "aso70",
+    title: "Catalogue de Location Événementielle",
+    description: "Plateforme de location de matériel événementiel pour ASO 70.",
+    image: "/images/projects/aso70.png",
+    link: "/projects/aso70",
+    badges: [
+      { icon: LayoutGrid, text: "Feature-Based" },
+      { icon: Cpu, text: "Full Stack" }
+    ]
+  },
+  {
+    id: "vecofroid",
+    title: "Application de Gestion des Interventions",
+    description: "Outil de gestion des interventions et bons d'intervention pour Vecofroid.",
+    image: "/images/projects/vecofroid.png",
+    link: "/projects/vecofroid",
+    badges: [
+      { icon: CheckCircle, text: "Stage" },
+      { icon: Cpu, text: "Full Stack" }
+    ]
+  },
+  {
     id: "fortiche",
     title: "Site de Présentation - Fortiche",
-    description: "Site web de présentation d'un studio d'animation.",
+    description: "Site web présentant le studio d'animation Fortiche.",
     image: "/images/projects/fortiche.webp",
     link: "/projects/fortiche",
     badges: [
       { icon: Star, text: "Premier Projet" }
     ]
   },
-  {
-    id: "vecofroid",
-    title: "Application de Gestion des Interventions",
-    description: "Outil de gestion des interventions et bons d'intervention pour une entreprise de maintenance frigoriste.",
-    image: "/images/projects/vecofroid-banner.jpg",
-    link: "/projects/vecofroid",
-    badges: [
-      { icon: CheckCircle, text: "Stage" },
-      { icon: Wrench, text: "Full Stack" }
-    ]
-  },
-  {
-    id: "ecommerce",
-    title: "Boutique en Ligne",
-    description: "Plateforme e-commerce complète avec système de paiement et tableau d'administration.",
-    image: "/images/projects/ecommerce.jpg",
-    link: "#",
-    badges: [
-      { icon: CheckCircle, text: "Personnel" }
-    ]
-  },
-  {
-    id: "fitness-tracker",
-    title: "Application de Suivi Sportif",
-    description: "Application mobile pour suivre ses performances sportives et atteindre ses objectifs.",
-    image: "/images/projects/fitness.jpg",
-    link: "#",
-    badges: [
-      { icon: Star, text: "En cours" }
-    ]
-  }
 ];
 
 export function getProjectById(id: string): Project | undefined {

@@ -7,7 +7,7 @@ export default function ForticheProject() {
   // Données spécifiques au projet Fortiche
   const projectData = {
     title: "Site de Présentation - Fortiche",
-    description: "Site web de présentation d'un studio d'animation français réalisé dans le cadre d'un projet académique.",
+    description: "Site web présentant le studio d'animation Fortiche.",
     image: "/images/projects/fortiche.webp",
     badges: [
       { icon: Star, text: "Premier Projet" }
@@ -53,7 +53,7 @@ export default function ForticheProject() {
           <div className="absolute bottom-0 left-0 p-8 text-white">
             <div className="flex flex-wrap gap-2 mb-4">
               {projectData.badges?.map((badge, index) => (
-                <Badge key={index} icon={badge.icon} text={badge.text} className="bg-white/10 backdrop-blur-sm" />
+                <Badge key={index} icon={badge.icon} text={badge.text} className="bg-white/80 backdrop-blur-sm hover:bg-white" />
               ))}
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-2">{projectData.title}</h1>
@@ -83,6 +83,10 @@ export default function ForticheProject() {
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                   <span>Mettre en avant les productions et l'univers créatif du studio</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Découvrir les bases du développement web (HTML, CSS, JavaScript)</span>
                 </li>
               </ul>
             </div>

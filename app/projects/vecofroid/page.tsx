@@ -7,8 +7,8 @@ export default function VecofroidProject() {
   // Données spécifiques au projet Vecofroid
   const projectData = {
     title: "Application de Gestion des Interventions",
-    description: "Outil de gestion des interventions et bons d'intervention pour une entreprise de maintenance frigoriste.",
-    image: "/images/projects/vecofroid-banner.jpg",
+    description: "Outil de gestion des interventions et bons d'intervention pour Vecofroid.",
+    image: "/images/projects/vecofroid.png",
     badges: [
       { icon: CheckCircle, text: "Stage" },
       { icon: Cpu, text: "Full Stack" }
@@ -46,8 +46,8 @@ export default function VecofroidProject() {
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
           <div className="absolute bottom-0 left-0 p-8 text-white">
             <div className="flex flex-wrap gap-2 mb-4">
-              {projectData.badges.map((badge, index) => (
-                <Badge key={index} icon={badge.icon} text={badge.text} className="bg-white/10 backdrop-blur-sm" />
+              {projectData.badges?.map((badge, index) => (
+                <Badge key={index} icon={badge.icon} text={badge.text} className="bg-white/80 backdrop-blur-sm hover:bg-white" />
               ))}
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-2">{projectData.title}</h1>

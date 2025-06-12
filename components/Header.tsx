@@ -1,14 +1,23 @@
 "use client"
 
 import Link from "next/link"
-import {Menu, X} from "lucide-react"
-import {useEffect, useState, useRef} from "react"
+import {Menu, X, ChevronLeft, Home} from "lucide-react"
+import {useEffect, useState} from "react"
 import {Button} from "@/components/ui/button"
 import {Sheet, SheetContent, SheetTrigger, SheetTitle} from "@/components/ui/sheet"
 import "@/styles/shimmer-effect.css"
 import { useLanguage } from "@/contexts/LanguageProvider"
 import { useActiveSection } from "@/contexts/ActiveSectionContext";
-import LanguageDropdown from './LanguageDropdown';
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const navLinks = [
     { href: "/", key: "about" },
@@ -21,8 +30,9 @@ const navLinks = [
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    
-    const { language, setLanguage, t, availableLanguages } = useLanguage();
+    const pathname = usePathname();
+    const router = useRouter();
+    const { t } = useLanguage();
     const { activeSection } = useActiveSection();
 
     useEffect(() => {
@@ -34,9 +44,15 @@ export default function Header() {
         return () => window.removeEventListener('scroll', checkScroll);
     }, []);
 
+    // Afficher la barre breadcrumb uniquement si on n'est PAS sur la page d'accueil
+    const showBreadcrumbBar = pathname !== "/";
+    const isProjectsIndex = pathname === "/projects";
+    const projectName = pathname.split("/").pop();
+
     return (
+        <>
         <header className={`sticky top-0 z-50 w-full bg-transparent ${
-            isScrolled ? "backdrop-blur bg-white/50" : ""
+            isScrolled ? "backdrop-blur bg-white/75" : ""
         }`}>
             <div className="flex items-center justify-between max-w-6xl mx-auto px-8 md:px-0 py-4 bg-white md:bg-transparent transition-all duration-300">
                 {/* Nom + prénom */}
@@ -88,14 +104,6 @@ export default function Header() {
                             </Link>
                         </Button>
                     ))}
-                    <div className="relative ml-4">
-                        {/* Language Dropdown Button */}
-                        <LanguageDropdown 
-                            language={language} 
-                            setLanguage={setLanguage} 
-                            availableLanguages={availableLanguages} 
-                        />
-                    </div>
                 </nav>
 
                 {/* Mobile Navigation */}
@@ -129,17 +137,57 @@ export default function Header() {
                                     </Link>
                                 </Button>
                             ))}
-                            <div className="mt-4">
-                                <LanguageDropdown 
-                                    language={language} 
-                                    setLanguage={setLanguage} 
-                                    availableLanguages={availableLanguages} 
-                                />
-                            </div>
                         </nav>
                     </SheetContent>
                 </Sheet>
             </div>
+            {/* Barre Breadcrumb + Retour */}
+            {showBreadcrumbBar && (
+                <div className="w-full transition-all duration-300">
+                    <div className="max-w-6xl mx-auto flex items-center justify-between h-14">
+                        <button
+                            type="button"
+                            onClick={() => router.back()}
+                            className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors"
+                        >
+                            <ChevronLeft className="w-4 h-4 mr-1" />
+                            Retour
+                        </button>
+                        <Breadcrumb>
+                            <BreadcrumbList>
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink asChild>
+                                        <Link href="/" className="flex items-center">
+                                            <Home className="w-4 h-4" />
+                                        </Link>
+                                    </BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator />
+                                <BreadcrumbItem>
+                                    {isProjectsIndex ? (
+                                        <BreadcrumbPage>Projets</BreadcrumbPage>
+                                    ) : (
+                                        <BreadcrumbLink asChild>
+                                            <Link href="/projects">Projets</Link>
+                                        </BreadcrumbLink>
+                                    )}
+                                </BreadcrumbItem>
+                                {!isProjectsIndex && projectName && (
+                                    <>
+                                        <BreadcrumbSeparator />
+                                        <BreadcrumbItem>
+                                            <BreadcrumbPage>
+                                                {projectName.charAt(0).toUpperCase() + projectName.slice(1)}
+                                            </BreadcrumbPage>
+                                        </BreadcrumbItem>
+                                    </>
+                                )}
+                            </BreadcrumbList>
+                        </Breadcrumb>
+                    </div>
+                </div>
+            )}
         </header>
+        </>
     );
 }

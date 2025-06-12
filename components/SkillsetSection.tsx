@@ -32,7 +32,6 @@ export default function SkillsetSection() {
         "Next.js",
         "React",
         "React Native",
-        "Tailwind CSS",
         "Vue.js",
         "iOS",
         "Android",
