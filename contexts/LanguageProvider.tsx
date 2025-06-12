@@ -1,6 +1,8 @@
 "use client";
 import React, { createContext, useContext, ReactNode } from "react";
 
+export type Language = "fr" | "en";
+
 type Translations = Record<string, any>;
 
 interface LanguageContextProps {
