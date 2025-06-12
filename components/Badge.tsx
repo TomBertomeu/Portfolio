@@ -3,12 +3,13 @@ import {LucideIcon} from "lucide-react";
 interface BadgeProps {
   icon?: LucideIcon;
   text?: string;
+  className?: string;
 }
 
-export default function Badge({ icon: Icon, text }: Readonly<BadgeProps>) {
+export default function Badge({ icon: Icon, text, className }: Readonly<BadgeProps>) {
   return (
       <div
-          className="
+          className={`
           inline-flex
           items-center
           gap-1
@@ -17,15 +18,16 @@ export default function Badge({ icon: Icon, text }: Readonly<BadgeProps>) {
           py-1
           text-sm
           font-medium
-          text-gray-500
+          text-black
           border
           border-gray-300
           bg-white
           hover:bg-gray-100
-          hover:text-black
+          hover:text-blue-600
           transition-colors
           duration-200 select-none
-          "
+          ${className || ''}
+          `}
       >
         {Icon && <Icon className="h-4 w-4" />}
         {text && <span>{text}</span>}

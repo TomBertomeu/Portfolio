@@ -8,12 +8,10 @@ import {Sheet, SheetContent, SheetTrigger, SheetTitle} from "@/components/ui/she
 import "@/styles/shimmer-effect.css"
 import { useLanguage } from "@/contexts/LanguageProvider"
 import { useActiveSection } from "@/contexts/ActiveSectionContext";
-import GB from 'country-flag-icons/react/3x2/GB'
-import FR from 'country-flag-icons/react/3x2/FR'
 import LanguageDropdown from './LanguageDropdown';
 
 const navLinks = [
-    { href: "/#", key: "about" },
+    { href: "/", key: "about" },
     { href: "/#skills", key: "skills" },
     { href: "/#projects", key: "projects" },
     { href: "/#experience", key: "experience" },
@@ -43,9 +41,14 @@ export default function Header() {
             <div className="flex items-center justify-between max-w-6xl mx-auto px-8 md:px-0 py-4 bg-white md:bg-transparent transition-all duration-300">
                 {/* Nom + prénom */}
                 <Link 
-                    href="/#" 
+                    href="/"
                     className="text-2xl font-bold tracking-tight text-gray-900 hover:text-blue-600 transition-colors shimmer"
                     onClick={(e) => {
+                        // Si on n'est pas sur la page d'accueil, on laisse le lien se comporter normalement
+                        if (window.location.pathname !== '/') {
+                            return;
+                        }
+                        // Sinon, on empêche le comportement par défaut et on scroll en haut
                         e.preventDefault();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
@@ -55,23 +58,33 @@ export default function Header() {
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex gap-8 text-base font-medium items-center">
-                    {navLinks.map(({ href, key }) => (
+                    {navLinks.map((link) => (
                         <Button
-                            key={href}
+                            key={link.href}
                             variant="ghost"
                             asChild
-                            className={`${activeSection === key ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'} transition-colors`}
+                            className={`${activeSection === link.key ? 'text-blue-600' : 'text-gray-900 hover:text-blue-600'} transition-colors`}
                         >
                             <Link 
-                                href={href}
+                                href={link.href} 
+                                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                                    activeSection === link.key ? 'text-blue-600' : 'text-gray-700'
+                                }`}
                                 onClick={(e) => {
-                                    if (key === 'about') {
+                                    // Si c'est le lien vers la page d'accueil et qu'on est déjà sur la page d'accueil
+                                    if (link.href === '/' && window.location.pathname === '/') {
                                         e.preventDefault();
                                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    } else if (link.href.startsWith('#')) {
+                                        // Pour les ancres sur la même page
+                                        e.preventDefault();
+                                        document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
                                     }
+                                    // Pour les autres cas (navigation vers une autre page), on laisse le lien se comporter normalement
+                                    setIsOpen(false);
                                 }}
                             >
-                                {t(`nav.${key}`)}
+                                {t(`nav.${link.key}`)}
                             </Link>
                         </Button>
                     ))}

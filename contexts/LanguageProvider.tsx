@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-const languages = ["en", "fr", "nl"] as const;
+const languages = ["fr", "en"] as const;
 export type Language = typeof languages[number];
 
 type Translations = Record<string, any>;
@@ -17,13 +17,11 @@ const LanguageContext = createContext<LanguageContextProps | undefined>(undefine
 
 function loadTranslations(lang: Language): Translations {
   switch (lang) {
-    case "fr":
-      return require("../locales/fr.json");
-    case "nl":
-      return require("../locales/nl.json");
     case "en":
-    default:
       return require("../locales/en.json");
+    case "fr":
+    default:
+      return require("../locales/fr.json");
   }
 }
 
@@ -32,8 +30,8 @@ function getValue(obj: any, path: string) {
 }
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>("en");
-  const [translations, setTranslations] = useState<Translations>(loadTranslations("en"));
+  const [language, setLanguage] = useState<Language>("fr");
+  const [translations, setTranslations] = useState<Translations>(loadTranslations("fr"));
 
   useEffect(() => {
     setTranslations(loadTranslations(language));

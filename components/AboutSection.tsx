@@ -4,7 +4,7 @@ import Title from "@/components/Title";
 import Section from "@/components/Section";
 import Image from "next/image";
 import "@/styles/shimmer-effect.css";
-import { Badge } from "@/components/ui/badge";
+import Badge from "@/components/Badge";
 import { Download, GraduationCap } from "lucide-react";
 
 import { useLanguage } from "@/contexts/LanguageProvider";
@@ -21,20 +21,18 @@ export default function AboutSection() {
                         <span className="shimmer inline-block">
                             <Title text={t('about.name')} className="md:text-6xl" />
                         </span>
-                        <p className="mt-2 text-gray-600">
+                        {/* Diplôme */}
+                        <div className="mt-2">
+                          <Badge 
+                            icon={GraduationCap}
+                            text={t('about.school')}
+                            className="text-sm"
+                          />
+                        </div>
+                        <p className="mt-4 text-gray-600">
                             {t('about.subtitle')}
                         </p>
                     </div>
-
-                    {/* Diplôme */}
-                    <div className="mt-6">
-                      <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 text-sm px-3 py-1">
-                        <GraduationCap className="w-3.5 h-3.5 mr-1.5" />
-                        {t('about.school')}
-                      </Badge>
-                    </div>
-
-
                 </div>
 
                 {/* Left Column - Profile Image and Resume Button */}

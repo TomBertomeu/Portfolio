@@ -1,5 +1,6 @@
 "use client";
 import { Code, Layout, Database, Server, Settings, PenTool } from "lucide-react";
+import Badge from "@/components/Badge";
 import Title from "@/components/Title";
 import Section from "@/components/Section";
 
@@ -98,7 +99,7 @@ export default function SkillsetSection() {
         {skillGroups.map((group) => (
           <div
             key={group.title}
-            className="bg-white/70 border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col gap-4 min-h-[170px]"
+            className="bg-white/70 border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col gap-4 min-h-[170px] hover:-translate-y-1 transition-all duration-300 hover:shadow-lg"
           >
             <div className="flex items-center gap-2 mb-2">
               {group.icon}
@@ -106,12 +107,11 @@ export default function SkillsetSection() {
             </div>
             <div className="flex flex-wrap gap-2">
               {group.skills.map((skill) => (
-                <span
+                <Badge
                   key={skill}
-                  className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-xs font-medium border border-blue-100"
-                >
-                  {skill}
-                </span>
+                  text={skill}
+                  className="text-xs"
+                />
               ))}
             </div>
           </div>

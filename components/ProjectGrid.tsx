@@ -1,18 +1,9 @@
 import ProjectCard from "@/components/ProjectCard";
+import { Project } from "@/data/projects";
 import {LucideIcon} from "lucide-react";
 
 interface ProjectGridProps {
-    projects: {
-        title: string;
-        description: string;
-        image: string;
-        link: string;
-        badges: {
-            icon?: LucideIcon;
-            text?: string;
-        }[]
-
-    }[];
+    projects: Project[];
 }
 
 export default function ProjectGrid({ projects }: Readonly<ProjectGridProps>) {

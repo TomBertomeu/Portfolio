@@ -15,11 +15,15 @@ export default function Footer() {
                         <h3 className="text-lg font-semibold mb-4">{t('footer.navigation')}</h3>
                         <nav className="flex flex-wrap gap-4 justify-center md:justify-start">
                             <Link 
-                                href="/#" 
+                                href="/" 
                                 className="text-sm text-gray-700 hover:text-blue-600 transition-colors"
                                 onClick={(e) => {
-                                    e.preventDefault();
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    // Si on est déjà sur la page d'accueil, on scroll en haut
+                                    if (window.location.pathname === '/') {
+                                        e.preventDefault();
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }
+                                    // Sinon, on laisse le lien se comporter normalement (redirection vers la page d'accueil)
                                 }}
                             >
                                 {t('nav.about')}

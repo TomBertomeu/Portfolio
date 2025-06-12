@@ -1,18 +1,9 @@
 import Link from "next/link";
-import {LucideIcon} from "lucide-react";
 import Badge from "@/components/Badge";
 import Image from "next/image";
+import { Project } from "@/data/projects";
 
-interface ProjectCardProps {
-    title: string;
-    description: string;
-    image: string;
-    link: string;
-    badges?: {
-        icon?: LucideIcon;
-        text?: string;
-    }[];
-}
+interface ProjectCardProps extends Pick<Project, 'title' | 'description' | 'image' | 'link' | 'badges'> {}
 
 export default function ProjectCard({ title, description, image, link, badges }: Readonly<ProjectCardProps>) {
     return (

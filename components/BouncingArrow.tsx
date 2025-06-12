@@ -8,11 +8,12 @@ const arrowStyle: React.CSSProperties = {
   transform: "translateX(-50%)",
   zIndex: 1000,
   cursor: "pointer",
-  animation: "bounce 1.5s infinite"
+  animation: "bounce 1.5s infinite",
+  transition: "color 0.2s ease-in-out"
 };
 
 const arrowSvg = (
-  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="hover:stroke-blue-600">
     <polyline points="6 9 12 15 18 9" />
   </svg>
 );
