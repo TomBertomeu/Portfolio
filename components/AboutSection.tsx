@@ -5,7 +5,7 @@ import Section from "@/components/Section";
 import Image from "next/image";
 import "@/styles/shimmer-effect.css";
 import { Badge } from "@/components/ui/badge";
-import { Download } from "lucide-react";
+import { Download, GraduationCap } from "lucide-react";
 
 import { useLanguage } from "@/contexts/LanguageProvider";
 
@@ -26,31 +26,12 @@ export default function AboutSection() {
                         </p>
                     </div>
 
-                    {/* School Experience Card */}
-                    <div className="bg-white/80 border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col mt-6">
-                      <div className="flex flex-col md:flex-row gap-0 items-center md:items-stretch">
-                        {/* Left Side */}
-                        <div className="flex-1 flex items-center justify-center md:justify-start mb-4 md:mb-0 px-0 md:px-6">
-                          <span className="inline-flex items-center">
-                            <svg className="w-8 h-8 text-blue-500 mr-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0 0H6m6 0h6" /></svg>
-                            <span className="text-xl md:text-2xl font-bold text-gray-900">{t('about.school')}</span>
-                          </span>
-                        </div>
-                        {/* Divider */}
-                        <div className="hidden md:block w-px bg-gray-300 mx-2" />
-                        {/* Right Side */}
-                        <div className="flex-1 flex flex-col justify-center text-gray-700 gap-2 px-0 md:px-6">
-                          <div><span className="font-medium">{t('about.institution')} :</span> {t('about.institutionName')}</div>
-                          <div><span className="font-medium">{t('about.period')} :</span> {t('about.periodValue')}</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Interests as badges */}
-                    <div className="mt-8 flex flex-wrap gap-2">
-                        <Badge variant="secondary">{t('about.interest1')}</Badge>
-                        <Badge variant="secondary">{t('about.interest2')}</Badge>
-                        <Badge variant="secondary">{t('about.interest3')}</Badge>
+                    {/* Diplôme */}
+                    <div className="mt-6">
+                      <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 text-sm px-3 py-1">
+                        <GraduationCap className="w-3.5 h-3.5 mr-1.5" />
+                        {t('about.school')}
+                      </Badge>
                     </div>
 
 
