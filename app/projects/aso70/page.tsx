@@ -10,6 +10,9 @@ export default function ASO70Project() {
     image: "/images/projects/aso70.png",
     badges: [
       { icon: Code, text: "Next.js" },
+      { icon: Code, text: "Tailwind CSS" },
+      { icon: Code, text: "TypeScript" },
+      { icon: Code, text: "PostgreSQL" },
     ],
     context: "Développement d'un catalogue en ligne de location de matériel événementiel pour ASO 70. Ce projet de 12 semaines a été l'occasion d'approfondir mes connaissances en développement web moderne, notamment avec l'apprentissage de React et Next.js en autodidacte.",
     role: "Développeur Full Stack",
@@ -28,12 +31,6 @@ export default function ASO70Project() {
       "Gestion de base de données",
       "Intégration de services tiers",
       "Déploiement continu"
-    ],
-    challenges: [
-      "Apprentissage autodidacte de React et Next.js",
-      "Mise en place d'une architecture évolutive et maintenable",
-      "Intégration et orchestration de multiples services externes",
-      "Gestion efficace des ressources et des performances"
     ],
     results: [
       "Application performante et évolutive",
@@ -122,19 +119,19 @@ export default function ASO70Project() {
                 <pre className="bg-gray-100 rounded p-4 text-xs overflow-x-auto mt-4"><code>{`
 src/
 ├── features/
-│   ├── catalog/
-│   │   ├── _components/
-│   │   │   ├── ProductCard.tsx
-│   │   │   └── ...
-│   │   ├── _services/
-│   │   │   └── ...
-│   │   ├── category/
+│   │   ├── catalog/
 │   │   │   ├── _components/
+│   │   │   │   ├── ProductCard.tsx
 │   │   │   │   └── ...
 │   │   │   ├── _services/
 │   │   │   │   └── ...
-│   │   │   └── CategoryPage.tsx
-│   │   └── CatalogPage.tsx
+│   │   │   ├── category/
+│   │   │   │   ├── _components/
+│   │   │   │   │   └── ...
+│   │   │   │   ├── _services/
+│   │   │   │   │   └── ...
+│   │   │   │   └── CategoryPage.tsx
+│   │   │   └── CatalogPage.tsx
 ├── components/
 ├── hooks/
 ├── utils/
@@ -178,22 +175,6 @@ src/
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          {/* Défis rencontrés */}
-          <section className="prose max-w-none">
-            <h2 className="text-2xl font-semibold mb-6 flex items-center">
-              <BarChart2 className="mr-2 h-6 w-6 text-blue-600" />
-              Défis rencontrés
-            </h2>
-            <div className="space-y-4">
-              {projectData.challenges.map((challenge, index) => (
-                <div key={index} className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
-                  <h3 className="font-medium text-gray-900 mb-2">Défi #{index + 1}</h3>
-                  <p className="text-gray-600">{challenge}</p>
-                </div>
-              ))}
             </div>
           </section>
 

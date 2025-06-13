@@ -1,36 +1,34 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
-import { CheckCircle, Star, Code, Users, Target, ArrowRight, BookOpen, BarChart2, Award } from "lucide-react";
+import { CheckCircle, Code, Cpu, BookOpen, Target, Award, LayoutGrid, Users } from "lucide-react";
 import Link from "next/link";
 
-export default function ForticheProject() {
-  // Données spécifiques au projet Fortiche
+export default function SmartChefProject() {
   const projectData = {
-    title: "Site de Présentation - Fortiche",
-    description: "Site web présentant le studio d'animation Fortiche.",
-    image: "/images/projects/fortiche.webp",
+    title: "Smart Chef - Application React Native",
+    description: "Application React Native interagissant avec un LLM via une API Python (FastAPI) pour proposer des plats en fonction des produits disponibles, des objectifs, des préférences et des allergies de l'utilisateur.",
+    image: "/images/projects/smart-chef.png",
     badges: [
-      { icon: Code, text: "HTML" },
-      { icon: Code, text: "CSS" },
-      { icon: Code, text: "JavaScript" },
+      { icon: Code, text: "React Native" },
+      { icon: Code, text: "FastAPI" },
+      { icon: Code, text: "LangChain" },
     ],
-    // Données spécifiques à la page de détail
-    context: "Mon tout premier projet web réalisé dans le cadre de ma formation. L'objectif était de créer un site de présentation pour le studio d'animation français Fortiche, connu pour des productions comme la série 'Arcane'. Ce projet a marqué mes premiers pas dans le développement web.",
-    role: "Rédacteur et intégrateur web - Section 'Histoire'",
-    team: "4 étudiants",
-    date: "2022",
-    technologies: ["HTML", "CSS", "JavaScript"],
+    context: "Projet réalisé en 2025. L'objectif était de développer une application React Native interagissant avec un LLM via une API Python (FastAPI) pour proposer des plats en fonction des produits disponibles, des objectifs, des préférences et des allergies de l'utilisateur. Le LLM utilise une grande base de données pour faire ses choix, après un tri via des filtres personnalisés. Les interactions avec le LLM sont formatées à l'aide de LangChain.",
+    role: "Développeur React Native",
+    team: "2 étudiants",
+    date: "2025",
+    technologies: ["React Native", "FastAPI", "LLM", "LangChain"],
     skills: [
-      "Recherche documentaire",
-      "Rédaction de contenu",
-      "Conception de maquettes",
-      "Développement HTML/CSS",
-      "Travail d'équipe"
+      "Développement d'applications React Native",
+      "Interaction avec une API Python (FastAPI)",
+      "Utilisation de LLM (OpenAI ou Mistral)",
+      "Gestion des données et des requêtes",
+      "Interface utilisateur interactive"
     ],
     results: [
-      "Site web responsive et accessible",
-      "Contenu informatif et bien structuré",
-      "Bonne collaboration au sein de l'équipe"
+      "Application fonctionnelle avec interface utilisateur interactive",
+      "API Python (FastAPI) interagissant avec un LLM",
+      "Première expérience de projet React Native"
     ]
   };
 
@@ -79,13 +77,43 @@ export default function ForticheProject() {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Mettre en avant les productions et l'univers créatif du studio</span>
+                  <span>Développer une application React Native interagissant avec un LLM via une API Python (FastAPI)</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Découvrir les bases du développement web (HTML, CSS, JavaScript)</span>
+                  <span>Proposer des plats en fonction des produits disponibles, des objectifs, des préférences et des allergies de l'utilisateur</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Créer une interface utilisateur interactive et attrayante</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Découvrir le développement d'applications React Native</span>
                 </li>
               </ul>
+            </div>
+          </section>
+
+          {/* Architecture et organisation */}
+          <section className="prose max-w-none">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center">
+              <LayoutGrid className="mr-2 h-6 w-6 text-blue-600" />
+              Architecture et organisation
+            </h2>
+            <div className="space-y-4">
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Application React Native</h3>
+                <p className="text-gray-600">
+                  Développement d'une application React Native permettant de proposer des plats en fonction des produits disponibles, des objectifs, des préférences et des allergies de l'utilisateur, en interagissant avec un LLM via une API Python (FastAPI).
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">API Python (FastAPI) & LangChain</h3>
+                <p className="text-gray-600">
+                  Création d'une API Python (FastAPI) interagissant avec un LLM pour fournir des suggestions de plats, en utilisant une grande base de données pour les choix, après un tri via des filtres personnalisés. Les échanges avec le LLM sont structurés grâce à LangChain.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -139,14 +167,12 @@ export default function ForticheProject() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="font-semibold text-lg mb-4">Résultats</h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Analyse du marché de l'animation française</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Diagnostic financier approfondi de Fortiche Production</span>
-              </li>
+              {projectData.results.map((result, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>{result}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -166,4 +192,4 @@ export default function ForticheProject() {
       </div>
     </div>
   );
-}
+} 

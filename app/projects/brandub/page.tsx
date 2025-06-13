@@ -1,36 +1,32 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
-import { CheckCircle, Star, Code, Users, Target, ArrowRight, BookOpen, BarChart2, Award } from "lucide-react";
+import { CheckCircle, Code, Cpu, BookOpen, Target, Award, LayoutGrid, Users } from "lucide-react";
 import Link from "next/link";
 
-export default function ForticheProject() {
-  // Données spécifiques au projet Fortiche
+export default function BrandubProject() {
   const projectData = {
-    title: "Site de Présentation - Fortiche",
-    description: "Site web présentant le studio d'animation Fortiche.",
-    image: "/images/projects/fortiche.webp",
+    title: "Brandub - Jeu de plateau Java",
+    description: "Jeu de plateau avec règles simples, interface graphique JavaFX et bot d'attaque et défense.",
+    image: "/images/projects/brandub.png",
     badges: [
-      { icon: Code, text: "HTML" },
-      { icon: Code, text: "CSS" },
-      { icon: Code, text: "JavaScript" },
+      { icon: Code, text: "Java" },
+      { icon: Cpu, text: "JavaFX" },
     ],
-    // Données spécifiques à la page de détail
-    context: "Mon tout premier projet web réalisé dans le cadre de ma formation. L'objectif était de créer un site de présentation pour le studio d'animation français Fortiche, connu pour des productions comme la série 'Arcane'. Ce projet a marqué mes premiers pas dans le développement web.",
-    role: "Rédacteur et intégrateur web - Section 'Histoire'",
-    team: "4 étudiants",
-    date: "2022",
-    technologies: ["HTML", "CSS", "JavaScript"],
+    context: "Projet Java réalisé en 2024. L'objectif était de concevoir un jeu de plateau avec une interface graphique en utilisant JavaFX, et d'implémenter un bot d'attaque et défense.",
+    role: "Développeur Java",
+    team: "3 étudiants",
+    date: "2024",
+    technologies: ["Java", "JavaFX"],
     skills: [
-      "Recherche documentaire",
-      "Rédaction de contenu",
-      "Conception de maquettes",
-      "Développement HTML/CSS",
-      "Travail d'équipe"
+      "Programmation orientée objet (Java)",
+      "Développement d'interfaces graphiques interactives avec JavaFX",
+      "Implémentation de bots d'attaque et défense",
+      "Gestion des règles du jeu",
     ],
     results: [
-      "Site web responsive et accessible",
-      "Contenu informatif et bien structuré",
-      "Bonne collaboration au sein de l'équipe"
+      "Jeu fonctionnel avec interface graphique JavaFX",
+      "Bot d'attaque et défense implémenté et testé",
+      "Première expérience de projet Java avec interface graphique"
     ]
   };
 
@@ -79,13 +75,43 @@ export default function ForticheProject() {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Mettre en avant les productions et l'univers créatif du studio</span>
+                  <span>Créer un jeu de plateau avec règles simples</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Découvrir les bases du développement web (HTML, CSS, JavaScript)</span>
+                  <span>Développer une interface graphique avec JavaFX</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Implémenter un bot d'attaque et défense</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Découvrir la programmation orientée objet avec Java</span>
                 </li>
               </ul>
+            </div>
+          </section>
+
+          {/* Architecture et organisation */}
+          <section className="prose max-w-none">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center">
+              <LayoutGrid className="mr-2 h-6 w-6 text-blue-600" />
+              Architecture et organisation
+            </h2>
+            <div className="space-y-4">
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Interface graphique JavaFX</h3>
+                <p className="text-gray-600">
+                  Développement d'une interface graphique en utilisant JavaFX avec framework imposé.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Bot d'attaque et défense</h3>
+                <p className="text-gray-600">
+                  Implémentation d'un bot capable de jouer en attaque et défense, testé pour évaluer ses performances.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -139,14 +165,12 @@ export default function ForticheProject() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="font-semibold text-lg mb-4">Résultats</h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Analyse du marché de l'animation française</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Diagnostic financier approfondi de Fortiche Production</span>
-              </li>
+              {projectData.results.map((result, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>{result}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -166,4 +190,4 @@ export default function ForticheProject() {
       </div>
     </div>
   );
-}
+} 

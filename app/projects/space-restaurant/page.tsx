@@ -1,36 +1,34 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
-import { CheckCircle, Star, Code, Users, Target, ArrowRight, BookOpen, BarChart2, Award } from "lucide-react";
+import { CheckCircle, Code, Cpu, BookOpen, Target, Award, LayoutGrid, Users } from "lucide-react";
 import Link from "next/link";
 
-export default function ForticheProject() {
-  // Données spécifiques au projet Fortiche
+export default function SpaceRestaurantProject() {
   const projectData = {
-    title: "Site de Présentation - Fortiche",
-    description: "Site web présentant le studio d'animation Fortiche.",
-    image: "/images/projects/fortiche.webp",
+    title: "Application iOS - Restaurant Spatial",
+    description: "Application iOS permettant de consulter le menu d'un restaurant sur le thème de l'espace.",
+    image: "/images/projects/space-restaurant.png",
     badges: [
-      { icon: Code, text: "HTML" },
-      { icon: Code, text: "CSS" },
-      { icon: Code, text: "JavaScript" },
+      { icon: Code, text: "iOS" },
+      { icon: Code, text: "Express" },
+      { icon: Code, text: "PostgreSQL" },
     ],
-    // Données spécifiques à la page de détail
-    context: "Mon tout premier projet web réalisé dans le cadre de ma formation. L'objectif était de créer un site de présentation pour le studio d'animation français Fortiche, connu pour des productions comme la série 'Arcane'. Ce projet a marqué mes premiers pas dans le développement web.",
-    role: "Rédacteur et intégrateur web - Section 'Histoire'",
-    team: "4 étudiants",
-    date: "2022",
-    technologies: ["HTML", "CSS", "JavaScript"],
+    context: "Mini-projet réalisé en 2024. L'objectif était de développer une application iOS interagissant avec une API REST développée sur mesure, sur le thème d'un restaurant spatial.",
+    role: "Développeur iOS",
+    team: "2 étudiants",
+    date: "2024",
+    technologies: ["iOS", "API REST"],
     skills: [
-      "Recherche documentaire",
-      "Rédaction de contenu",
-      "Conception de maquettes",
-      "Développement HTML/CSS",
-      "Travail d'équipe"
+      "Développement d'applications iOS",
+      "Interaction avec une API REST",
+      "Gestion des données et des requêtes",
+      "Interface utilisateur interactive",
+      "Thème et design créatif"
     ],
     results: [
-      "Site web responsive et accessible",
-      "Contenu informatif et bien structuré",
-      "Bonne collaboration au sein de l'équipe"
+      "Application fonctionnelle avec interface utilisateur interactive",
+      "API REST faite sur mesure pour la consultation du menu",
+      "Première expérience de projet iOS"
     ]
   };
 
@@ -79,13 +77,43 @@ export default function ForticheProject() {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Mettre en avant les productions et l'univers créatif du studio</span>
+                  <span>Développer une application iOS interagissant avec une API REST</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Découvrir les bases du développement web (HTML, CSS, JavaScript)</span>
+                  <span>Permettre la consultation du menu d'un restaurant sur le thème de l'espace</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Créer une interface utilisateur interactive et attrayante</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Découvrir le développement d'applications iOS</span>
                 </li>
               </ul>
+            </div>
+          </section>
+
+          {/* Architecture et organisation */}
+          <section className="prose max-w-none">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center">
+              <LayoutGrid className="mr-2 h-6 w-6 text-blue-600" />
+              Architecture et organisation
+            </h2>
+            <div className="space-y-4">
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Application iOS</h3>
+                <p className="text-gray-600">
+                  Développement d'une application iOS permettant de consulter le menu d'un restaurant sur le thème de l'espace, en interagissant avec une API REST.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">API REST</h3>
+                <p className="text-gray-600">
+                  Création d'une API REST faite sur mesure pour fournir les données du menu du restaurant, développée en parallèle de l'application iOS.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -139,14 +167,12 @@ export default function ForticheProject() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="font-semibold text-lg mb-4">Résultats</h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Analyse du marché de l'animation française</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Diagnostic financier approfondi de Fortiche Production</span>
-              </li>
+              {projectData.results.map((result, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>{result}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -166,4 +192,4 @@ export default function ForticheProject() {
       </div>
     </div>
   );
-}
+} 

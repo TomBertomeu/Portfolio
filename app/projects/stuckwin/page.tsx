@@ -1,36 +1,33 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
-import { CheckCircle, Star, Code, Users, Target, ArrowRight, BookOpen, BarChart2, Award } from "lucide-react";
+import { CheckCircle, Code, Cpu, BookOpen, Target, Award, LayoutGrid, Users } from "lucide-react";
 import Link from "next/link";
 
-export default function ForticheProject() {
-  // Données spécifiques au projet Fortiche
+export default function StuckWinProject() {
   const projectData = {
-    title: "Site de Présentation - Fortiche",
-    description: "Site web présentant le studio d'animation Fortiche.",
-    image: "/images/projects/fortiche.webp",
+    title: "StuckWin - Jeu de plateau Java",
+    description: "Jeu de plateau sur grille hexagonale où le but est d'être le premier joueur à être bloqué, jouable en console avec bots adversaires.",
+    image: "/images/projects/stuckwin.png",
     badges: [
-      { icon: Code, text: "HTML" },
-      { icon: Code, text: "CSS" },
-      { icon: Code, text: "JavaScript" },
+      { icon: Code, text: "Java" },
     ],
-    // Données spécifiques à la page de détail
-    context: "Mon tout premier projet web réalisé dans le cadre de ma formation. L'objectif était de créer un site de présentation pour le studio d'animation français Fortiche, connu pour des productions comme la série 'Arcane'. Ce projet a marqué mes premiers pas dans le développement web.",
-    role: "Rédacteur et intégrateur web - Section 'Histoire'",
-    team: "4 étudiants",
-    date: "2022",
-    technologies: ["HTML", "CSS", "JavaScript"],
+    context: "Premier projet Java réalisé en 2023. L'objectif était de concevoir un jeu de plateau original, jouable en console, avec des règles simples et la possibilité d'affronter des bots programmés.",
+    role: "Développeur Java",
+    team: "2 étudiants",
+    date: "2023",
+    technologies: ["Java"],
     skills: [
-      "Recherche documentaire",
-      "Rédaction de contenu",
-      "Conception de maquettes",
-      "Développement HTML/CSS",
-      "Travail d'équipe"
+      "Développement Java",
+      "Implémentation de bots et d'algorithmes de jeu",
+      "Gestion d'un plateau hexagonal et des déplacements",
+      "Évaluation de performances des bots",
+      "Développement d'une interface console interactive"
     ],
     results: [
-      "Site web responsive et accessible",
-      "Contenu informatif et bien structuré",
-      "Bonne collaboration au sein de l'équipe"
+      "Jeu fonctionnel avec interface console",
+      "Plusieurs bots adversaires programmés et testés",
+      "Évaluation comparative des bots",
+      "Première expérience de projet Java complet"
     ]
   };
 
@@ -79,13 +76,43 @@ export default function ForticheProject() {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Mettre en avant les productions et l'univers créatif du studio</span>
+                  <span>Créer un jeu de plateau original sur grille hexagonale et implémenter des règles simples</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Découvrir les bases du développement web (HTML, CSS, JavaScript)</span>
+                  <span>Permettre à l'utilisateur de jouer contre des bots ou de faire s'affronter différents algorithmes</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Évaluer les performances des bots (stratégies vs aléatoire)</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Découvrir la programmation orientée objet avec Java</span>
                 </li>
               </ul>
+            </div>
+          </section>
+
+          {/* Architecture et organisation */}
+          <section className="prose max-w-none">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center">
+              <LayoutGrid className="mr-2 h-6 w-6 text-blue-600" />
+              Architecture et organisation
+            </h2>
+            <div className="space-y-4">
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Plateau hexagonal</h3>
+                <p className="text-gray-600">
+                  Gestion d'un plateau de jeu à cases hexagonales, avec déplacements uniquement vers l'avant pour chaque pion.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Bots et algorithmes</h3>
+                <p className="text-gray-600">
+                  Implémentation de plusieurs bots adversaires, testés entre eux et contre des stratégies aléatoires pour évaluer leur efficacité.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -139,14 +166,12 @@ export default function ForticheProject() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="font-semibold text-lg mb-4">Résultats</h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Analyse du marché de l'animation française</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Diagnostic financier approfondi de Fortiche Production</span>
-              </li>
+              {projectData.results.map((result, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>{result}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -166,4 +191,4 @@ export default function ForticheProject() {
       </div>
     </div>
   );
-}
+} 

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
-import { CheckCircle, Wifi, WifiOff, Smartphone, Cpu, GitBranch, Code, Database, CpuIcon } from "lucide-react";
+import { CheckCircle, Wifi, WifiOff, Smartphone, Cpu, GitBranch, Code, Database, CpuIcon, Target, BookOpen, Award } from "lucide-react";
 import Link from "next/link";
+import LocalFirstDiagram from "./LocalFirstDiagram";
 
 export default function VecofroidProject() {
   // Données spécifiques au projet Vecofroid
@@ -10,20 +11,18 @@ export default function VecofroidProject() {
     description: "Outil de gestion des interventions et bons d'intervention pour Vecofroid.",
     image: "/images/projects/vecofroid.png",
     badges: [
-      { icon: CheckCircle, text: "Stage" },
-      { icon: Cpu, text: "Full Stack" }
+      { icon: Code, text: "Vue.js" },
+      { icon: Code, text: "Ionic" },
+      { icon: Code, text: "Capacitor" },
+      { icon: Code, text: "Express" },
+      { icon: Code, text: "PostgreSQL" },
     ],
     // Données spécifiques à la page de détail
-    context: "Application web et mobile développée pendant un stage de 8 semaines chez Vecofroid, entreprise spécialisée dans la maintenance frigorifique. L'objectif était de moderniser leur système de gestion des interventions en permettant aux techniciens de créer et suivre leurs interventions même sans connexion internet.",
+    context: "Application web et mobile développée pendant un stage de 8 semaines chez Vecofroid, entreprise spécialisée dans l'installation et la maintenance frigorifique. L'objectif était de moderniser leur système de gestion des interventions en permettant aux techniciens de créer et suivre leurs interventions même sans connexion internet.",
     role: "Développeur Full Stack",
     team: "1 développeur (moi) avec supervision du tuteur de stage",
     date: "2024",
     technologies: ["Vue.js", "Ionic", "Capacitor", "API REST"],
-    challenges: [
-      "Gestion des données hors-ligne pour les zones sans connexion",
-      "Synchronisation des données lors du retour en ligne",
-      "Création d'une API REST sécurisée"
-    ],
     results: [
       "Application web et mobile fonctionnelle déployée en production",
       "Réduction significative du temps de saisie des bons d'intervention",
@@ -62,7 +61,7 @@ export default function VecofroidProject() {
           {/* Contexte et objectifs */}
           <section>
             <h2 className="flex items-center text-2xl font-semibold mb-6">
-              <Code className="mr-2 h-6 w-6 text-blue-600" />
+              <BookOpen className="mr-2 h-6 w-6 text-blue-600" />
               Contexte et objectifs
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -70,7 +69,7 @@ export default function VecofroidProject() {
             </p>
             <div className="mt-6 p-6 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-lg mb-3 flex items-center">
-                <CheckCircle className="mr-2 h-5 w-5 text-blue-600" />
+                <Target className="mr-2 h-5 w-5 text-blue-600" />
                 Objectifs principaux
               </h3>
               <ul className="space-y-2">
@@ -90,24 +89,7 @@ export default function VecofroidProject() {
             </div>
           </section>
 
-          {/* Défis techniques */}
-          <section>
-            <h2 className="flex items-center text-2xl font-semibold mb-6">
-              <Cpu className="mr-2 h-6 w-6 text-blue-600" />
-              Défis techniques
-            </h2>
-            
-            <div className="space-y-4">
-              {projectData.challenges.map((challenge, index) => (
-                <div key={index} className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
-                  <h3 className="font-semibold text-lg mb-2">Défi #{index + 1}</h3>
-                  <p className="text-gray-600">{challenge}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Fonctionnalités hors-ligne */}
+          {/* Gestion hors-ligne */}
           <section>
             <h2 className="flex items-center text-2xl font-semibold mb-6">
               <div className="relative mr-2">
@@ -120,47 +102,42 @@ export default function VecofroidProject() {
               <p className="text-gray-700 mb-6">
                 L'une des fonctionnalités clés de cette application est sa capacité à fonctionner de manière autonome, même sans connexion Internet. Voici comment cela fonctionne :
               </p>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                  <h3 className="font-medium text-blue-800 mb-2 flex items-center">
-                    <Database className="h-5 w-5 mr-2" />
-                    Stockage local
-                  </h3>
-                  <p className="text-sm text-gray-700">
-                    Les données sont d'abord enregistrées localement dans IndexedDB, permettant un accès instantané et une modification sans latence.
-                  </p>
-                </div>
-                
-                <div className="bg-green-50 p-4 rounded-lg border border-green-100">
-                  <h3 className="font-medium text-green-800 mb-2 flex items-center">
-                    <GitBranch className="h-5 w-5 mr-2" />
-                    Synchronisation intelligente
-                  </h3>
-                  <p className="text-sm text-gray-700">
-                    Dès qu'une connexion est détectée, l'application synchronise automatiquement les données modifiées avec le serveur.
-                  </p>
-                </div>
-                
-                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
-                  <h3 className="font-medium text-yellow-800 mb-2 flex items-center">
-                    <CpuIcon className="h-5 w-5 mr-2" />
-                    Synchronisation efficace
-                  </h3>
-                  <p className="text-sm text-gray-700">
-                    Seules les données modifiées sont synchronisées, optimisant ainsi l'utilisation du réseau.
-                  </p>
-                </div>
-                
-                <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
-                  <h3 className="font-medium text-purple-800 mb-2 flex items-center">
-                    <Smartphone className="h-5 w-5 mr-2" />
-                    Expérience fluide
-                  </h3>
-                  <p className="text-sm text-gray-700">
-                    L'interface utilisateur reste réactive et les données sont immédiatement disponibles, avec ou sans connexion.
-                  </p>
-                </div>
+              <p className="text-gray-700 mb-6">
+                <strong>Local First</strong> : Toutes les modifications effectuées par l'utilisateur sont d'abord appliquées localement sur l'appareil. Cela garantit que l'application reste totalement fonctionnelle, même en zone blanche ou sans connexion. Dès qu'une connexion réseau est retrouvée, toutes les modifications sont automatiquement synchronisées avec l'API distante.
+              </p>
+              <LocalFirstDiagram />
+              <p className="text-gray-700 mb-6">
+                Ce système assure la continuité du service, la sécurité des données et une expérience utilisateur optimale, peu importe les conditions de réseau.
+              </p>
+            </div>
+          </section>
+
+          {/* Compétences développées */}
+          <section className="prose max-w-none mt-12">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center">
+              <Award className="mr-2 h-6 w-6 text-blue-600" />
+              Compétences développées
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex items-center p-4 bg-gray-50 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                <span className="text-gray-700">Développement d'applications web et mobiles hybrides (Vue.js, Ionic)</span>
+              </div>
+              <div className="flex items-center p-4 bg-gray-50 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                <span className="text-gray-700">Gestion de la persistance locale (Local First)</span>
+              </div>
+              <div className="flex items-center p-4 bg-gray-50 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                <span className="text-gray-700">Synchronisation de données et gestion des conflits</span>
+              </div>
+              <div className="flex items-center p-4 bg-gray-50 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                <span className="text-gray-700">Conception d'API REST sécurisées</span>
+              </div>
+              <div className="flex items-center p-4 bg-gray-50 rounded-lg">
+                <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                <span className="text-gray-700">Expérience utilisateur en conditions réelles (zones blanches, mobilité)</span>
               </div>
             </div>
           </section>
@@ -172,10 +149,6 @@ export default function VecofroidProject() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="font-semibold text-lg mb-4 text-gray-800">Détails du projet</h3>
             <div className="space-y-4">
-              <div>
-                <p className="text-sm font-medium text-gray-500 mb-1">Client</p>
-                <p className="text-gray-700">Vecofroid</p>
-              </div>
               <div>
                 <p className="text-sm font-medium text-gray-500 mb-1">Rôle</p>
                 <p className="text-gray-700">{projectData.role}</p>

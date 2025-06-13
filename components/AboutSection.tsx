@@ -44,14 +44,14 @@ export default function AboutSection() {
                         height={320}
                         className="rounded-full shadow-lg hover:-translate-y-1 transition-all duration-300 hover:shadow-xl w-[200px] h-[200px] md:w-[320px] md:h-[320px]"
                     />
-                    <a
+                    {/* <a
                         href="/cv.pdf"
                         download="cv-tom-bertomeu.pdf"
                         className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 cursor-pointer"
                     >
                         <Download className="w-5 h-5 mr-2" />
                         {t('about.downloadCv')}
-                    </a>
+                    </a> */}
                 </div>
             </div>
         </Section>

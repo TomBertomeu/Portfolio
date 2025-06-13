@@ -1,36 +1,36 @@
 import Image from "next/image";
 import Badge from "@/components/Badge";
-import { CheckCircle, Star, Code, Users, Target, ArrowRight, BookOpen, BarChart2, Award } from "lucide-react";
+import { CheckCircle, Code, LayoutGrid, ShoppingCart, Server, BookOpen, Target, Award, Cpu } from "lucide-react";
 import Link from "next/link";
 
-export default function ForticheProject() {
-  // Données spécifiques au projet Fortiche
+export default function EyeglassesStoreProject() {
   const projectData = {
-    title: "Site de Présentation - Fortiche",
-    description: "Site web présentant le studio d'animation Fortiche.",
-    image: "/images/projects/fortiche.webp",
+    title: "Boutique de vente de lunettes",
+    description: "Boutique en ligne développée pour la gestion d'un catalogue, d'un panier et des commandes.",
+    image: "/images/projects/eyeglasses-store.png",
     badges: [
-      { icon: Code, text: "HTML" },
-      { icon: Code, text: "CSS" },
-      { icon: Code, text: "JavaScript" },
+      { icon: Code, text: "Python" },
+      { icon: Code, text: "Flask" },
+      { icon: Code, text: "MySQL" },
+      { icon: Server, text: "VirtualBox" },
     ],
-    // Données spécifiques à la page de détail
-    context: "Mon tout premier projet web réalisé dans le cadre de ma formation. L'objectif était de créer un site de présentation pour le studio d'animation français Fortiche, connu pour des productions comme la série 'Arcane'. Ce projet a marqué mes premiers pas dans le développement web.",
-    role: "Rédacteur et intégrateur web - Section 'Histoire'",
-    team: "4 étudiants",
-    date: "2022",
-    technologies: ["HTML", "CSS", "JavaScript"],
+    context: "Mini-projet réalisé en 2023 en équipe de 3 étudiants pour découvrir le développement web avec Python et Flask. J'étais chargé d'écrire les requêtes en base de données. L'objectif était de créer une boutique en ligne permettant la gestion d'un catalogue de lunettes, d'un panier utilisateur, des commandes et du contenu de la boutique.",
+    role: "Développeur Back-End (requêtes SQL)",
+    team: "3 étudiants",
+    date: "2023",
+    technologies: ["Flask", "Python", "HTML", "CSS", "VirtualBox"],
     skills: [
-      "Recherche documentaire",
-      "Rédaction de contenu",
-      "Conception de maquettes",
-      "Développement HTML/CSS",
-      "Travail d'équipe"
+      "Développement web avec Flask (Python)",
+      "Écriture de requêtes SQL pour la gestion des données",
+      "Utilisation de templates pour la composition de pages",
+      "Déploiement sur machine virtuelle",
+      "Planification de projet (diagrammes de Gantt, de Pert)"
     ],
     results: [
-      "Site web responsive et accessible",
-      "Contenu informatif et bien structuré",
-      "Bonne collaboration au sein de l'équipe"
+      "Boutique en ligne fonctionnelle avec gestion de panier et commandes",
+      "Déploiement réussi sur une machine virtuelle VirtualBox",
+      "Maîtrise de la composition de pages avec Flask",
+      "Première expérience de planification de projet en équipe"
     ]
   };
 
@@ -79,13 +79,43 @@ export default function ForticheProject() {
               <ul className="space-y-2">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Mettre en avant les productions et l'univers créatif du studio</span>
+                  <span>Découvrir la composition de pages avec Flask (templates réutilisables)</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>Découvrir les bases du développement web (HTML, CSS, JavaScript)</span>
+                  <span>Gérer un panier utilisateur et le processus de commande</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>Déployer l'application sur une machine virtuelle (VirtualBox)</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>S'initier à la planification de projet (diagrammes de Gantt, de Pert)</span>
                 </li>
               </ul>
+            </div>
+          </section>
+
+          {/* Architecture et organisation */}
+          <section className="prose max-w-none">
+            <h2 className="text-2xl font-semibold mb-6 flex items-center">
+              <LayoutGrid className="mr-2 h-6 w-6 text-blue-600" />
+              Architecture et organisation
+            </h2>
+            <div className="space-y-4">
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Composition des pages</h3>
+                <p className="text-gray-600">
+                  Utilisation des templates Flask pour séparer les parties réutilisables des pages (header, footer, etc.) et faciliter le développement du site.
+                </p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border border-gray-100 shadow-sm">
+                <h3 className="font-medium text-gray-900 mb-2">Déploiement</h3>
+                <p className="text-gray-600">
+                  Création d'une machine virtuelle VirtualBox pour héberger et tester l'application dans un environnement isolé.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -139,14 +169,12 @@ export default function ForticheProject() {
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <h3 className="font-semibold text-lg mb-4">Résultats</h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Analyse du marché de l'animation française</span>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Diagnostic financier approfondi de Fortiche Production</span>
-              </li>
+              {projectData.results.map((result, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>{result}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -166,4 +194,4 @@ export default function ForticheProject() {
       </div>
     </div>
   );
-}
+} 
