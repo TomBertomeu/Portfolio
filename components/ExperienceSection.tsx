@@ -2,11 +2,13 @@
 import { Briefcase, PartyPopper, Snowflake } from "lucide-react";
 import Title from "@/components/Title";
 import Section from "@/components/Section";
+import Image from "next/image";
 
 const professionalExperiences = [
   {
     title: "Stage Développeur Full Stack",
     company: "ASO 70",
+    logo: "/images/logo-aso70.png",
     period: "2025 (12 semaines)",
     location: "France",
     job: "Développement d'un catalogue en ligne de location de matériel événementiel",
@@ -15,6 +17,7 @@ const professionalExperiences = [
   {
     title: "Stage Développeur Web",
     company: "Vecofroid",
+    logo: "/images/logo-vecofroid.webp",
     period: "2024 (8 semaines)",
     location: "France",
     job: "Développement d'une application web de gestion des interventions de l'entreprise",
@@ -40,8 +43,9 @@ export default function ExperienceSection() {
               <div className="flex flex-col md:flex-row gap-0 items-center md:items-stretch">
                 {/* Left Side - 1/3 width */}
                 <div className="w-full md:w-1/3 flex items-center justify-center md:justify-start mb-4 md:mb-0 px-0 md:px-6">
-                  <exp.icon className="w-8 h-8 text-blue-500 mr-3" />
-                  <span className="text-xl md:text-2xl font-bold text-gray-900">{exp.company}</span>
+                  <div className="w-full flex items-center justify-center md:justify-start">
+                    <Image src={exp.logo} alt={exp.company} width={160} height={64} className="w-full max-w-[180px] h-auto object-contain" />
+                  </div>
                 </div>
                 {/* Divider */}
                 <div className="hidden md:block w-px bg-gray-300 mx-2" />
