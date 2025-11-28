@@ -12,10 +12,11 @@
     "fr": "Français"
   },
   "about": {
-    "greeting": "Bonjour ! Je suis",
+    "greeting": "Bonjour! Je suis",
     "name": "Tom Bertomeu",
-    "subtitle": "Étudiant en développement informatique à la recherche d'une opportunité professionnelle pour mettre en pratique mes compétences techniques et ma passion pour le développement logiciel. Motivé et curieux, je souhaite contribuer à des projets innovants tout en continuant à apprendre et à me perfectionner.",
-    "school": "BUT Informatique ⋅ IUT Nord Franche-Comté",
+    "subtitle": "Étudiant en 3ème année de BUT Informatique à la recherche d'une alternance pour l'année 2025-2026.\n\nPassionné par le développement, je souhaite mettre en pratique mes compétences techniques et continuer d'apprendre dans un environnement professionnel.",
+    "degree": "BUT Informatique",
+    "school": "IUT Nord Franche-Comté",
     "period": "Période",
     "periodValue": "Septembre 2022 - Aujourd'hui",
     "downloadCv": "Télécharger mon CV",

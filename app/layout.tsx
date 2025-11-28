@@ -2,14 +2,14 @@ import type {Metadata} from "next";
 import React from "react";
 import "@/styles/globals.css";
 import Header from "@/components/Header";
-import Background from "@/components/Background";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageProvider";
-import { ActiveSectionProvider } from "@/contexts/ActiveSectionContext";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 
 export const metadata: Metadata = {
-    title: "Portfolio - Tom Bertomeu",
-    description: "Portfolio de Tom Bertomeu - Étudiant en BUT à l'IUT de Belfort Montbéliard",
+    title: "Tom Bertomeu",
+    description: "Tom Bertomeu - Étudiant en BUT à l'IUT de Belfort Montbéliard à la recherche d'une alternance pour l'année 2025-2026.",
 };
 
 export const viewport = {
@@ -21,18 +21,22 @@ export const viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <LanguageProvider>
-            <ActiveSectionProvider>
-                <html lang="en">
-                    <body className="min-h-screen">
-                        <Background />
+            <html lang="fr" suppressHydrationWarning>
+                <body className="min-h-screen">
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="system"
+                        enableSystem
+                        disableTransitionOnChange
+                    >
                         <Header/>
                         <main className="flex-grow">
                             {children}
                         </main>
                         <Footer />
-                    </body>
-                </html>
-            </ActiveSectionProvider>
+                    </ThemeProvider>
+                </body>
+            </html>
         </LanguageProvider>
     );
 }

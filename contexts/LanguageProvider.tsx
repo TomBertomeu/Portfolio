@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, ReactNode } from "react";
+import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
 
 export type Language = "fr" | "en";
 
@@ -7,12 +7,14 @@ type Translations = Record<string, any>;
 
 interface LanguageContextProps {
   t: (key: string) => string;
+  language: Language;
+  setLanguage: (lang: Language) => void;
 }
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
-function loadTranslations(): Translations {
-  return require("../locales/fr.json");
+function loadTranslations(lang: Language): Translations {
+  return require(`../locales/${lang}.json`);
 }
 
 function getValue(obj: any, path: string) {
@@ -20,11 +22,22 @@ function getValue(obj: any, path: string) {
 }
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const translations = loadTranslations();
-  const t = (key: string) => getValue(translations, key);
+  const [language, setLanguage] = useState<Language>('fr');
+  const [translations, setTranslations] = useState<Translations>(() => loadTranslations('fr'));
+
+  // Charger les traductions quand la langue change
+  useEffect(() => {
+    setTranslations(loadTranslations(language));
+  }, [language]);
+
+  const t = (key: string) => {
+    // Permet d'accéder à la langue actuelle via t('_language')
+    if (key === '_language') return language;
+    return getValue(translations, key);
+  };
 
   return (
-    <LanguageContext.Provider value={{ t }}>
+    <LanguageContext.Provider value={{ t, language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
