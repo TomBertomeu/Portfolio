@@ -39,8 +39,11 @@ export default function Header() {
                         <Link href="/#about" className="hover:text-[var(--primary-blue)] transition-colors">
                             {t("nav.about") || "À propos"}
                         </Link>
-                        <Link href="/projects" className="hover:text-[var(--primary-blue)] transition-colors">
+                        <Link href="/#projects" className="hover:text-[var(--primary-blue)] transition-colors">
                             {t("nav.projects") || "Projets"}
+                        </Link>
+                        <Link href="/blog" className="hover:text-[var(--primary-blue)] transition-colors">
+                            {t("nav.blog") || "Blog"}
                         </Link>
                         <Link href="/#contact" className="hover:text-[var(--primary-blue)] transition-colors">
                             {t("nav.contact") || "Contact"}

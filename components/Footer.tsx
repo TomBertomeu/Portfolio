@@ -38,6 +38,9 @@ export default function Footer() {
                             <Link href="/projects" className="hover:text-[var(--primary-blue)] transition-colors w-fit">
                                 {t("nav.projects")}
                             </Link>
+                            <Link href="/blog" className="hover:text-[var(--primary-blue)] transition-colors w-fit">
+                                {t("nav.blog")}
+                            </Link>
                             <Link href="/#contact" className="hover:text-[var(--primary-blue)] transition-colors w-fit">
                                 {t("nav.contact")}
                             </Link>

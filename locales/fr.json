@@ -4,6 +4,7 @@
     "about": "À propos",
     "skills": "Compétences",
     "projects": "Projets",
+    "blog": "Blog",
     "experience": "Expérience",
     "contact": "Contact"
   },
@@ -14,7 +15,7 @@
   "about": {
     "greeting": "Bonjour! Je suis",
     "name": "Tom Bertomeu",
-    "subtitle": "Étudiant en 3ème année de BUT Informatique à la recherche d'une alternance pour l'année 2025-2026.\n\nPassionné par le développement, je souhaite mettre en pratique mes compétences techniques et continuer d'apprendre dans un environnement professionnel.",
+    "subtitle": "Développeur Fullstack en alternance & Étudiant en 3ème année de BUT Informatique.\n\nJe conçois des applications web et mobiles modernes, performantes et centrées sur l'expérience utilisateur.",
     "degree": "BUT Informatique",
     "school": "IUT Nord Franche-Comté",
     "period": "Période",
@@ -42,6 +43,19 @@
     "title": "Mes projets récents",
     "intro": "Voici quelques-uns des projets sur lesquels j'ai travaillé, mettant en valeur mes compétences dans différents domaines technologiques.",
     "seeAll": "Voir tous mes projets"
+  },
+  "projectsPage": {
+    "title": "Tous les Projets",
+    "subtitle": "Une liste complète des projets sur lesquels j'ai travaillé, des applications web complexes aux petits projets expérimentaux.",
+    "backToHome": "Retour à l'accueil",
+    "table": {
+      "year": "Année",
+      "project": "Projet",
+      "madeAt": "Contexte",
+      "tech": "Technologies",
+      "link": "Lien",
+      "view": "Voir"
+    }
   },
   "experience": {
     "title": "Mon Expérience Professionnelle",

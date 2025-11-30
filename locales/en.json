@@ -4,6 +4,7 @@
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
+    "blog": "Blog",
     "experience": "Experience",
     "contact": "Contact"
   },
@@ -14,7 +15,7 @@
   "about": {
     "greeting": "Hello! I'm",
     "name": "Tom Bertomeu",
-    "subtitle": "3rd year Computer Science student looking for an apprenticeship for the 2025-2026 academic year.\n\nPassionate about development, I want to apply the technical skills I've acquired during my studies, and continue learning in a professional environment.",
+    "subtitle": "Fullstack Developer in apprenticeship & 3rd year Computer Science student.\n\nI build modern, high-performance, user-centric web and mobile applications.",
     "school": "Computer Science BUT ⋅ IUT Nord Franche-Comté",
     "period": "Period",
     "periodValue": "September 2022 - Present",
@@ -41,6 +42,19 @@
     "title": "Recent Projects",
     "intro": "Here are some of the projects I've worked on, showcasing my skills in different technologies and domains.",
     "seeAll": "See all my projects"
+  },
+  "projectsPage": {
+    "title": "All Projects",
+    "subtitle": "A complete list of projects I've worked on, from complex web applications to small experimental projects.",
+    "backToHome": "Back to Home",
+    "table": {
+      "year": "Year",
+      "project": "Project",
+      "madeAt": "Made at",
+      "tech": "Technologies",
+      "link": "Link",
+      "view": "View"
+    }
   },
   "experience": {
     "title": "Professional Experience",

@@ -9,7 +9,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
     title: "Tom Bertomeu",
-    description: "Tom Bertomeu - Étudiant en BUT à l'IUT de Belfort Montbéliard à la recherche d'une alternance pour l'année 2025-2026.",
+    description: "Tom Bertomeu - Développeur Fullstack & Étudiant en BUT Informatique. Portfolio professionnel.",
 };
 
 export const viewport = {
