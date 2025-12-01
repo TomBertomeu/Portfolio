@@ -28,9 +28,11 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
       <div className="md:col-span-1">
         <div className="relative aspect-video w-full overflow-hidden rounded-sm bg-muted border border-border/50">
             {/* Year Badge */}
-            <div className="absolute top-2 right-2 z-10 rounded-full bg-background/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-semibold text-foreground shadow-sm border border-border/50 select-none">
-                {project.year}
-            </div>
+            {project.year && (
+              <div className="absolute top-2 right-2 z-10 rounded-full bg-background/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-semibold text-foreground shadow-sm border border-border/50 select-none">
+                  {project.year}
+              </div>
+            )}
 
             {/* Placeholder gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
@@ -38,7 +40,7 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
             {project.image && (
                 <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.title || "Project image"}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 25vw"
@@ -52,7 +54,7 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
       <div className="md:col-span-3 flex flex-col">
         <div className="flex items-start justify-between gap-4 mb-2">
           <h3 className="font-medium leading-snug text-foreground text-lg group-hover:text-primary transition-colors flex items-center gap-2">
-            {project.title}
+            {project.title || "Untitled Project"}
             {project.link && (
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary" />
             )}
@@ -60,7 +62,7 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
         </div>
 
         <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-          {project.description}
+          {project.description || ""}
         </p>
 
         {/* Badges */}
