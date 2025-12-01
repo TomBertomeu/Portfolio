@@ -1,7 +1,7 @@
 "use client";
 import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
 
-export type Language = "fr" | "en";
+export type Language = "fr" | "en" | "nl";
 
 type Translations = Record<string, any>;
 
@@ -25,13 +25,26 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('fr');
   const [translations, setTranslations] = useState<Translations>(() => loadTranslations('fr'));
 
-  // Charger les traductions quand la langue change
+  // Initial language detection
+  useEffect(() => {
+    const savedLang = localStorage.getItem('language') as Language;
+    if (savedLang && ['fr', 'en', 'nl'].includes(savedLang)) {
+      setLanguage(savedLang);
+    } else {
+      const browserLang = navigator.language.split('-')[0];
+      if (['fr', 'en', 'nl'].includes(browserLang)) {
+        setLanguage(browserLang as Language);
+      }
+    }
+  }, []);
+
+  // Load translations when language changes
   useEffect(() => {
     setTranslations(loadTranslations(language));
+    localStorage.setItem('language', language);
   }, [language]);
 
   const t = (key: string) => {
-    // Permet d'accéder à la langue actuelle via t('_language')
     if (key === '_language') return language;
     return getValue(translations, key);
   };

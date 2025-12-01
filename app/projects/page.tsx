@@ -3,18 +3,21 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
-import projects from "@/data/projects";
+import { getProjects } from "@/data/projects";
 import Badge from "@/components/Badge";
 import { useLanguage } from "@/contexts/LanguageProvider";
 
 export default function ProjectsPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
+  const projects = getProjects(currentLang);
+  
   // Sort projects by year descending
   const sortedProjects = [...projects].sort((a, b) => parseInt(b.year) - parseInt(a.year));
 
   return (
     <div className="min-h-screen bg-background py-24 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-5xl">
         <div className="mb-12">
           <Link 
             href="/" 
@@ -23,12 +26,9 @@ export default function ProjectsPage() {
             <ArrowLeft className="w-4 h-4" />
             {t("projectsPage.backToHome")}
           </Link>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             {t("projectsPage.title")}
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl">
-            {t("projectsPage.subtitle")}
-          </p>
         </div>
 
         <div className="overflow-x-auto">

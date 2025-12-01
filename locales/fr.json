@@ -13,14 +13,15 @@
     "fr": "Français"
   },
   "about": {
-    "greeting": "Bonjour! Je suis",
+    "greeting": "Salut! Moi, c'est",
     "name": "Tom Bertomeu",
-    "subtitle": "Développeur Fullstack en alternance & Étudiant en 3ème année de BUT Informatique.\n\nJe conçois des applications web et mobiles modernes, performantes et centrées sur l'expérience utilisateur.",
+    "role": "Développeur Fullstack",
+    "subtitle": "Salut ! Moi c'est Tom ! Je suis un développeur passionné, actuellement en alternance en 3ème année de BUT Informatique.\n\nJ'adore créer des applications web et mobiles qui sont non seulement performantes, mais surtout agréables à utiliser. Quand je ne code pas, vous me trouverez probablement en train de suivre un sport automobile ou plongé dans un jeu vidéo.",
     "degree": "BUT Informatique",
     "school": "IUT Nord Franche-Comté",
     "period": "Période",
     "periodValue": "Septembre 2022 - Aujourd'hui",
-    "downloadCv": "Télécharger mon CV",
+    "downloadCv": "Consulter mon CV",
     "interest1": "Sport automobile",
     "interest2": "Science-fiction",
     "interest3": "Informatique",
@@ -40,14 +41,14 @@
     }
   },
   "projects": {
-    "title": "Mes projets récents",
+    "title": "Projets",
     "intro": "Voici quelques-uns des projets sur lesquels j'ai travaillé, mettant en valeur mes compétences dans différents domaines technologiques.",
     "seeAll": "Voir tous mes projets"
   },
   "projectsPage": {
     "title": "Tous les Projets",
     "subtitle": "Une liste complète des projets sur lesquels j'ai travaillé, des applications web complexes aux petits projets expérimentaux.",
-    "backToHome": "Retour à l'accueil",
+    "backToHome": "Tom Bertomeu",
     "table": {
       "year": "Année",
       "project": "Projet",
@@ -58,17 +59,19 @@
     }
   },
   "experience": {
-    "title": "Mon Expérience Professionnelle",
+    "title": "Expérience",
     "labelTitle": "Poste",
     "labelPeriod": "Période",
     "labelJob": "Emploi"
   },
   "contact": {
-    "title": "Me Contacter"
+    "title": "Me Contacter",
+    "getInTouch": "Restons en contact"
   },
   "contactForm": {
     "infoTitle": "Coordonnées",
-    "infoSubtitle": "N'hésitez pas à me contacter par l'un des moyens ci-dessous",
+    "greeting": "J'aimerais avoir de vos nouvelles !",
+    "infoSubtitle": "Si vous avez des questions ou si vous voulez simplement dire bonjour, n'hésitez pas à utiliser le formulaire de contact !",
     "labelName": "Nom",
     "placeholderName": "Votre nom",
     "labelEmail": "E-mail",
@@ -81,14 +84,10 @@
     "sending": "Envoi en cours...",
     "success": "Votre message a été envoyé avec succès !",
     "error": "Une erreur est survenue lors de l'envoi de votre message.",
-    "privacy": "Les informations que vous fournissez sont strictement confidentielles et ne seront utilisées que pour répondre à votre message. Elles ne seront jamais partagées ou utilisées à d'autres fins."
+    "privacy": "Les informations que vous fournissez sont strictement confidentielles et ne seront utilisées que pour répondre à votre message. Elles ne seront ni partagées ni utilisées à d'autres fins."
   },
   "footer": {
-    "github": "GitHub",
-    "navigation": "Navigation",
-    "socials": "Réseaux Sociaux",
-    "linkedin": "LinkedIn",
-    "email": "E-mail",
-    "copyright": "Tous droits réservés."
+    "copyright": "© 2025 Tom Bertomeu. Tous droits réservés.",
+    "credits": "Conçu et développé par Tom Bertomeu dans Visual Studio Code avec Next.js, Tailwind CSS et Formspree. Déployé avec Hostinger."
   }
 }

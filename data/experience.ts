@@ -5,33 +5,85 @@ export interface Experience {
   period: string;
   description: string;
   type: "work" | "education";
+  current?: boolean;
+  technologies: string[];
+  link?: string;
 }
 
-const experiences: Experience[] = [
+interface ExperienceData extends Omit<Experience, "title" | "period" | "description"> {
+  title: { fr: string; en: string };
+  period: { fr: string; en: string };
+  description: { fr: string; en: string };
+}
+
+const experiencesData: ExperienceData[] = [
+  {
+    id: "alternance-geniatest",
+    title: {
+      fr: "Développeur Fullstack (Alternance)",
+      en: "Fullstack Developer (Apprenticeship)"
+    },
+    company: "GEN'IAtest",
+    period: {
+      fr: "2025 - 2026",
+      en: "2025 - 2026"
+    },
+    description: {
+      fr: "Reprise d'un projet de gestion globale des activités de la coopérative. Refactorisation du code existant pour améliorer la maintenabilité et l'évolutivité, et poursuite du développement des fonctionnalités.",
+      en: "Took over a global activity management project for the cooperative. Refactored existing code to enhance maintainability and scalability, while continuing feature development."
+    },
+    type: "work",
+    current: true,
+    technologies: ["Vue.js", "Nuxt", "NestJS", "TypeScript", "PostgreSQL"],
+    link: "https://www.geniatest.com/"
+  },
   {
     id: "stage-s6",
-    title: "Développeur Fullstack (Stage)",
+    title: {
+      fr: "Développeur Fullstack (Stage)",
+      en: "Fullstack Developer (Internship)"
+    },
     company: "ASO70",
-    period: "2025 (Stage de fin d'études)",
-    description: "Développement d'une plateforme de location de matériel événementiel avec Next.js et Supabase. Conception du Back-office administrateur et gestion des devis.",
-    type: "work"
+    period: {
+      fr: "Avril - Juin 2025",
+      en: "April - June 2025"
+    },
+    description: {
+      fr: "Création d'un projet de zéro en autonomie pour découvrir de nouvelles technologies. Développement d'un catalogue en ligne mettant en avant l'activité de location de matériel de l'entreprise.",
+      en: "Started a solo project from scratch to explore new technologies. Developed an online catalog showcasing the company's equipment rental business."
+    },
+    type: "work",
+    technologies: ["React", "Next.js", "Supabase", "TypeScript", "Tailwind CSS"],
+    link: "https://www.aso70.com/"
   },
   {
     id: "stage-s4",
-    title: "Développeur Web (Stage)",
+    title: {
+      fr: "Développeur Web (Stage)",
+      en: "Web Developer (Internship)"
+    },
     company: "Vecofroid",
-    period: "2024 (Stage de 2ème année)",
-    description: "Numérisation des processus métier. Création d'une application Vue.js/Express pour l'attribution d'équipes et la génération de bons d'intervention.",
-    type: "work"
-  },
-  {
-    id: "but-info",
-    title: "BUT Informatique",
-    company: "IUT Nord Franche-Comté",
-    period: "2022 - Aujourd'hui",
-    description: "Formation généraliste en informatique : Développement Web/Mobile, Base de données, Administration Système, Gestion de projet agile.",
-    type: "education"
+    period: {
+      fr: "Avril - Mai 2024",
+      en: "April - May 2024"
+    },
+    description: {
+      fr: "Premier projet professionnel réalisé en autonomie. Numérisation du processus d'attribution et de remplissage des bons d'intervention de l'entreprise.",
+      en: "First professional project carried out independently. Digitized the process of assigning and filling out the company's intervention forms."
+    },
+    type: "work",
+    technologies: ["Vue.js", "Express", "Node.js", "MySQL"],
+    link: "https://www.vecofroid.com/"
   }
 ];
 
-export default experiences;
+export function getExperiences(lang: "fr" | "en" = "fr"): Experience[] {
+  return experiencesData.map(exp => ({
+    ...exp,
+    title: exp.title[lang],
+    period: exp.period[lang],
+    description: exp.description[lang]
+  }));
+}
+
+export default getExperiences;

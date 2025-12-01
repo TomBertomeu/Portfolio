@@ -12,12 +12,11 @@
     "fr": "Frans"
   },
   "about": {
-    "greeting": "Hallo! Ik ben",
+    "greeting": "Hoi! Ik ben",
     "name": "Tom Bertomeu",
-    "subtitle": "Gepassioneerd Full Stack Developer die moderne en krachtige digitale ervaringen bouwt.",
-    "school": "HBO Informatica",
-    "institution": "Opleidingsinstituut",
-    "institutionName": "IUT de Belfort-Montbéliard",
+    "role": "Fullstack Developer",
+    "subtitle": "Hallo! Ik ben Tom! Ik ben een gepassioneerde ontwikkelaar, momenteel in het 3e jaar van mijn Bachelor Informatica en werkend als leerling.\n\nIk hou ervan om web- en mobiele apps te bouwen die niet alleen goed presteren, maar ook prettig in gebruik zijn. Als ik niet aan het coderen ben, vind je me waarschijnlijk kijkend naar een autosportrace of verdiept in een sciencefiction-universum.",
+    "school": "Bachelor Informatica ⋅ IUT Nord Franche-Comté",
     "period": "Periode",
     "periodValue": "September 2022 - Heden",
     "downloadCv": "Download mijn CV",
@@ -51,11 +50,13 @@
     "labelJob": "Werk"
   },
   "contact": {
-    "title": "Neem contact op"
+    "title": "Neem contact op",
+    "getInTouch": "Neem contact op"
   },
   "contactForm": {
     "infoTitle": "Contactgegevens",
-    "infoSubtitle": "Neem gerust contact met mij op via een van de onderstaande methoden",
+    "greeting": "Ik hoor graag van u!",
+    "infoSubtitle": "Als u vragen heeft of gewoon hallo wilt zeggen, gebruik dan het contactformulier!",
     "labelName": "Naam",
     "placeholderName": "Uw naam",
     "labelEmail": "E-mail",

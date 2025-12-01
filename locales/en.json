@@ -13,13 +13,14 @@
     "fr": "French"
   },
   "about": {
-    "greeting": "Hello! I'm",
+    "greeting": "Hi! I'm",
     "name": "Tom Bertomeu",
-    "subtitle": "Fullstack Developer in apprenticeship & 3rd year Computer Science student.\n\nI build modern, high-performance, user-centric web and mobile applications.",
+    "role": "Fullstack Developer",
+    "subtitle": "Hi! I'm Tom! I am a passionate developer, currently in the 3rd year of a Bachelor's degree in Computer Science (BUT Informatique) and on a work-study program.\n\nI love building web and mobile apps that are not only performant, but above all a joy to use. When I'm not coding, you'll probably find me watching a motorsport race or immersed in a video game.",
     "school": "Computer Science BUT ⋅ IUT Nord Franche-Comté",
     "period": "Period",
     "periodValue": "September 2022 - Present",
-    "downloadCv": "Download my CV",
+    "downloadCv": "View my CV",
     "interest1": "Motorsport",
     "interest2": "Science Fiction",
     "interest3": "Computer Science",
@@ -39,14 +40,14 @@
     }
   },
   "projects": {
-    "title": "Recent Projects",
+    "title": "Projects",
     "intro": "Here are some of the projects I've worked on, showcasing my skills in different technologies and domains.",
     "seeAll": "See all my projects"
   },
   "projectsPage": {
     "title": "All Projects",
     "subtitle": "A complete list of projects I've worked on, from complex web applications to small experimental projects.",
-    "backToHome": "Back to Home",
+    "backToHome": "Tom Bertomeu",
     "table": {
       "year": "Year",
       "project": "Project",
@@ -57,17 +58,19 @@
     }
   },
   "experience": {
-    "title": "Professional Experience",
+    "title": "Experience",
     "labelTitle": "Title",
     "labelPeriod": "Period",
     "labelJob": "Job"
   },
   "contact": {
-    "title": "Contact Me"
+    "title": "Contact Me",
+    "getInTouch": "Get in Touch"
   },
   "contactForm": {
     "infoTitle": "Contact Information",
-    "infoSubtitle": "Feel free to contact me using any of the methods below",
+    "greeting": "I'd like to hear from you!",
+    "infoSubtitle": "If you have any inquiries or just want to say hi, please use the contact form!",
     "labelName": "Name",
     "placeholderName": "Your name",
     "labelGithub": "GitHub",
@@ -80,14 +83,10 @@
     "send": "Send Message",
     "sending": "Sending...",
     "success": "Your message has been sent successfully!",
-    "privacy": "The information you provide is strictly confidential and used only to respond to your message. It will never be shared or used for other purposes."
+    "privacy": "The information you provide is strictly confidential and will only be used to respond to your message. It will neither be shared nor used for any other purposes."
   },
   "footer": {
-    "github": "GitHub",
-    "navigation": "Navigation",
-    "socials": "Social Networks",
-    "linkedin": "LinkedIn",
-    "email": "Email",
-    "copyright": "All rights reserved."
+    "copyright": "© 2025 Tom Bertomeu. All rights reserved.",
+    "credits": "Designed and developed with ❤️ by Tom Bertomeu in Visual Studio Code. Built with Next.js, Tailwind CSS and Formspree. Deployed with Hostinger."
   }
 }

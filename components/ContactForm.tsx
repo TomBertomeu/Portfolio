@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageProvider";
+import Title from "./Title";
 
 export default function ContactForm() {
   const { t } = useLanguage();
@@ -23,7 +24,20 @@ export default function ContactForm() {
     setStatus("sending");
 
     try {
-      const response = await fetch("/api/send", {
+      // Utilisation de Formspree pour l'envoi d'emails en statique
+      // Remplacez process.env.NEXT_PUBLIC_FORMSPREE_ID par votre ID de formulaire Formspree
+      // ou mettez l'URL complète ici : "https://formspree.io/f/votre_id"
+      const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+      
+      if (!formId || formId === "votre_id_formspree_ici") {
+        console.error("Formspree ID is missing or invalid. Please update .env.local with your real Formspree ID.");
+        alert("Configuration Error: Formspree ID is missing. Please check the console for details.");
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+        return;
+      }
+
+      const response = await fetch(`https://formspree.io/f/${formId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,64 +65,57 @@ export default function ContactForm() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Informations de contact */}
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col h-full py-4">
         <div>
-          <h3 className="text-2xl font-bold mb-6">{t("contactForm.infoTitle")}</h3>
-          <p className="text-muted-foreground mb-8 text-lg">
-            {t("contactForm.infoSubtitle")}
-          </p>
+            <div className="mb-8">
+                <Title text={t("contact.title")} />
+            </div>
+            <div className="prose dark:prose-invert max-w-none">
+                <p className="text-xl font-medium text-primary mb-4">
+                    {t("contactForm.greeting")}
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                    {t("contactForm.infoSubtitle")}
+                </p>
+            </div>
+        </div>
 
-          <div className="space-y-6">
-            <a
-              href="mailto:tom.bertomeu@edu.univ-fcomte.fr"
-              className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors group"
-            >
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                <Mail className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">{t("footer.email")}</p>
-                <p className="font-semibold">tom.bertomeu@edu.univ-fcomte.fr</p>
-              </div>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/tom-bertomeu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors group"
-            >
-              <div className="h-12 w-12 rounded-full bg-[#0077b5]/10 flex items-center justify-center text-[#0077b5] group-hover:scale-110 transition-transform">
-                <Linkedin className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">{t("contactForm.labelLinkedin")}</p>
-                <p className="font-semibold">Tom Bertomeu</p>
-              </div>
-            </a>
-
-            <a
-              href="https://github.com/TomBertomeu"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors group"
-            >
-              <div className="h-12 w-12 rounded-full bg-foreground/10 flex items-center justify-center text-foreground group-hover:scale-110 transition-transform">
-                <Github className="h-6 w-6" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">{t("contactForm.labelGithub")}</p>
-                <p className="font-semibold">TomBertomeu</p>
-              </div>
-            </a>
-          </div>
+        <div className="mt-8">
+            <div className="w-full h-px bg-border mb-8"></div>
+            <div className="flex gap-6">
+                <a
+                    href="mailto:tom.bertomeu@edu.univ-fcomte.fr"
+                    className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 duration-200"
+                    title="Email"
+                >
+                    <Mail className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://github.com/TomBertomeu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors transform hover:scale-110 duration-200"
+                  title="GitHub"
+                >
+                    <Github className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/tom-bertomeu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-200"
+                  title="LinkedIn"
+                >
+                    <Linkedin className="h-6 w-6" />
+                </a>
+            </div>
         </div>
       </div>
 
       {/* Formulaire */}
-      <div className="bg-card border border-border rounded-2xl p-8 shadow-sm">
+      <div className="bg-muted/50 border border-border rounded-2xl p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-medium">
               {t("contactForm.labelName")}
             </label>
@@ -124,7 +131,7 @@ export default function ContactForm() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <label htmlFor="email" className="text-sm font-medium">
               {t("contactForm.labelEmail")}
             </label>
@@ -140,7 +147,7 @@ export default function ContactForm() {
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-sm font-medium">
               {t("contactForm.labelMessage")}
             </label>
@@ -159,7 +166,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status === "sending" || status === "success"}
-            className={`w-full flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 ${
+            className={`cursor-pointer w-full flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 ${
               status === "success"
                 ? "bg-green-600 hover:bg-green-700"
                 : "bg-primary hover:bg-primary/90"

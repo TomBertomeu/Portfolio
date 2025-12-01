@@ -4,97 +4,118 @@ import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Title from "@/components/Title";
 import ProjectCard from "@/components/ProjectCard";
-import SkillsetSection from "@/components/SkillsetSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import { getFeaturedProjects, getOtherProjects } from "@/data/projects";
 import { useLanguage } from "@/contexts/LanguageProvider";
-import { Download, ArrowRight } from "lucide-react";
+import { FileText, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 import ContactForm from "@/components/ContactForm";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 export default function Home() {
   const { t, language } = useLanguage();
-  const featuredProjects = getFeaturedProjects();
-  const otherProjects = getOtherProjects();
+  const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
+  const featuredProjects = getFeaturedProjects(currentLang);
+  const otherProjects = getOtherProjects(currentLang);
 
   return (
     <>
       <Hero />
       
       {/* About Section */}
-      <Section id="about">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <Section id="about" className="bg-muted">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
             <div>
-                <Title text={t("nav.about")} />
-                <div className="prose prose-lg dark:prose-invert text-muted-foreground whitespace-pre-line mb-8">
-                    {t("about.subtitle")}
-                </div>
+                <ScrollAnimation direction="left">
+                    <Title text={t("nav.about")} />
+                </ScrollAnimation>
+                <ScrollAnimation direction="right" delay={200}>
+                    <div className="prose prose-lg dark:prose-invert text-muted-foreground whitespace-pre-line mb-4 md:mb-8">
+                        {t("about.subtitle")}
+                    </div>
+                </ScrollAnimation>
                 
-                <div className="flex flex-wrap gap-4">
-                    <a 
-                        href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
-                    >
-                        <Download className="w-5 h-5" />
-                        {t("about.downloadCv")}
-                    </a>
-                    
-                    <Link 
-                        href="/blog"
-                        className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium hover:bg-secondary/80 transition-colors"
-                    >
-                        Veille Technologique
-                        <ArrowRight className="w-4 h-4" />
-                    </Link>
-                </div>
+                <ScrollAnimation direction="up" delay={400}>
+                    <div className="hidden md:flex flex-wrap gap-4">
+                        <a 
+                            href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cursor-pointer inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
+                        >
+                            <FileText className="w-5 h-5" />
+                            {t("about.downloadCv")}
+                        </a>
+                    </div>
+                </ScrollAnimation>
             </div>
             
-             <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden bg-muted shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
-                {/* Placeholder for profile picture - To be replaced with real image */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 text-muted-foreground">
-                    <span className="text-lg font-medium">Photo de profil</span>
+            <ScrollAnimation direction="left" delay={300} className="flex justify-center md:justify-end">
+                <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-300">
+                    <Image
+                        src="/images/profile.png"
+                        alt={t("about.profileImageAlt") || "Tom Bertomeu"}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                 </div>
-            </div>
-        </div>
-      </Section>
+            </ScrollAnimation>
 
-      {/* Featured Projects */}
-      <Section id="projects" className="bg-muted/30">
-        <Title text={t("projects.title")} />
-        <p className="mb-12 text-lg text-muted-foreground max-w-2xl">
-            {t("projects.intro")}
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {featuredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} priority={true} />
-            ))}
-        </div>
-
-        <div className="flex justify-center">
-            <Link 
-                href="/projects"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group"
-            >
-                {t("projects.seeAll") || "Voir tous les projets"}
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            <ScrollAnimation direction="up" delay={400} className="flex md:hidden justify-center">
+                <a 
+                    href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
+                >
+                    <FileText className="w-5 h-5" />
+                    {t("about.downloadCv")}
+                </a>
+            </ScrollAnimation>
         </div>
       </Section>
 
       {/* Experience */}
       <ExperienceSection />
 
-      {/* Skills */}
-      <SkillsetSection />
+      {/* Featured Projects */}
+      <Section id="projects" className="bg-muted">
+        <ScrollAnimation direction="left">
+            <Title text={t("projects.title")} />
+        </ScrollAnimation>
+        
+        <div className="flex flex-col gap-4 mb-12 group/projects">
+            {featuredProjects.map((project, index) => (
+                <ScrollAnimation key={project.id} direction="up" delay={index * 100} className="transition-all duration-300 hover:!opacity-100 group-hover/projects:opacity-50">
+                    <ProjectCard project={project} priority={true} />
+                </ScrollAnimation>
+            ))}
+        </div>
+
+        <ScrollAnimation direction="up" delay={300}>
+            <div className="flex justify-center">
+                <Link 
+                    href="/projects"
+                    className="cursor-pointer inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group"
+                >
+                    <span className="relative">
+                        {t("projects.seeAll") || "Voir tous les projets"}
+                        <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-current opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+            </div>
+        </ScrollAnimation>
+      </Section>
 
       {/* Contact */}
-      <Section id="contact" className="bg-muted/30">
-        <Title text={t("contact.title")} />
-        <ContactForm />
+      <Section id="contact">
+        <ScrollAnimation direction="up" delay={200}>
+            <ContactForm />
+        </ScrollAnimation>
       </Section>
     </>
   );

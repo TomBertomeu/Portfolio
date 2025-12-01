@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ExternalLink, Github } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Project } from "@/data/projects";
 import Badge from "./Badge";
 
@@ -12,51 +11,55 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, priority = false }: Readonly<ProjectCardProps>) {
+  const Container = project.link ? 'a' : 'div';
+  const containerProps = project.link ? {
+    href: project.link,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  } : {};
+
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:shadow-lg">
-      {/* Image Container */}
-      <div className="relative aspect-video w-full overflow-hidden bg-muted">
-        {/* Placeholder gradient if image fails or is placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
-        
-        {/* We use a simple div with background for now if image is missing, or Next/Image if present */}
-        {project.image && (
-            <div className="relative w-full h-full">
-                 {/* Note: In a real scenario, ensure images exist in public folder. 
-                     For now, we'll use a fallback if the image path is just a placeholder string. 
-                     But here we assume the user will put images there. */}
-                 <Image
+    <Container 
+      {...containerProps}
+      className={`group relative grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-lg border border-transparent bg-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-card hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] ${project.link ? 'cursor-pointer' : ''}`}
+    >
+      
+      {/* Image Column */}
+      <div className="md:col-span-1">
+        <div className="relative aspect-video w-full overflow-hidden rounded-sm bg-muted border border-border/50">
+            {/* Year Badge */}
+            <div className="absolute top-2 right-2 z-10 rounded-full bg-background/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-semibold text-foreground shadow-sm border border-border/50 select-none">
+                {project.year}
+            </div>
+
+            {/* Placeholder gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
+            
+            {project.image && (
+                <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 25vw"
                     priority={priority}
-                 />
-            </div>
-        )}
+                />
+            )}
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="flex flex-1 flex-col p-6">
-        <div className="mb-4 flex items-start justify-between gap-4">
-          <h3 className="text-xl font-bold tracking-tight">{project.title}</h3>
-          <div className="flex gap-2">
+      {/* Content Column */}
+      <div className="md:col-span-3 flex flex-col">
+        <div className="flex items-start justify-between gap-4 mb-2">
+          <h3 className="font-medium leading-snug text-foreground text-lg group-hover:text-primary transition-colors flex items-center gap-2">
+            {project.title}
             {project.link && (
-              <Link
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label={`Voir le code source de ${project.title}`}
-              >
-                <Github className="h-5 w-5" />
-              </Link>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary" />
             )}
-          </div>
+          </h3>
         </div>
 
-        <p className="mb-6 flex-1 text-muted-foreground">
+        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
           {project.description}
         </p>
 
@@ -67,10 +70,11 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
                 key={index} 
                 text={badge.text} 
                 icon={<badge.icon className="w-3 h-3" />}
+                className="bg-primary/10 text-primary hover:bg-primary/20 border-none text-xs px-3 py-1"
             />
           ))}
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

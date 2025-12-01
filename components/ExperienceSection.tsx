@@ -1,51 +1,92 @@
 "use client";
 
 import React from "react";
-import { Briefcase, GraduationCap, Calendar } from "lucide-react";
 import Section from "@/components/Section";
 import Title from "@/components/Title";
-import experiences from "@/data/experience";
+import { getExperiences } from "@/data/experience";
 import { useLanguage } from "@/contexts/LanguageProvider";
+import Badge from "@/components/Badge";
+import ScrollAnimation from "@/components/ScrollAnimation";
+import { ArrowUpRight } from "lucide-react";
 
 export default function ExperienceSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
+  const experiences = getExperiences(currentLang);
 
   return (
     <Section id="experience">
-      <Title text={t("experience.title") || "Mon Parcours"} />
+      <ScrollAnimation direction="left">
+        <Title text={t("experience.title") || "Mon Parcours"} />
+      </ScrollAnimation>
       
-      <div className="relative border-l border-border ml-3 md:ml-6 space-y-12 py-4">
-        {experiences.map((exp, index) => (
-          <div key={exp.id} className="relative pl-8 md:pl-12">
-            {/* Icon Bubble */}
-            <div className="absolute -left-3 md:-left-4 top-0 flex h-6 w-6 md:h-8 md:w-8 items-center justify-center rounded-full border border-border bg-background shadow-sm">
-              {exp.type === "work" ? (
-                <Briefcase className="h-3 w-3 md:h-4 md:w-4 text-primary" />
-              ) : (
-                <GraduationCap className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground" />
-              )}
-            </div>
+      <div className="space-y-4 group/experience">
+        {experiences.map((exp, index) => {
+          const Container = exp.link ? 'a' : 'div';
+          const containerProps = exp.link ? {
+            href: exp.link,
+            target: "_blank",
+            rel: "noopener noreferrer"
+          } : {};
 
-            {/* Content */}
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <h3 className="text-xl font-bold text-foreground">{exp.title}</h3>
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground bg-muted px-2 py-1 rounded">
-                  <Calendar className="h-3 w-3" />
-                  {exp.period}
-                </span>
-              </div>
-              
-              <div className="text-lg font-semibold text-primary">
-                {exp.company}
-              </div>
-              
-              <p className="text-muted-foreground max-w-3xl">
-                {exp.description}
-              </p>
-            </div>
-          </div>
-        ))}
+          return (
+            <ScrollAnimation key={exp.id} direction="up" delay={index * 100}>
+              <Container 
+                {...containerProps}
+                className="group relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 p-4 rounded-lg border border-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-muted/50 hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] cursor-pointer hover:!opacity-100 group-hover/experience:opacity-50"
+              >
+                {/* Date / Period - Left Column */}
+                <header 
+                  className="md:col-span-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground mt-1" 
+                  aria-label={exp.period}
+                >
+                  <div className="flex items-center gap-2">
+                    {exp.current && (
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                      </span>
+                    )}
+                    {exp.period}
+                  </div>
+                </header>
+
+                {/* Content - Right Column */}
+                <div className="md:col-span-3 flex flex-col gap-4">
+                  {/* Title & Company */}
+                  <h3 className="font-medium leading-snug text-foreground text-lg group-hover:text-primary transition-colors">
+                    <div>
+                      <span className="font-bold">{exp.title}</span>
+                      <span className="text-primary"> · </span>
+                      <span className="text-muted-foreground inline-flex items-center gap-1">
+                        {exp.company}
+                        {exp.link && (
+                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                        )}
+                      </span>
+                    </div>
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {exp.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {exp.technologies?.map((tech, index) => (
+                      <Badge 
+                        key={index} 
+                        text={tech} 
+                        className="bg-primary/10 text-primary hover:bg-primary/20 border-none text-xs px-3 py-1"
+                      />
+                    ))}
+                  </div>
+                </div>
+              </Container>
+            </ScrollAnimation>
+          );
+        })}
       </div>
     </Section>
   );

@@ -11,11 +11,11 @@ export default function Badge({ text, className, icon }: Readonly<BadgeProps>) {
   return (
     <span
       className={clsx(
-        "inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1 text-sm font-medium text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary",
+        "inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1 text-sm font-medium text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary select-none",
         className
       )}
     >
-      {icon && <span className="w-4 h-4">{icon}</span>}
+      {icon && <span className="flex items-center justify-center w-4 h-4">{icon}</span>}
       {text}
     </span>
   );

@@ -5,7 +5,7 @@ import HeroBackground from './HeroBackground';
 import { useLanguage } from "@/contexts/LanguageProvider";
 
 export default function Hero() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -36,11 +36,11 @@ export default function Hero() {
                 <p className="mb-4 text-xl font-medium text-foreground/80 sm:text-2xl">
                     {t("about.greeting")}
                 </p>
-                <h1 className="text-6xl font-bold tracking-tighter sm:text-8xl bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-green)] bg-clip-text text-transparent pb-2">
+                <h1 className="text-6xl font-bold tracking-tighter sm:text-8xl shimmer pb-2">
                     Tom BERTOMEU
                 </h1>
                 <h2 className="mt-4 text-2xl font-medium text-foreground sm:text-4xl">
-                    Fullstack Developer
+                    {t("about.role")}
                 </h2>
             </div>
         </section>

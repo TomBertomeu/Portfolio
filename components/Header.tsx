@@ -2,12 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageProvider";
+import { FileText, BookText } from "lucide-react";
 
 export default function Header() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -20,16 +22,21 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-4 ${
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                 scrolled
-                    ? "bg-background/80 backdrop-blur-md"
-                    : "bg-transparent backdrop-blur-none"
+                    ? "py-2 bg-background/80 backdrop-blur-md"
+                    : "py-4 bg-transparent backdrop-blur-none"
             }`}
         >
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-4">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
                 {/* Logo */}
-                <Link href="/" className="text-xl font-bold tracking-tighter hover:opacity-80 transition-opacity">
-                    Tom<span className="text-[var(--primary-blue)]">.</span>
+                <Link href="/" className="relative w-10 h-10 hover:opacity-80 transition-opacity">
+                    <Image 
+                        src="/images/logo.png" 
+                        alt="Logo" 
+                        fill 
+                        className="object-contain"
+                    />
                 </Link>
 
                 {/* Navigation & Actions */}
@@ -55,6 +62,25 @@ export default function Header() {
 
                     {/* Actions */}
                     <div className="flex items-center gap-2">
+                        {/* Mobile Blog Link */}
+                        <Link 
+                            href="/blog"
+                            className="md:hidden inline-flex items-center justify-center p-2 hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                            title={t("nav.blog") || "Blog"}
+                        >
+                            <BookText className="w-5 h-5" />
+                        </Link>
+
+                        <a 
+                            href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-[var(--primary-blue)] transition-colors mr-2"
+                            title={t("about.downloadCv")}
+                        >
+                            <FileText className="w-4 h-4" />
+                            <span className="hidden lg:inline">CV</span>
+                        </a>
                         <LanguageSwitcher />
                         <ThemeToggle />
                     </div>
