@@ -35,7 +35,7 @@ const projectsData: ProjectData[] = [
       en: "A productivity timer inspired by the Outer Wilds game universe."
     },
     image: "/images/projects/pomodoro.jpg",
-    link: "https://github.com/TomBertomeu/outer-wilds-pomodoro",
+    link: "https://outer-wilds-pomodoro.vercel.app/",
     featured: false,
     year: "2025",
     badges: [
