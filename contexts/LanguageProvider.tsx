@@ -34,14 +34,19 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       const browserLang = navigator.language.split('-')[0];
       if (['fr', 'en', 'nl'].includes(browserLang)) {
         setLanguage(browserLang as Language);
+      } else {
+        // Fallback to 'en' if browser language is not supported, or stay 'fr' if preferred
+        // Usually, English is the best fallback for international audiences
+        setLanguage('en'); 
       }
     }
   }, []);
 
-  // Load translations when language changes
+  // Load translations and update DOM when language changes
   useEffect(() => {
     setTranslations(loadTranslations(language));
     localStorage.setItem('language', language);
+    document.documentElement.lang = language;
   }, [language]);
 
   const t = (key: string) => {

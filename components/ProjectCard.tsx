@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Project } from "@/data/projects";
 import Badge from "./Badge";
@@ -11,17 +12,10 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, priority = false }: Readonly<ProjectCardProps>) {
-  const Container = project.link ? 'a' : 'div';
-  const containerProps = project.link ? {
-    href: project.link,
-    target: "_blank",
-    rel: "noopener noreferrer"
-  } : {};
-
   return (
-    <Container 
-      {...containerProps}
-      className={`group relative grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-lg border border-transparent bg-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-card hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] ${project.link ? 'cursor-pointer' : ''}`}
+    <Link 
+      href={`/projects/${project.id}`}
+      className="group relative grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-lg border border-transparent bg-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-card hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] cursor-pointer"
     >
       
       {/* Image Column */}
@@ -55,9 +49,7 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
         <div className="flex items-start justify-between gap-4 mb-2">
           <h3 className="font-medium leading-snug text-foreground text-lg group-hover:text-primary transition-colors flex items-center gap-2">
             {project.title || "Untitled Project"}
-            {project.link && (
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary" />
-            )}
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary" />
           </h3>
         </div>
 
@@ -77,6 +69,6 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
           ))}
         </div>
       </div>
-    </Container>
+    </Link>
   );
 }

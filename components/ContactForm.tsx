@@ -84,7 +84,7 @@ export default function ContactForm() {
             <div className="w-full h-px bg-border mb-8"></div>
             <div className="flex gap-6">
                 <a
-                    href="mailto:tom.bertomeu@edu.univ-fcomte.fr"
+                    href="mailto:tom.bertomeu.pro@gmail.com"
                     className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 duration-200"
                     title="Email"
                 >

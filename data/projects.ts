@@ -5,6 +5,13 @@ export interface ProjectBadge {
   text: string;
 }
 
+export type FeatureStatus = "completed" | "in-progress" | "planned";
+
+export interface ProjectFeature {
+  text: string;
+  status: FeatureStatus;
+}
+
 export interface Project {
   id: string;
   title?: string;
@@ -15,12 +22,27 @@ export interface Project {
   featured?: boolean;
   year?: string;
   madeAt?: string;
+  // New detailed fields
+  gallery?: string[];
+  features?: ProjectFeature[];
+  challenges?: string;
+  solutions?: string;
+  role?: string;
+  team?: string;
+  context?: string;
+  demoVideo?: string;
 }
 
-interface ProjectData extends Omit<Project, "title" | "description" | "madeAt"> {
+interface ProjectData extends Omit<Project, "title" | "description" | "madeAt" | "features" | "challenges" | "solutions" | "role" | "team" | "context"> {
   title?: { fr: string; en: string };
   description?: { fr: string; en: string };
   madeAt?: { fr: string; en: string };
+  features?: { fr: ProjectFeature[]; en: ProjectFeature[] };
+  challenges?: { fr: string; en: string };
+  solutions?: { fr: string; en: string };
+  role?: { fr: string; en: string };
+  team?: { fr: string; en: string };
+  context?: { fr: string; en: string };
 }
 
 const projectsData: ProjectData[] = [
@@ -50,21 +72,48 @@ const projectsData: ProjectData[] = [
       en: "SmartChef"
     },
     description: {
-      fr: "Application mobile de cuisine intelligente intégrant une IA pour générer des recettes selon les préférences utilisateur et le contenu de leur réfrigérateur.",
-      en: "Smart kitchen mobile app integrating AI to generate recipes based on user preferences and the refrigerator contents."
+      fr: "Application mobile intelligente née d'un projet universitaire et évoluée en projet personnel. Elle utilise l'IA pour transformer le contenu de votre frigo en recettes adaptées à vos préférences.",
+      en: "Smart mobile application born from a university project and evolved into a personal endeavor. It uses AI to turn your fridge contents into tasty recipes, featuring a modern interface ready for advanced capabilities."
     },
     image: "/images/projects/smartchef.jpg",
     link: "https://github.com/tbertome-iut90/smart-chef",
     featured: true,
     year: "2025",
-    madeAt: {
-      fr: "Université",
-      en: "University"
+    features: {
+      fr: [
+        { text: "Gestion d'inventaire (Frigo) avec liste des ingrédients disponibles", status: "completed" },
+        { text: "Génération de recettes par IA (LLM) basée sur l'inventaire", status: "completed" },
+        { text: "Affichage détaillé des étapes de préparation", status: "completed" },
+        { text: "Interface utilisateur prête pour la liste de courses, l'historique et le scan caméra", status: "completed" },
+        { text: "Système de préférences utilisateur (en cours d'intégration)", status: "in-progress" }
+      ],
+      en: [
+        { text: "Inventory Management (Fridge) with list of available ingredients", status: "completed" },
+        { text: "AI-powered recipe generation (LLM) based on inventory", status: "completed" },
+        { text: "Detailed display of preparation steps", status: "completed" },
+        { text: "UI ready for Shopping list, History, and Camera scan", status: "completed" },
+        { text: "User preference system (integration in progress)", status: "in-progress" }
+      ]
+    },
+    challenges: {
+      fr: "Le plus difficile était de faire en sorte que le LLM retourne bien les données attendues, avec le comportement adapté aux préférences de l'utilisateur.",
+      en: "The most difficult part was ensuring that the LLM returned the expected data, with behavior adapted to user preferences."
+    },
+    solutions: {
+      fr: "J'ai beaucoup travaillé sur le prompt de la requête (Prompt Engineering) jusqu'à arriver à un résultat satisfaisant et structuré.",
+      en: "I worked extensively on the request prompt (Prompt Engineering) until I reached a satisfactory and structured result."
+    },
+    context: {
+      fr: "SmartChef est né d'un projet universitaire en binôme visant à explorer l'intégration des LLM dans une application de manière pertinente. J'ai décidé de poursuivre son développement seul pour en faire une application complète. J'ai donc repris l'architecture pour permettre l'ajout de fonctionnalités avancées comme la reconnaissance d'image et la personnalisation, tout en soignant l'expérience utilisateur.",
+      en: "SmartChef was born from a university pair project aimed at exploring the integration of LLMs into an application in a relevant way. I decided to continue its development alone to turn it into a complete application. I therefore reworked the architecture to enable the addition of advanced features like image recognition and personalization, while refining the user experience."
+    },
+    role: {
+      fr: "Co-développeur (Phase 1) puis Développeur Fullstack (Phase 2)",
+      en: "Co-developer (Phase 1) then Fullstack Developer (Phase 2)"
     },
     badges: [
       { icon: Smartphone, text: "React Native" },
       { icon: Code, text: "TypeScript" },
-      { icon: Server, text: "FastAPI" },
       { icon: Brain, text: "LLM" },
     ]
   },
@@ -232,7 +281,13 @@ export function getProjects(lang: "fr" | "en" = "fr"): Project[] {
     ...p,
     title: p.title?.[lang],
     description: p.description?.[lang],
-    madeAt: p.madeAt?.[lang]
+    madeAt: p.madeAt?.[lang],
+    features: p.features?.[lang],
+    challenges: p.challenges?.[lang],
+    solutions: p.solutions?.[lang],
+    role: p.role?.[lang],
+    team: p.team?.[lang],
+    context: p.context?.[lang]
   }));
 }
 
@@ -243,7 +298,13 @@ export function getProjectById(id: string, lang: "fr" | "en" = "fr"): Project | 
     ...project,
     title: project.title?.[lang],
     description: project.description?.[lang],
-    madeAt: project.madeAt?.[lang]
+    madeAt: project.madeAt?.[lang],
+    features: project.features?.[lang],
+    challenges: project.challenges?.[lang],
+    solutions: project.solutions?.[lang],
+    role: project.role?.[lang],
+    team: project.team?.[lang],
+    context: project.context?.[lang]
   };
 }
 

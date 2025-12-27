@@ -75,7 +75,9 @@ export default function ProjectsPage() {
                           {project.year || "-"}
                         </td>
                         <td className="py-6 pr-4 font-semibold text-foreground group-hover:text-primary transition-colors">
-                          {project.title || "Untitled"}
+                          <Link href={`/projects/${project.id}`} className="hover:underline">
+                            {project.title || "Untitled"}
+                          </Link>
                         </td>
                         <td className="py-6 pr-4 text-muted-foreground text-sm hidden md:table-cell">
                           {project.madeAt || "-"}

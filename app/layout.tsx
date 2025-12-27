@@ -1,4 +1,4 @@
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 import React from "react";
 import "@/styles/globals.css";
 import "@/styles/shimmer-effect.css";
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <Header/>
+                        <Header />
                         <main className="flex-grow">
                             {children}
                         </main>
