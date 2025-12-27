@@ -5,13 +5,17 @@
 
 html {
     scroll-behavior: smooth;
-    overflow: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
-    width: 0; /* Remove scrollbar space */
-    background: transparent; /* Optional: just make scrollbar invisible */
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
 }
+
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
     background: #ff0000;
@@ -58,7 +62,8 @@ html {
 :root {
     --radius: 0.625rem;
     --background: oklch(1 0 0);
-    --foreground: oklch(0 0 0); /* Noir pur pour le texte en mode clair */
+    --foreground: oklch(0 0 0);
+    /* Noir pur pour le texte en mode clair */
     --card: oklch(1 0 0);
     --card-foreground: oklch(0 0 0);
     --popover: oklch(1 0 0);
@@ -98,7 +103,8 @@ html {
 
 .dark {
     --background: oklch(0.145 0 0);
-    --foreground: oklch(1 0 0); /* Blanc pur pour le texte en mode sombre */
+    --foreground: oklch(1 0 0);
+    /* Blanc pur pour le texte en mode sombre */
     --card: oklch(0.205 0 0);
     --card-foreground: oklch(1 0 0);
     --popover: oklch(0.205 0 0);
@@ -134,41 +140,95 @@ html {
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+    * {
+        @apply border-border outline-ring/50;
     }
-  body {
-    @apply bg-background text-foreground;
+
+    body {
+        @apply bg-background text-foreground;
+        overflow-x: hidden;
     }
 }
 
 /* Animations for Background Beams */
 @keyframes moveHorizontal {
-    0% { left: -150px; opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.4; }
-    100% { left: 100%; opacity: 0; }
+    0% {
+        left: -150px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 @keyframes moveHorizontalRev {
-    0% { left: 100%; opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.4; }
-    100% { left: -150px; opacity: 0; }
+    0% {
+        left: 100%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        left: -150px;
+        opacity: 0;
+    }
 }
 
 @keyframes moveVertical {
-    0% { top: -150px; opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.4; }
-    100% { top: 100%; opacity: 0; }
+    0% {
+        top: -150px;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
 }
 
 @keyframes moveVerticalRev {
-    0% { top: 100%; opacity: 0; }
-    10% { opacity: 0.4; }
-    90% { opacity: 0.4; }
-    100% { top: -150px; opacity: 0; }
+    0% {
+        top: 100%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.4;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        top: -150px;
+        opacity: 0;
+    }
 }
 
 /* Background Grid & Beams */
@@ -179,16 +239,18 @@ html {
     width: 100%;
     height: 100%;
     z-index: -1;
-    
-    background-image: 
+    overflow: hidden;
+
+    background-image:
         linear-gradient(var(--grid-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
     background-position: 0 0;
-    
+
     mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
     -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
-    pointer-events: none; /* Ensure clicks pass through */
+    pointer-events: none;
+    /* Ensure clicks pass through */
 }
 
 .beam {
