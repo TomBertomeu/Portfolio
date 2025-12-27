@@ -6,9 +6,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const geistSans = Geist({
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
     title: "Tom Bertomeu",
@@ -25,7 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <LanguageProvider>
             <html lang="fr" suppressHydrationWarning>
-                <body className={`min-h-screen ${font.className}`}>
+                <body className={`min-h-screen ${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"
