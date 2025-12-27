@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import Title from "./Title";
+import ScrollAnimation from "./ScrollAnimation";
 
 export default function ContactForm() {
   const { t } = useLanguage();
@@ -28,7 +29,7 @@ export default function ContactForm() {
       // Remplacez process.env.NEXT_PUBLIC_FORMSPREE_ID par votre ID de formulaire Formspree
       // ou mettez l'URL complète ici : "https://formspree.io/f/votre_id"
       const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-      
+
       if (!formId || formId === "votre_id_formspree_ici") {
         console.error("Formspree ID is missing or invalid. Please update .env.local with your real Formspree ID.");
         alert("Configuration Error: Formspree ID is missing. Please check the console for details.");
@@ -65,55 +66,55 @@ export default function ContactForm() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Informations de contact */}
-      <div className="flex flex-col h-full py-4">
+      <ScrollAnimation direction="left" className="flex flex-col h-full py-4">
         <div>
-            <div className="mb-8">
-                <Title text={t("contact.title")} />
-            </div>
-            <div className="prose dark:prose-invert max-w-none">
-                <p className="text-xl font-medium text-primary mb-4">
-                    {t("contactForm.greeting")}
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                    {t("contactForm.infoSubtitle")}
-                </p>
-            </div>
+          <div className="mb-8">
+            <Title text={t("contact.title")} />
+          </div>
+          <div className="prose dark:prose-invert max-w-none">
+            <p className="text-xl font-medium text-primary mb-4">
+              {t("contactForm.greeting")}
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {t("contactForm.infoSubtitle")}
+            </p>
+          </div>
         </div>
 
         <div className="mt-8">
-            <div className="w-full h-px bg-border mb-8"></div>
-            <div className="flex gap-6">
-                <a
-                    href="mailto:tom.bertomeu.pro@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 duration-200"
-                    title="Email"
-                >
-                    <Mail className="h-6 w-6" />
-                </a>
-                <a
-                  href="https://github.com/TomBertomeu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors transform hover:scale-110 duration-200"
-                  title="GitHub"
-                >
-                    <Github className="h-6 w-6" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/tom-bertomeu/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-200"
-                  title="LinkedIn"
-                >
-                    <Linkedin className="h-6 w-6" />
-                </a>
-            </div>
+          <div className="w-full h-px bg-border mb-8"></div>
+          <div className="flex gap-6">
+            <a
+              href="mailto:tom.bertomeu.pro@gmail.com"
+              className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 duration-200"
+              title="Email"
+            >
+              <Mail className="h-6 w-6" />
+            </a>
+            <a
+              href="https://github.com/TomBertomeu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors transform hover:scale-110 duration-200"
+              title="GitHub"
+            >
+              <Github className="h-6 w-6" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/tom-bertomeu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-200"
+              title="LinkedIn"
+            >
+              <Linkedin className="h-6 w-6" />
+            </a>
+          </div>
         </div>
-      </div>
+      </ScrollAnimation>
 
       {/* Formulaire */}
-      <div className="bg-muted/50 border border-border rounded-2xl p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
+      <ScrollAnimation direction="right" delay={200} className="bg-muted/50 border border-border rounded-2xl p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-medium">
@@ -166,11 +167,10 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status === "sending" || status === "success"}
-            className={`cursor-pointer w-full flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 ${
-              status === "success"
-                ? "bg-green-600 hover:bg-green-700"
-                : "bg-primary hover:bg-primary/90"
-            } disabled:opacity-70 disabled:cursor-not-allowed`}
+            className={`cursor-pointer w-full flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 ${status === "success"
+              ? "bg-green-600 hover:bg-green-700"
+              : "bg-primary hover:bg-primary/90"
+              } disabled:opacity-70 disabled:cursor-not-allowed`}
           >
             {status === "sending" ? (
               <>
@@ -201,7 +201,7 @@ export default function ContactForm() {
             {t("contactForm.privacy")}
           </p>
         </form>
-      </div>
+      </ScrollAnimation>
     </div>
   );
 }

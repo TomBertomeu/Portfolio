@@ -30,7 +30,7 @@ export default function ExperienceSection() {
           } : {};
 
           return (
-            <ScrollAnimation key={exp.id} direction="up" delay={index * 100}>
+            <ScrollAnimation key={exp.id} direction="left" delay={index * 100}>
               <Container
                 {...containerProps}
                 className="group relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 p-4 rounded-lg border border-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-muted/50 hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] cursor-pointer hover:!opacity-100 group-hover/experience:opacity-50"
