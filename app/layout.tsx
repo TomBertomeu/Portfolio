@@ -31,9 +31,9 @@ export const viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <LanguageProvider>
-            <html lang="fr" suppressHydrationWarning>
-                <body className={`min-h-screen ${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
+        <html lang="fr" suppressHydrationWarning>
+            <body className={`min-h-screen ${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
+                <LanguageProvider>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"
@@ -46,8 +46,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                         </main>
                         <Footer />
                     </ThemeProvider>
-                </body>
-            </html>
-        </LanguageProvider>
+                </LanguageProvider>
+            </body>
+        </html>
     );
 }

@@ -23,37 +23,52 @@ function getValue(obj: any, path: string) {
 }
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('fr');
+  const [language, setLanguage] = useState<Language | null>(null);
   const [translations, setTranslations] = useState<Translations>(() => loadTranslations('fr'));
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Initial language detection
   useEffect(() => {
     const savedLang = localStorage.getItem('language') as Language;
+    let targetLang: Language = 'fr';
+
     if (savedLang && ['fr', 'en', 'nl'].includes(savedLang)) {
-      setLanguage(savedLang);
+      targetLang = savedLang;
     } else {
       const browserLang = navigator.language.split('-')[0];
       if (['fr', 'en', 'nl'].includes(browserLang)) {
-        setLanguage(browserLang as Language);
+        targetLang = browserLang as Language;
       } else {
-        // Fallback to 'en' if browser language is not supported, or stay 'fr' if preferred
-        // Usually, English is the best fallback for international audiences
-        setLanguage('en');
+        // Fallback to 'en' if browser language is not supported
+        targetLang = 'en';
       }
     }
+
+    setLanguage(targetLang);
+    setTranslations(loadTranslations(targetLang));
+    setIsLoaded(true);
   }, []);
 
-  // Load translations and update DOM when language changes
+  // Load translations and update DOM when language changes (after initial load)
   useEffect(() => {
+    if (!language || !isLoaded) return;
+
     setTranslations(loadTranslations(language));
     localStorage.setItem('language', language);
     document.documentElement.lang = language;
-  }, [language]);
+  }, [language, isLoaded]);
 
   const t = (key: TranslationKey | "_language") => {
-    if (key === '_language') return language;
+    if (key === '_language') return language || 'fr';
     return getValue(translations, key);
   };
+
+  // Prevent flash of untranslated content (FOUT)
+  if (!isLoaded || !language) {
+    return (
+      <div className="fixed inset-0 z-[9999] bg-background"></div>
+    );
+  }
 
   return (
     <LanguageContext.Provider value={{ t, language, setLanguage }}>
