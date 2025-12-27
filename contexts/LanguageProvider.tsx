@@ -1,12 +1,13 @@
 "use client";
 import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
+import { TranslationKey } from "@/types/i18n";
 
 export type Language = "fr" | "en" | "nl";
 
 type Translations = Record<string, any>;
 
 interface LanguageContextProps {
-  t: (key: string) => string;
+  t: (key: TranslationKey | "_language") => string;
   language: Language;
   setLanguage: (lang: Language) => void;
 }
@@ -37,7 +38,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       } else {
         // Fallback to 'en' if browser language is not supported, or stay 'fr' if preferred
         // Usually, English is the best fallback for international audiences
-        setLanguage('en'); 
+        setLanguage('en');
       }
     }
   }, []);
@@ -49,7 +50,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     document.documentElement.lang = language;
   }, [language]);
 
-  const t = (key: string) => {
+  const t = (key: TranslationKey | "_language") => {
     if (key === '_language') return language;
     return getValue(translations, key);
   };
