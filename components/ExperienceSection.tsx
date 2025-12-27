@@ -19,7 +19,7 @@ export default function ExperienceSection() {
       <ScrollAnimation direction="left">
         <Title text={t("experience.title") || "Mon Parcours"} />
       </ScrollAnimation>
-      
+
       <div className="space-y-4 group/experience">
         {experiences.map((exp, index) => {
           const Container = exp.link ? 'a' : 'div';
@@ -31,13 +31,13 @@ export default function ExperienceSection() {
 
           return (
             <ScrollAnimation key={exp.id} direction="up" delay={index * 100}>
-              <Container 
+              <Container
                 {...containerProps}
                 className="group relative grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 p-4 rounded-lg border border-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-muted/50 hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] cursor-pointer hover:!opacity-100 group-hover/experience:opacity-50"
               >
                 {/* Date / Period - Left Column */}
-                <header 
-                  className="md:col-span-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground mt-1" 
+                <header
+                  className="md:col-span-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground mt-1"
                   aria-label={exp.period}
                 >
                   <div className="flex items-center gap-2">
@@ -75,10 +75,11 @@ export default function ExperienceSection() {
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mt-2">
                     {exp.technologies?.map((tech, index) => (
-                      <Badge 
-                        key={index} 
-                        text={tech} 
-                        className="bg-primary/10 text-primary hover:bg-primary/20 border-none text-xs px-3 py-1"
+                      <Badge
+                        key={index}
+                        text={tech}
+                        variant="primary"
+                        size="sm"
                       />
                     ))}
                   </div>
