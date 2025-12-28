@@ -64,8 +64,16 @@
     "labelJob": "Job"
   },
   "contact": {
-    "title": "Contact Me",
-    "getInTouch": "Get in Touch"
+    "title": "Contact",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page Not Found",
+    "description": "Oops! It seems you are lost in the void...",
+    "backHome": "Back to Home"
   },
   "contactForm": {
     "infoTitle": "Contact Information",

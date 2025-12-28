@@ -68,6 +68,12 @@
     "title": "Me Contacter",
     "getInTouch": "Restons en contact"
   },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page introuvable",
+    "description": "Oups ! Il semblerait que vous soyez perdu dans le néant...",
+    "backHome": "Retour à l'accueil"
+  },
   "contactForm": {
     "infoTitle": "Coordonnées",
     "greeting": "J'aimerais avoir de vos nouvelles !",

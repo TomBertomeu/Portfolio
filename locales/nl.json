@@ -50,8 +50,16 @@
     "labelJob": "Werk"
   },
   "contact": {
-    "title": "Neem contact op",
-    "getInTouch": "Neem contact op"
+    "title": "Contact",
+    "email": "E-mail",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Pagina niet gevonden",
+    "description": "Oeps! Het lijkt erop dat je verdwaald bent in de leegte...",
+    "backHome": "Terug naar Home"
   },
   "contactForm": {
     "infoTitle": "Contactgegevens",
