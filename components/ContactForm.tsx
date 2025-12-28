@@ -118,7 +118,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-medium">
-              {t("contactForm.labelName")}
+              {t("contactForm.labelName")} <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -134,7 +134,7 @@ export default function ContactForm() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="email" className="text-sm font-medium">
-              {t("contactForm.labelEmail")}
+              {t("contactForm.labelEmail")} <span className="text-red-500">*</span>
             </label>
             <input
               type="email"
@@ -150,7 +150,7 @@ export default function ContactForm() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="message" className="text-sm font-medium">
-              {t("contactForm.labelMessage")}
+              {t("contactForm.labelMessage")} <span className="text-red-500">*</span>
             </label>
             <textarea
               id="message"
