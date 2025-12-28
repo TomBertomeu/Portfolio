@@ -86,7 +86,7 @@ export default function ContactForm() {
           <div className="flex gap-6">
             <a
               href="mailto:tom.bertomeu.pro@gmail.com"
-              className="text-muted-foreground hover:text-primary transition-colors transform hover:scale-110 duration-200"
+              className="text-muted-foreground hover:text-primary transition-all transform hover:scale-110 active:scale-95 duration-200"
               title="Email"
             >
               <Mail className="h-6 w-6" />
@@ -95,7 +95,7 @@ export default function ContactForm() {
               href="https://github.com/TomBertomeu"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors transform hover:scale-110 duration-200"
+              className="text-muted-foreground hover:text-foreground transition-all transform hover:scale-110 active:scale-95 duration-200"
               title="GitHub"
             >
               <Github className="h-6 w-6" />
@@ -104,7 +104,7 @@ export default function ContactForm() {
               href="https://www.linkedin.com/in/tom-bertomeu/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-[#0077b5] transition-colors transform hover:scale-110 duration-200"
+              className="text-muted-foreground hover:text-[#0077b5] transition-all transform hover:scale-110 active:scale-95 duration-200"
               title="LinkedIn"
             >
               <Linkedin className="h-6 w-6" />
@@ -167,7 +167,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={status === "sending" || status === "success"}
-            className={`cursor-pointer w-full flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 ${status === "success"
+            className={`cursor-pointer w-full flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 active:scale-95 ${status === "success"
               ? "bg-green-600 hover:bg-green-700"
               : "bg-primary hover:bg-primary/90"
               } disabled:opacity-70 disabled:cursor-not-allowed`}

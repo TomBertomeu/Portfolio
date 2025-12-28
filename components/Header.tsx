@@ -22,19 +22,18 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-                scrolled
-                    ? "py-2 bg-background/80 backdrop-blur-md"
-                    : "py-4 bg-transparent backdrop-blur-none"
-            }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+                ? "py-2 bg-background/80 backdrop-blur-md"
+                : "py-4 bg-transparent backdrop-blur-none"
+                }`}
         >
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
                 {/* Logo */}
                 <Link href="/" className="relative w-10 h-10 hover:opacity-80 transition-opacity">
-                    <Image 
-                        src="/images/logo.png" 
-                        alt="Logo" 
-                        fill 
+                    <Image
+                        src="/images/logo.png"
+                        alt="Logo"
+                        fill
                         className="object-contain"
                     />
                 </Link>
@@ -43,16 +42,16 @@ export default function Header() {
                 <div className="flex items-center gap-6">
                     {/* Nav Links - Hidden on mobile, visible on md+ */}
                     <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-                        <Link href="/#about" className="hover:text-[var(--primary-blue)] transition-colors">
+                        <Link href="/#about" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
                             {t("nav.about") || "À propos"}
                         </Link>
-                        <Link href="/#projects" className="hover:text-[var(--primary-blue)] transition-colors">
+                        <Link href="/#projects" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
                             {t("nav.projects") || "Projets"}
                         </Link>
-                        <Link href="/blog" className="hover:text-[var(--primary-blue)] transition-colors">
+                        <Link href="/blog" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
                             {t("nav.blog") || "Blog"}
                         </Link>
-                        <Link href="/#contact" className="hover:text-[var(--primary-blue)] transition-colors">
+                        <Link href="/#contact" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
                             {t("nav.contact") || "Contact"}
                         </Link>
                     </nav>
@@ -63,19 +62,19 @@ export default function Header() {
                     {/* Actions */}
                     <div className="flex items-center gap-2">
                         {/* Mobile Blog Link */}
-                        <Link 
+                        <Link
                             href="/blog"
-                            className="md:hidden inline-flex items-center justify-center p-2 hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                            className="md:hidden inline-flex items-center justify-center p-2 hover:bg-accent hover:text-accent-foreground active:bg-accent/80 active:scale-95 rounded-md transition-all"
                             title={t("nav.blog") || "Blog"}
                         >
                             <BookText className="w-5 h-5" />
                         </Link>
 
-                        <a 
+                        <a
                             href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-[var(--primary-blue)] transition-colors mr-2"
+                            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-[var(--primary-blue)] active:scale-95 transition-all mr-2"
                             title={t("about.downloadCv")}
                         >
                             <FileText className="w-4 h-4" />
@@ -88,10 +87,9 @@ export default function Header() {
             </div>
 
             {/* Animated Border */}
-            <div 
-                className={`absolute bottom-0 left-0 h-[1px] bg-border transition-all duration-500 ease-in-out ${
-                    scrolled ? "w-full" : "w-0"
-                }`}
+            <div
+                className={`absolute bottom-0 left-0 h-[1px] bg-border transition-all duration-500 ease-in-out ${scrolled ? "w-full" : "w-0"
+                    }`}
             />
         </header>
     );

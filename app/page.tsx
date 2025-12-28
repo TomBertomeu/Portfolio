@@ -42,7 +42,7 @@ export default function Home() {
                                 href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="cursor-pointer inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-md text-sm font-medium hover:bg-primary/90 transition-all duration-300"
+                                className="cursor-pointer inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-md text-sm font-medium hover:bg-primary/90 active:scale-95 transition-all duration-300"
                             >
                                 <FileText className="w-5 h-5" />
                                 {t("about.downloadCv")}
@@ -67,7 +67,7 @@ export default function Home() {
                             href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="cursor-pointer inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-md text-sm font-medium hover:bg-primary/90 transition-all duration-300"
+                            className="cursor-pointer inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-md text-sm font-medium hover:bg-primary/90 active:scale-95 transition-all duration-300"
                         >
                             <FileText className="w-5 h-5" />
                             {t("about.downloadCv")}
@@ -96,7 +96,7 @@ export default function Home() {
                 <div className="flex justify-center mt-6">
                     <Link
                         href="/projects"
-                        className="cursor-pointer inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors group"
+                        className="cursor-pointer inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium active:scale-95 transition-all duration-300 group"
                     >
                         <span className="relative">
                             {t("projects.seeAll") || "Voir tous les projets"}

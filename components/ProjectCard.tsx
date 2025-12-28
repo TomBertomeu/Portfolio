@@ -15,7 +15,7 @@ export default function ProjectCard({ project, priority = false }: Readonly<Proj
   return (
     <Link
       href={`/projects/${project.id}`}
-      className="group relative grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-lg border border-transparent bg-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-card hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] cursor-pointer"
+      className="group relative grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-lg border border-transparent bg-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-card hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] cursor-pointer active:scale-[0.98]"
     >
 
       {/* Image Column */}
