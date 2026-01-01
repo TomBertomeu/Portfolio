@@ -13,6 +13,7 @@ I chose a modern stack to build this portfolio, ensuring it is fast, scalable, a
 *   **Tailwind CSS 4**: For styling, I use Tailwind CSS. It allows me to rapidly build custom designs without leaving the HTML.
 *   **Radix UI**: I use headless components from Radix UI for accessible interactive foundations like dialogs and labels.
 *   **Motion & Interactivity**: I implemented custom scroll animations and use `tw-animate-css` to bring the interface to life without compromising performance.
+*   **Formspree**: I integrated Formspree to handle contact form submissions reliably without needing a custom backend server for emails.
 *   **Internationalization**: The site is fully multilingual. I built a custom language context to handle content switching seamlessly (currently supporting English and French).
 
 ## Key Features
@@ -22,7 +23,7 @@ The portfolio helps me share my story through several key sections:
 *   **About Me**: A brief introduction to who I am, accompanied by my profile picture and a direct link to download my CV in the selected language.
 *   **Experience**: A timeline or list highlighting my professional journey and career milestones.
 *   **Projects Showcase**: I believe seeing is believing. This section displays selected projects with descriptions and links. There is also a dedicated archive page for a more comprehensive list.
-*   **Contact Form**: A functional form allowing visitors to reach out to me directly from the website.
+*   **Contact Form**: A functional form powered by Formspree allowing visitors to reach out to me directly from the website.
 *   **Responsive Design**: The layout adapts smoothly to any device, from large desktop screens to mobile phones.
 *   **Dark Mode**: The design respects system preferences or user choice for light/dark themes.
 
@@ -44,6 +45,17 @@ You will need Node.js installed on your computer. I recommend using a reasonably
     npm install
     # or
     yarn install
+    ```
+
+### Configuration
+
+You need to set up the environment variables for the contact form to work:
+
+1.  Create a `.env.local` file in the root directory.
+2.  Add your Formspree form ID:
+
+    ```env
+    NEXT_PUBLIC_FORMSPREE_ID=your_form_id_here
     ```
 
 ### Running the Development Server
