@@ -1,30 +1,4 @@
-export interface BlogPost {
-  id: number;
-  slug: string;
-  title: {
-    fr: string;
-    en: string;
-    nl: string;
-  };
-  excerpt: {
-    fr: string;
-    en: string;
-    nl: string;
-  };
-  date: string;
-  readTime: {
-    fr: string;
-    en: string;
-    nl: string;
-  };
-  tags: string[];
-  image?: string;
-  content: {
-    fr: string;
-    en: string;
-    nl: string;
-  };
-}
+import type { BlogPost } from "@/types/blog";
 
 export const blogPosts: BlogPost[] = [
   {
@@ -32,19 +6,16 @@ export const blogPosts: BlogPost[] = [
     slug: "building-my-portfolio",
     title: {
       fr: "La création de mon portfolio : Tech Stack & Design",
-      en: "Building my Portfolio: Tech Stack & Design",
-      nl: "Mijn portfolio bouwen: Tech Stack & Design"
+      en: "Building my Portfolio: Tech Stack & Design"
     },
     excerpt: {
       fr: "Découvrez les coulisses de la création de ce site, de la conception à la mise en ligne avec Next.js et Tailwind CSS.",
-      en: "Behind the scenes of creating this website, from design to deployment with Next.js and Tailwind CSS.",
-      nl: "Ontdek achter de schermen van de creatie van deze site, van ontwerp tot implementatie met Next.js en Tailwind CSS."
+      en: "Behind the scenes of creating this website, from design to deployment with Next.js and Tailwind CSS."
     },
     date: "2025-11-28",
     readTime: {
       fr: "5 min de lecture",
-      en: "5 min read",
-      nl: "5 min leestijd"
+      en: "5 min read"
     },
     tags: ["Next.js", "Tailwind", "Portfolio"],
     image: "/images/blog/portfolio.png",
@@ -98,17 +69,8 @@ export const blogPosts: BlogPost[] = [
         <p class="mb-4">This project is alive. It will evolve with my skills and interests. Beyond the technical aspect, this portfolio is also a way for me to experiment and share what I learn.</p>
         <p class="mb-4">In the coming months, I plan to enrich this blog section with more technical articles on React, accessibility, or performance optimization. If you have any feedback or questions about how this site was built, feel free to drop me a message via the contact form. It's always a pleasure to connect with fellow enthusiasts!</p>
         <!-- <p class="mb-4">The code is available on my GitHub if you want to see how it all fits together under the hood!</p> -->
-      `,
-      nl: ""
+      `
     }
   }
 ];
 
-export function getBlogPosts(lang: "fr" | "en" | "nl" = "fr") {
-  return blogPosts.map(post => ({
-    ...post,
-    title: post.title[lang],
-    excerpt: post.excerpt[lang],
-    readTime: post.readTime[lang]
-  }));
-}

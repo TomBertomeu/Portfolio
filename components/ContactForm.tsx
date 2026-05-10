@@ -3,17 +3,19 @@
 import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageProvider";
+import { sendContactMessage } from "@/services/contactService";
 import Title from "./Title";
 import ScrollAnimation from "./ScrollAnimation";
 
+const STATUS_RESET_DELAY_MS = 5000;
+const EMPTY_FORM = { name: "", email: "", message: "" };
+
+type FormStatus = "idle" | "sending" | "success" | "error";
+
 export default function ContactForm() {
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [formData, setFormData] = useState(EMPTY_FORM);
+  const [status, setStatus] = useState<FormStatus>("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,43 +26,16 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("sending");
 
-    try {
-      // Utilisation de Formspree pour l'envoi d'emails en statique
-      // Remplacez process.env.NEXT_PUBLIC_FORMSPREE_ID par votre ID de formulaire Formspree
-      // ou mettez l'URL complète ici : "https://formspree.io/f/votre_id"
-      const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+    const result = await sendContactMessage(formData);
 
-      if (!formId || formId === "votre_id_formspree_ici") {
-        console.error("Formspree ID is missing or invalid. Please update .env.local with your real Formspree ID.");
-        alert("Configuration Error: Formspree ID is missing. Please check the console for details.");
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 5000);
-        return;
-      }
-
-      const response = await fetch(`https://formspree.io/f/${formId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => setStatus("idle"), 5000);
-      } else {
-        const data = await response.json();
-        console.error("Server error:", data.error);
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 5000);
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
+    if (result.ok) {
+      setStatus("success");
+      setFormData(EMPTY_FORM);
+    } else {
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
     }
+
+    setTimeout(() => setStatus("idle"), STATUS_RESET_DELAY_MS);
   };
 
   return (

@@ -3,19 +3,16 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { getProjects } from "@/data/projects";
+import { findAllProjects } from "@/repositories/projectRepository";
 import Badge from "@/components/Badge";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import HeroBackground from "@/components/HeroBackground";
+import UnderlineAccent from "@/components/UnderlineAccent";
 
 export default function ProjectsPage() {
   const { t, language } = useLanguage();
-  const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
-  const projects = getProjects(currentLang);
-  
-  // Use projects in the order defined in data/projects.ts
-  const sortedProjects = projects;
+  const sortedProjects = findAllProjects(language);
 
   return (
     <div className="min-h-screen flex flex-col pt-32 relative">
@@ -37,7 +34,7 @@ export default function ProjectsPage() {
           <ScrollAnimation direction="down" delay={100}>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6 relative inline-block">
                 <span className="relative z-10">{t("projectsPage.title")}</span>
-                <span className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-[#2563eb]/30 to-[#10b981]/30 -skew-x-12 z-0"></span>
+                <UnderlineAccent />
             </h1>
           </ScrollAnimation>
 

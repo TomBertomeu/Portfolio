@@ -1,27 +1,21 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import HeroBackground from './HeroBackground';
 import { useLanguage } from "@/contexts/LanguageProvider";
+import { useScrollY } from "@/hooks/useScrollY";
+
+const PARALLAX_SPEED = 0.5;
+const FADE_SCROLL_DISTANCE = 700;
 
 export default function Hero() {
-    const { t, language } = useLanguage();
-    const contentRef = useRef<HTMLDivElement>(null);
+    const { t } = useLanguage();
+    const scrolled = useScrollY();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (contentRef.current) {
-                const scrolled = window.scrollY;
-                // Parallax effect: move content down at 50% of scroll speed
-                // This makes it look like it's moving slower than the rest of the page (which moves up at 100% speed relative to viewport)
-                contentRef.current.style.transform = `translateY(${scrolled * 0.5}px)`;
-                contentRef.current.style.opacity = `${1 - scrolled / 700}`; // Fade out
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const contentStyle = {
+        transform: `translateY(${scrolled * PARALLAX_SPEED}px)`,
+        opacity: `${1 - scrolled / FADE_SCROLL_DISTANCE}`,
+    };
 
     return (
         <section className="relative h-screen w-full overflow-hidden">
@@ -29,8 +23,8 @@ export default function Hero() {
             <HeroBackground />
 
             {/* Content Container */}
-            <div 
-                ref={contentRef}
+            <div
+                style={contentStyle}
                 className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4"
             >
                 <p className="mb-4 text-xl font-medium text-foreground/80 sm:text-2xl">

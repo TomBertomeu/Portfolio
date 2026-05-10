@@ -3,7 +3,7 @@
 import React from "react";
 import Section from "@/components/Section";
 import Title from "@/components/Title";
-import { getExperiences } from "@/data/experience";
+import { findAllExperiences } from "@/repositories/experienceRepository";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import Badge from "@/components/Badge";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -11,8 +11,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function ExperienceSection() {
   const { t, language } = useLanguage();
-  const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
-  const experiences = getExperiences(currentLang);
+  const experiences = findAllExperiences(language);
 
   return (
     <Section id="experience">

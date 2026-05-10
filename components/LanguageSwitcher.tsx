@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { useLanguage, Language } from "@/contexts/LanguageProvider";
-import { FR, GB, NL } from 'country-flag-icons/react/3x2';
+import { FR, GB } from 'country-flag-icons/react/3x2';
 import { ChevronDown } from "lucide-react";
 
 export function LanguageSwitcher() {
@@ -24,7 +24,6 @@ export function LanguageSwitcher() {
   const languages: { code: Language; label: string; Flag: React.ComponentType<{ className?: string }> }[] = [
     { code: 'fr', label: 'Français', Flag: FR },
     { code: 'en', label: 'English', Flag: GB },
-    // { code: 'nl', label: 'Nederlands', Flag: NL }
   ];
 
   const currentLanguage = languages.find(l => l.code === language) || languages[0];

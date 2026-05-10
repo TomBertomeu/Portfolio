@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Project } from "@/data/projects";
+import type { Project } from "@/types/project";
 import Badge from "./Badge";
 import ProjectThumbnail from "./ProjectThumbnail";
 

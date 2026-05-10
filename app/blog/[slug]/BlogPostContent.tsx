@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageProvider";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import HeroBackground from "@/components/HeroBackground";
 import { Calendar, Clock, ArrowLeft, Tag } from "lucide-react";
-import { BlogPost } from "@/data/blog";
+import type { BlogPost } from "@/types/blog";
 
 interface BlogPostContentProps {
     post: BlogPost;
@@ -14,11 +14,10 @@ interface BlogPostContentProps {
 
 export default function BlogPostContent({ post }: Readonly<BlogPostContentProps>) {
     const { language } = useLanguage();
-    const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
-    
-    const title = post.title[currentLang];
-    const content = post.content[currentLang];
-    const readTime = post.readTime[currentLang];
+
+    const title = post.title[language];
+    const content = post.content[language];
+    const readTime = post.readTime[language];
 
     return (
         <div className="min-h-screen flex flex-col pt-32 relative">
@@ -33,7 +32,7 @@ export default function BlogPostContent({ post }: Readonly<BlogPostContentProps>
                             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
                         >
                             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                            {currentLang === 'fr' ? 'Retour au blog' : 'Back to blog'}
+                            {language === 'fr' ? 'Retour au blog' : 'Back to blog'}
                         </Link>
                     </ScrollAnimation>
 
@@ -42,7 +41,7 @@ export default function BlogPostContent({ post }: Readonly<BlogPostContentProps>
                             <div className="flex items-center gap-1.5 bg-secondary/50 px-3 py-1 rounded-full">
                                 <Calendar className="w-3.5 h-3.5" />
                                 <time dateTime={post.date}>
-                                    {new Date(post.date).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-US', {
+                                    {new Date(post.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                                         year: 'numeric',
                                         month: 'long',
                                         day: 'numeric'

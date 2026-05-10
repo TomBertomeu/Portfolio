@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import { useInView } from "@/hooks/useInView";
 
 interface ScrollAnimationProps {
   children: React.ReactNode;
@@ -15,53 +16,15 @@ export default function ScrollAnimation({
   className = "",
   delay = 0
 }: Readonly<ScrollAnimationProps>) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "50px",
-      }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
+  const [ref, isVisible] = useInView<HTMLDivElement>();
 
   const getInitialTransform = () => {
-    // Reduced distance from 20 (5rem) to 8 (2rem) for subtler effect
-    // Responsive logic:
-    // - Base (Mobile): Always 'translate-y-8' (Standard 'up' animation)
-    // - md (Desktop): Specific direction
     switch (direction) {
-      case "left":
-        // Mobile: Up (y-8), Desktop: Left (-x-8, reset y)
-        return "translate-y-8 md:translate-y-0 md:-translate-x-8";
-      case "right":
-        // Mobile: Up (y-8), Desktop: Right (x-8, reset y)
-        return "translate-y-8 md:translate-y-0 md:translate-x-8";
-      case "up":
-        // Always Up
-        return "translate-y-8";
-      case "down":
-        // Always Down
-        return "-translate-y-8";
-      default: return "";
+      case "left":  return "translate-y-8 md:translate-y-0 md:-translate-x-8";
+      case "right": return "translate-y-8 md:translate-y-0 md:translate-x-8";
+      case "up":    return "translate-y-8";
+      case "down":  return "-translate-y-8";
+      default:      return "";
     }
   };
 

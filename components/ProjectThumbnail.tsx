@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Project } from "@/data/projects";
+import type { Project } from "@/types/project";
 
 interface ProjectThumbnailProps {
     project: Project;

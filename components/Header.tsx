@@ -1,24 +1,19 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageProvider";
+import { useScrollY } from "@/hooks/useScrollY";
 import { FileText, BookText } from "lucide-react";
+
+const SCROLL_THRESHOLD = 50;
 
 export default function Header() {
     const { t, language } = useLanguage();
-    const [scrolled, setScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    const scrolled = useScrollY() > SCROLL_THRESHOLD;
 
     return (
         <header

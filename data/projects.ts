@@ -1,51 +1,7 @@
-import { LucideIcon, Layout, Database, Server, Smartphone, Brain, Clock, Code, CloudCog } from "lucide-react";
+import { Layout, Database, Server, Smartphone, Brain, Clock, Code } from "lucide-react";
+import type { ProjectData } from "@/types/project";
 
-export interface ProjectBadge {
-  icon: LucideIcon;
-  text: string;
-}
-
-export type FeatureStatus = "completed" | "in-progress" | "planned";
-
-export interface ProjectFeature {
-  text: string;
-  status: FeatureStatus;
-}
-
-export interface Project {
-  id: string;
-  title?: string;
-  description?: string;
-  image?: string;
-  link?: string;
-  badges?: ProjectBadge[];
-  featured?: boolean;
-  year?: string;
-  madeAt?: string;
-  // New detailed fields
-  gallery?: string[];
-  features?: ProjectFeature[];
-  challenges?: string;
-  solutions?: string;
-  role?: string;
-  team?: string;
-  context?: string;
-  demoVideo?: string;
-}
-
-interface ProjectData extends Omit<Project, "title" | "description" | "madeAt" | "features" | "challenges" | "solutions" | "role" | "team" | "context"> {
-  title?: { fr: string; en: string };
-  description?: { fr: string; en: string };
-  madeAt?: { fr: string; en: string };
-  features?: { fr: ProjectFeature[]; en: ProjectFeature[] };
-  challenges?: { fr: string; en: string };
-  solutions?: { fr: string; en: string };
-  role?: { fr: string; en: string };
-  team?: { fr: string; en: string };
-  context?: { fr: string; en: string };
-}
-
-const projectsData: ProjectData[] = [
+export const projectsData: ProjectData[] = [
   {
     id: "outer-wilds-pomodoro",
     title: {
@@ -275,45 +231,3 @@ const projectsData: ProjectData[] = [
     ]
   }
 ];
-
-export function getProjects(lang: "fr" | "en" = "fr"): Project[] {
-  return projectsData.map(p => ({
-    ...p,
-    title: p.title?.[lang],
-    description: p.description?.[lang],
-    madeAt: p.madeAt?.[lang],
-    features: p.features?.[lang],
-    challenges: p.challenges?.[lang],
-    solutions: p.solutions?.[lang],
-    role: p.role?.[lang],
-    team: p.team?.[lang],
-    context: p.context?.[lang]
-  }));
-}
-
-export function getProjectById(id: string, lang: "fr" | "en" = "fr"): Project | undefined {
-  const project = projectsData.find(project => project.id === id);
-  if (!project) return undefined;
-  return {
-    ...project,
-    title: project.title?.[lang],
-    description: project.description?.[lang],
-    madeAt: project.madeAt?.[lang],
-    features: project.features?.[lang],
-    challenges: project.challenges?.[lang],
-    solutions: project.solutions?.[lang],
-    role: project.role?.[lang],
-    team: project.team?.[lang],
-    context: project.context?.[lang]
-  };
-}
-
-export function getFeaturedProjects(lang: "fr" | "en" = "fr", count: number = 3): Project[] {
-  return getProjects(lang).filter(p => p.featured).slice(0, count);
-}
-
-export function getOtherProjects(lang: "fr" | "en" = "fr"): Project[] {
-    return getProjects(lang).filter(p => !p.featured);
-}
-
-export default getProjects;

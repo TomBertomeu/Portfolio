@@ -1,9 +1,9 @@
-import { getProjects, getProjectById } from "@/data/projects";
+import { findAllProjects, findProjectById } from "@/repositories/projectRepository";
 import ProjectDetailClient from "./client";
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const projects = getProjects("fr");
+  const projects = findAllProjects("fr");
   return projects.map((project) => ({
     id: project.id,
   }));
@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const project = getProjectById(id, "fr");
+  const project = findProjectById(id, "fr");
 
   if (!project) {
     return {

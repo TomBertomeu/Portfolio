@@ -5,7 +5,7 @@ import Section from "@/components/Section";
 import Title from "@/components/Title";
 import ProjectCard from "@/components/ProjectCard";
 import ExperienceSection from "@/components/ExperienceSection";
-import { getFeaturedProjects, getOtherProjects } from "@/data/projects";
+import { findFeaturedProjects, findOtherProjects } from "@/repositories/projectRepository";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { FileText, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -16,9 +16,8 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 
 export default function Home() {
     const { t, language } = useLanguage();
-    const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
-    const featuredProjects = getFeaturedProjects(currentLang);
-    const otherProjects = getOtherProjects(currentLang);
+    const featuredProjects = findFeaturedProjects(language);
+    const otherProjects = findOtherProjects(language);
 
     return (
         <>

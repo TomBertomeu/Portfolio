@@ -4,21 +4,19 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageProvider";
-import { getBlogPosts } from "@/data/blog";
+import { findAllBlogPosts } from "@/repositories/blogRepository";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import HeroBackground from "@/components/HeroBackground";
+import UnderlineAccent from "@/components/UnderlineAccent";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 
 export default function BlogPage() {
     const { language } = useLanguage();
-    // Fallback to 'fr' if language is not supported or is 'nl' (which is disabled in UI)
-    const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
-    const posts = getBlogPosts(currentLang);
+    const posts = findAllBlogPosts(language);
 
     const headerSubtitle = {
         fr: "Partage d'expériences, tutoriels et réflexions sur le développement web.",
-        en: "Sharing experiences, tutorials, and thoughts on web development.",
-        nl: "Ervaringen delen, tutorials en gedachten over webontwikkeling."
+        en: "Sharing experiences, tutorials, and thoughts on web development."
     };
 
     return (
@@ -31,12 +29,12 @@ export default function BlogPage() {
                     <ScrollAnimation direction="down">
                         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6 relative inline-block">
                             <span className="relative z-10">Blog</span>
-                            <span className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-[#2563eb]/30 to-[#10b981]/30 -skew-x-12 z-0"></span>
+                            <UnderlineAccent />
                         </h1>
                     </ScrollAnimation>
                     <ScrollAnimation direction="up" delay={200}>
                         <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                            {headerSubtitle[currentLang]}
+                            {headerSubtitle[language]}
                         </p>
                     </ScrollAnimation>
                 </div>
@@ -78,7 +76,7 @@ export default function BlogPage() {
                                             <div className="flex items-center gap-1.5 rounded-full bg-black/20 backdrop-blur-md px-3 py-1 text-xs font-medium text-white border border-white/10 shadow-sm">
                                                 <Calendar className="w-3 h-3" />
                                                 <time dateTime={post.date}>
-                                                    {new Date(post.date).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-US', {
+                                                    {new Date(post.date).toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                                                         year: 'numeric',
                                                         month: 'short',
                                                         day: 'numeric'
@@ -118,7 +116,7 @@ export default function BlogPage() {
                                                 )}
                                             </div>
                                             <span className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                                                {currentLang === 'fr' ? 'Lire' : 'Read'} <ArrowRight className="w-4 h-4" />
+                                                {language === 'fr' ? 'Lire' : 'Read'} <ArrowRight className="w-4 h-4" />
                                             </span>
                                         </div>
                                     </div>

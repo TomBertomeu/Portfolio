@@ -4,17 +4,18 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ExternalLink, Github, Calendar, Building, Code, CheckCircle2, AlertTriangle, Lightbulb, Hammer, CircleDashed } from "lucide-react";
-import { getProjectById, ProjectFeature } from "@/data/projects";
+import { findProjectById } from "@/repositories/projectRepository";
+import type { ProjectFeature } from "@/types/project";
 import Badge from "@/components/Badge";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import HeroBackground from "@/components/HeroBackground";
+import UnderlineAccent from "@/components/UnderlineAccent";
 import { notFound } from "next/navigation";
 
 export default function ProjectDetailClient({ id }: { id: string }) {
     const { t, language } = useLanguage();
-    const currentLang = (language === 'fr' || language === 'en') ? language : 'fr';
-    const project = getProjectById(id, currentLang);
+    const project = findProjectById(id, language);
 
     if (!project) {
         return notFound();
@@ -57,7 +58,7 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                 </div>
                                 <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6 relative inline-block">
                                     <span className="relative z-10">{project.title}</span>
-                                    <span className="absolute -bottom-2 left-0 w-full h-3 bg-gradient-to-r from-[#2563eb]/30 to-[#10b981]/30 -skew-x-12 z-0"></span>
+                                    <UnderlineAccent />
                                 </h1>
                             </ScrollAnimation>
 

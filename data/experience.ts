@@ -1,22 +1,6 @@
-export interface Experience {
-  id: string;
-  title: string;
-  company: string;
-  period: string;
-  description: string;
-  type: "work" | "education";
-  current?: boolean;
-  technologies: string[];
-  link?: string;
-}
+import type { ExperienceData } from "@/types/experience";
 
-interface ExperienceData extends Omit<Experience, "title" | "period" | "description"> {
-  title: { fr: string; en: string };
-  period: { fr: string; en: string };
-  description: { fr: string; en: string };
-}
-
-const experiencesData: ExperienceData[] = [
+export const experiencesData: ExperienceData[] = [
   {
     id: "alternance-geniatest",
     title: {
@@ -77,13 +61,3 @@ const experiencesData: ExperienceData[] = [
   }
 ];
 
-export function getExperiences(lang: "fr" | "en" = "fr"): Experience[] {
-  return experiencesData.map(exp => ({
-    ...exp,
-    title: exp.title[lang],
-    period: exp.period[lang],
-    description: exp.description[lang]
-  }));
-}
-
-export default getExperiences;
