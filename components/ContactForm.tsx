@@ -103,7 +103,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderName")}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full rounded-full border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
             />
           </div>
 
@@ -119,7 +119,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderEmail")}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full rounded-full border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
             />
           </div>
 
@@ -135,32 +135,38 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderMessage")}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 resize-none"
+              className="w-full rounded-2xl border border-primary/30 bg-background px-5 py-3 text-sm placeholder:text-muted-foreground transition-colors resize-none focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
             />
           </div>
 
           <button
             type="submit"
             disabled={status === "sending" || status === "success"}
-            className={`cursor-pointer w-full flex items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 active:scale-95 ${status === "success"
-              ? "bg-green-600 hover:bg-green-700"
-              : "bg-primary hover:bg-primary/90"
-              } disabled:opacity-70 disabled:cursor-not-allowed`}
+            className={`cursor-pointer relative w-full inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium overflow-hidden transition-all duration-300 ease-out active:scale-95 group disabled:cursor-not-allowed ${
+              status === "success"
+                ? "border-transparent text-white bg-green-600"
+                : "border-primary/40 bg-transparent text-primary hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-[#2563eb]/30 disabled:opacity-70"
+            }`}
           >
+            {status !== "success" && (
+              <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-gradient-to-r from-[#2563eb] to-[#10b981] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+            )}
             {status === "sending" ? (
               <>
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-                {t("contactForm.sending")}
+                <div className="relative z-10 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                <span className="relative z-10">{t("contactForm.sending")}</span>
               </>
             ) : status === "success" ? (
               <>
-                <CheckCircle className="h-4 w-4" />
-                {t("contactForm.success")}
+                <CheckCircle className="relative z-10 h-4 w-4" />
+                <span className="relative z-10">{t("contactForm.success")}</span>
               </>
             ) : (
               <>
-                <Send className="h-4 w-4" />
-                {t("contactForm.send")}
+                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-0.5">
+                  {t("contactForm.send")}
+                </span>
+                <Send className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
               </>
             )}
           </button>
