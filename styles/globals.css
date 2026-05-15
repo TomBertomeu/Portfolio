@@ -59,6 +59,7 @@ html {
     --color-sidebar-ring: var(--sidebar-ring);
     --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
     --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+    --font-handwritten: var(--font-caveat), cursive;
 }
 
 :root {

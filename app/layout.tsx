@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Caveat } from "next/font/google";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -16,6 +16,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+});
+
+const caveat = Caveat({
+    variable: "--font-caveat",
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +38,7 @@ export const viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="fr" suppressHydrationWarning>
-            <body className={`min-h-screen ${geistSans.variable} ${geistMono.variable} antialiased font-sans`}>
+            <body className={`min-h-screen ${geistSans.variable} ${geistMono.variable} ${caveat.variable} antialiased font-sans`}>
                 <LanguageProvider>
                     <ThemeProvider
                         attribute="class"

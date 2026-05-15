@@ -26,7 +26,7 @@ export default function Hero() {
                 className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4"
             >
                 <h1 className="text-5xl font-bold tracking-tighter sm:text-7xl shimmer pb-2">
-                    [super slogan qui tue]
+                    [super <span className="font-handwritten font-normal mx-1">slogan</span> qui tue]
                 </h1>
             </div>
         </section>
