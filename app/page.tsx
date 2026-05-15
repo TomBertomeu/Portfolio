@@ -84,7 +84,7 @@ export default function Home() {
                     <Title text={t("projects.title")} centered />
                 </ScrollAnimation>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1.35fr_1fr] gap-6 mt-12 md:mt-16 mb-12 group/projects items-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1.35fr_1fr] gap-6 mt-12 md:mt-16 mb-12 items-center has-[a:hover]:[&>*:not(:has(a:hover))]:opacity-50">
                     {featuredProjects.map((project, index) => {
                         const isMain = index === 1;
                         return (
@@ -92,7 +92,7 @@ export default function Home() {
                                 key={project.id}
                                 direction="up"
                                 delay={index * 100}
-                                className={`transition-all duration-300 hover:!opacity-100 group-hover/projects:opacity-50 ${isMain ? "sm:col-span-2 lg:col-span-1" : ""}`}
+                                className={`transition-all duration-300 ${isMain ? "sm:col-span-2 lg:col-span-1" : ""}`}
                             >
                                 <ProjectCard project={project} priority={true} featured={isMain} />
                             </ScrollAnimation>
