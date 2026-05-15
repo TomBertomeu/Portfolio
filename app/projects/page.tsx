@@ -20,7 +20,7 @@ export default function ProjectsPage() {
 
       {/* Header */}
       <div className="pb-12 relative z-10">
-        <div className="mx-auto max-w-6xl px-4 text-center flex flex-col items-center">
+        <div className="mx-auto max-w-7xl px-4 text-center flex flex-col items-center">
           <ScrollAnimation direction="down">
             <Link 
                 href="/" 
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
 
       {/* Projects Table */}
       <div className="bg-muted py-16 flex-grow relative z-10">
-        <div className="mx-auto max-w-6xl px-4">
+        <div className="mx-auto max-w-7xl px-4">
           <ScrollAnimation direction="up" delay={300}>
             <div className="rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm shadow-sm">
               <div className="overflow-x-auto md:overflow-visible rounded-xl">

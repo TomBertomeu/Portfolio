@@ -27,7 +27,7 @@ export default function ProjectDetailClient({ id }: { id: string }) {
 
             {/* Header / Hero */}
             <div className="pb-12 relative z-10">
-                <div className="mx-auto max-w-6xl px-4">
+                <div className="mx-auto max-w-7xl px-4">
                     <ScrollAnimation direction="down">
                         <Link
                             href="/#projects"
