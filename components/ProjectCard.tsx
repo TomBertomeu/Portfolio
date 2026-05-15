@@ -9,42 +9,45 @@ import ProjectThumbnail from "./ProjectThumbnail";
 interface ProjectCardProps {
   project: Project;
   priority?: boolean;
+  featured?: boolean;
 }
 
-export default function ProjectCard({ project, priority = false }: Readonly<ProjectCardProps>) {
+export default function ProjectCard({ project, priority = false, featured = false }: Readonly<ProjectCardProps>) {
   return (
     <Link
       href={`/projects/${project.id}`}
-      className="group relative grid grid-cols-1 md:grid-cols-4 gap-4 p-4 rounded-lg border border-transparent bg-transparent transition-all duration-300 ease-in-out hover:border-border hover:bg-card hover:shadow-[-6px_6px_10px_rgba(0,0,0,0.1)] cursor-pointer active:scale-[0.98]"
+      className={`group relative flex h-full flex-col gap-4 rounded-lg border bg-card transition-all duration-300 ease-in-out cursor-pointer active:scale-[0.98] hover:shadow-[-6px_6px_20px_rgba(0,0,0,0.12)] ${
+        featured
+          ? "p-6 border-primary/30 shadow-md hover:border-primary/60"
+          : "p-4 border-border shadow-sm hover:border-primary/40"
+      }`}
     >
+      <ProjectThumbnail project={project} priority={priority} />
 
-      {/* Image Column */}
-      <div className="md:col-span-1">
-        <ProjectThumbnail project={project} priority={priority} />
-      </div>
-
-      {/* Content Column */}
-      <div className="md:col-span-3 flex flex-col">
-        <div className="flex items-start justify-between gap-4 mb-2">
-          <h3 className="font-medium leading-snug text-foreground text-lg group-hover:text-primary transition-colors flex items-center gap-2">
+      <div className="flex flex-1 flex-col">
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className={`font-medium leading-snug text-foreground group-hover:text-primary transition-colors flex items-center gap-2 ${featured ? "text-2xl" : "text-lg min-h-[3.125rem]"}`}>
             {project.title || "Untitled Project"}
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary" />
+            <ArrowUpRight className={`shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary ${featured ? "w-5 h-5" : "w-4 h-4"}`} />
           </h3>
+          {project.year && (
+            <span className={`shrink-0 font-mono text-muted-foreground pt-1 ${featured ? "text-sm" : "text-xs"}`}>
+              {project.year}
+            </span>
+          )}
         </div>
 
-        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+        <p className={`text-muted-foreground leading-relaxed mb-4 ${featured ? "text-base line-clamp-4 min-h-[6.5rem]" : "text-sm line-clamp-3 min-h-[4.125rem]"}`}>
           {project.description || ""}
         </p>
 
-        {/* Badges */}
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-1.5 mt-auto">
           {project.badges?.map((badge, index) => (
             <Badge
               key={index}
               text={badge.text}
-              icon={<badge.icon className="w-3 h-3" />}
               variant="primary"
-              size="sm"
+              size={featured ? "sm" : "xs"}
             />
           ))}
         </div>
