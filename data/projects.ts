@@ -27,6 +27,10 @@ export const projectsData: ProjectData[] = [
       fr: "SmartChef",
       en: "SmartChef"
     },
+    tagline: {
+      fr: "L'IA qui cuisine avec votre frigo.",
+      en: "AI that cooks with your fridge."
+    },
     description: {
       fr: "Application mobile intelligente née d'un projet universitaire et évoluée en projet personnel. Elle utilise l'IA pour transformer le contenu de votre frigo en recettes adaptées à vos préférences.",
       en: "Smart mobile application born from a university project and evolved into a personal endeavor. It uses AI to turn your fridge contents into tasty recipes, featuring a modern interface ready for advanced capabilities."
@@ -68,9 +72,9 @@ export const projectsData: ProjectData[] = [
       en: "Co-developer (Phase 1) then Fullstack Developer (Phase 2)"
     },
     badges: [
-      { icon: Smartphone, text: "React Native" },
-      { icon: Code, text: "TypeScript" },
-      { icon: Brain, text: "LLM" },
+      { icon: Brain, text: "LLM", tier: "primary" },
+      { icon: Smartphone, text: "React Native", tier: "secondary" },
+      { icon: Code, text: "TypeScript", tier: "secondary" },
     ]
   },
   {
@@ -78,6 +82,10 @@ export const projectsData: ProjectData[] = [
     title: {
       fr: "Catalogue Événementiel ASO70",
       en: "ASO70 Event Catalog"
+    },
+    tagline: {
+      fr: "Location événementielle et back-office sur-mesure.",
+      en: "Event rentals and tailor-made back-office."
     },
     description: {
       fr: "Plateforme de location de matériel événementiel avec gestion de devis et back-office d'administration.",
@@ -91,9 +99,9 @@ export const projectsData: ProjectData[] = [
       en: "ASO70"
     },
     badges: [
-      { icon: Layout, text: "Next.js" },
-      { icon: Database, text: "Supabase" },
-      { icon: Code, text: "TypeScript" }
+      { icon: Database, text: "Supabase", tier: "primary" },
+      { icon: Layout, text: "Next.js", tier: "secondary" },
+      { icon: Code, text: "TypeScript", tier: "secondary" }
     ]
   },
   {
@@ -121,8 +129,12 @@ export const projectsData: ProjectData[] = [
   {
     id: "vecofroid",
     title: {
-      fr: "Application de Gestion Vecofroid",
-      en: "Vecofroid Management App"
+      fr: "Gestion Vecofroid",
+      en: "Vecofroid Manager"
+    },
+    tagline: {
+      fr: "Numériser la gestion d'interventions terrain.",
+      en: "Digitizing field intervention management."
     },
     description: {
       fr: "Solution prototype pour numériser un processus de gestion d'interventions.",
@@ -136,9 +148,9 @@ export const projectsData: ProjectData[] = [
       en: "Vecofroid"
     },
     badges: [
-      { icon: Layout, text: "Vue.js" },
-      { icon: Server, text: "Express" },
-      { icon: Database, text: "PostgreSQL" }
+      { icon: Layout, text: "Vue.js", tier: "primary" },
+      { icon: Server, text: "Express", tier: "secondary" },
+      { icon: Database, text: "PostgreSQL", tier: "secondary" }
     ]
   },
   {

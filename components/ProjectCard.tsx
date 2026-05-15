@@ -30,26 +30,29 @@ export default function ProjectCard({ project, priority = false, featured = fals
             {project.title || "Untitled Project"}
             <ArrowUpRight className={`shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary ${featured ? "w-5 h-5" : "w-4 h-4"}`} />
           </h3>
-          {project.year && (
-            <span className={`shrink-0 font-mono text-muted-foreground pt-1 ${featured ? "text-sm" : "text-xs"}`}>
-              {project.year}
-            </span>
-          )}
         </div>
 
-        <p className={`text-muted-foreground leading-relaxed mb-4 ${featured ? "text-base line-clamp-4 min-h-[6.5rem]" : "text-sm line-clamp-3 min-h-[4.125rem]"}`}>
-          {project.description || ""}
-        </p>
+        {project.tagline && (
+          <p className={`text-muted-foreground leading-snug mb-4 ${featured ? "text-base" : "text-sm"}`}>
+            {project.tagline}
+          </p>
+        )}
 
         <div className="flex flex-wrap gap-1.5 mt-auto">
-          {project.badges?.map((badge, index) => (
-            <Badge
-              key={index}
-              text={badge.text}
-              variant="primary"
-              size={featured ? "sm" : "xs"}
-            />
-          ))}
+          {[...(project.badges ?? [])]
+            .sort((a, b) => (b.tier === "primary" ? 1 : 0) - (a.tier === "primary" ? 1 : 0))
+            .map((badge, index) => {
+              const isPrimary = badge.tier === "primary";
+              return (
+                <Badge
+                  key={index}
+                  text={badge.text}
+                  icon={isPrimary ? <badge.icon className="w-3 h-3" /> : undefined}
+                  variant={isPrimary ? "primary" : "outline"}
+                  size={featured && isPrimary ? "sm" : "xs"}
+                />
+              );
+            })}
         </div>
       </div>
     </Link>

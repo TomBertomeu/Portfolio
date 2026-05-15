@@ -3,6 +3,7 @@ import { LucideIcon } from "lucide-react";
 export interface ProjectBadge {
   icon: LucideIcon;
   text: string;
+  tier?: "primary" | "secondary";
 }
 
 export type FeatureStatus = "completed" | "in-progress" | "planned";
@@ -15,6 +16,7 @@ export interface ProjectFeature {
 export interface Project {
   id: string;
   title?: string;
+  tagline?: string;
   description?: string;
   image?: string;
   link?: string;
@@ -34,6 +36,7 @@ export interface Project {
 
 type LocalizedField =
   | "title"
+  | "tagline"
   | "description"
   | "madeAt"
   | "features"
@@ -45,6 +48,7 @@ type LocalizedField =
 
 export interface ProjectData extends Omit<Project, LocalizedField> {
   title?: { fr: string; en: string };
+  tagline?: { fr: string; en: string };
   description?: { fr: string; en: string };
   madeAt?: { fr: string; en: string };
   features?: { fr: ProjectFeature[]; en: ProjectFeature[] };

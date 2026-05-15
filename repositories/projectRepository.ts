@@ -8,6 +8,7 @@ function localizeProject(project: ProjectData, lang: Language): Project {
   return {
     ...project,
     title: project.title?.[lang],
+    tagline: project.tagline?.[lang],
     description: project.description?.[lang],
     madeAt: project.madeAt?.[lang],
     features: project.features?.[lang],
