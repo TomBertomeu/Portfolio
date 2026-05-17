@@ -1,7 +1,113 @@
-import { Layout, Database, Server, Smartphone, Brain, Clock, Code } from "lucide-react";
+import { Layout, Database, Server, Smartphone, Brain, Clock, Code, RefreshCw, Plug, WifiOff, BarChart3 } from "lucide-react";
 import type { ProjectData } from "@/types/project";
 
 export const projectsData: ProjectData[] = [
+  {
+    id: "lego-rebuilder",
+    title: {
+      fr: "Outil de reconstruction LEGO",
+      en: "LEGO Set Rebuilder"
+    },
+    tagline: {
+      fr: "Reconstituer mes sets LEGO à partir de pièces en vrac.",
+      en: "Rebuilding my LEGO sets from loose bricks."
+    },
+    description: {
+      fr: "Application qui transforme une pile de Lego en vrac en sets reconstitués : je pioche une pièce, je l'identifie dans la base, et l'outil m'indique à quels sets enregistrés elle manque encore pour l'y attribuer.",
+      en: "Application that turns a pile of loose Lego into rebuilt sets: I grab a piece, identify it in the database, and the tool tells me which registered sets still need it so I can assign it."
+    },
+    image: "/images/projects/lego-rebuilder.jpg",
+    link: "",
+    featured: true,
+    year: "2025",
+    context: {
+      fr: "Projet personnel motivé par l'envie de reconstituer des sets démontés sans avoir à tout déballer manuellement. La base de pièces est dérivée des inventaires officiels des sets enregistrés, ce qui permet de cibler précisément les manques et de suivre l'avancement de chaque reconstruction.",
+      en: "Personal project driven by the urge to rebuild dismantled sets without unpacking everything by hand. The piece database is derived from the official inventories of the registered sets, which makes it possible to precisely target gaps and track each rebuild's progress."
+    },
+    role: {
+      fr: "Développeur solo",
+      en: "Solo Developer"
+    },
+    badges: [
+      { icon: Plug, text: "API Rebrickable", tier: "primary" },
+      { icon: Layout, text: "Next.js", tier: "secondary" }
+    ]
+  },
+  {
+    id: "geniacloud",
+    title: {
+      fr: "GEN'IAcloud",
+      en: "GEN'IAcloud"
+    },
+    tagline: {
+      fr: "Fluidifier la saisie terrain et la facturation chez une coopérative agricole.",
+      en: "Streamlining field data entry and billing for an agricultural cooperative."
+    },
+    description: {
+      fr: "Application métier qui digitalise la saisie des prestations vendues sur le terrain et automatise leur transmission au système de facturation.",
+      en: "Business application that digitizes on-site service entry and automates its transmission to the billing system."
+    },
+    image: "/images/projects/geniatest.jpg",
+    imageFit: "contain",
+    featured: true,
+    year: "2025",
+    madeAt: {
+      fr: "GEN'IAtest",
+      en: "GEN'IAtest"
+    },
+    context: {
+      fr: "Développé dans le cadre de mon alternance chez GEN'IAtest, coopérative agricole d'élevage et d'insémination animale active dans l'est de la France. GEN'IAcloud équipe les techniciens intervenant directement sur les exploitations : il remplace une saisie papier par un parcours digital alimentant la chaîne de facturation interne.",
+      en: "Built during my apprenticeship at GEN'IAtest, an agricultural cooperative focused on livestock breeding and animal insemination across eastern France. GEN'IAcloud is used by field technicians visiting farms: it replaces paper entry with a digital flow that feeds the internal billing chain."
+    },
+    role: {
+      fr: "Développeur Fullstack",
+      en: "Fullstack Developer"
+    },
+    challenges: {
+      fr: "Garantir une saisie fiable en mobilité, dans des exploitations où la connectivité est souvent partielle ou absente, tout en maintenant une cohérence stricte avec le système de facturation existant.",
+      en: "Ensuring reliable data entry on the move, in farms where connectivity is often partial or missing, while keeping strict consistency with the existing billing system."
+    },
+    solutions: {
+      fr: "Mode hors-ligne avec file d'opérations et synchronisation différée côté client, et séparation nette entre l'expérience terrain (Nuxt) et la couche métier (NestJS) pour isoler les règles de facturation et faciliter leur évolution.",
+      en: "Offline mode with a client-side operation queue and deferred synchronization, plus a clean split between the field experience (Nuxt) and the business layer (NestJS) to isolate billing rules and ease their evolution."
+    },
+    badges: [
+      { icon: WifiOff, text: "Offline-first", tier: "primary" },
+      { icon: Layout, text: "Nuxt / Vue", tier: "secondary" },
+      { icon: Server, text: "NestJS", tier: "secondary" }
+    ]
+  },
+  {
+    id: "coc-assistant",
+    title: {
+      fr: "Outil d'analyse de clan",
+      en: "Clan Analytics Tool"
+    },
+    tagline: {
+      fr: "Bâtir un historique pour analyser son clan sur Clash of Clans.",
+      en: "Building a history to analyze your clan on Clash of Clans."
+    },
+    description: {
+      fr: "Outil d'analyse pour Clash of Clans qui ingère périodiquement les données du jeu via l'API officielle Supercell pour construire un historique exploitable, exposé à travers des interfaces de consultation et un chatbot capable d'interroger ces données en langage naturel.",
+      en: "Analytics tool for Clash of Clans that periodically ingests game data through Supercell's official API to build an exploitable history, surfaced through consultation interfaces and a chatbot able to query that data in natural language."
+    },
+    image: "/images/projects/coc_assistant.png",
+    link: "",
+    featured: true,
+    year: "2025",
+    context: {
+      fr: "Projet personnel né du manque d'outils analytiques côté Supercell pour piloter un clan Clash of Clans compétitif. Architecturé en monorepo pnpm avec une application web Next.js et un worker en arrière-plan qui interroge périodiquement l'API officielle du jeu pour bâtir un historique des données, ensuite exposé à travers tableaux de bord et chatbot.",
+      en: "Personal project born from the lack of analytics tooling on Supercell's side for running a competitive Clash of Clans clan. Built as a pnpm monorepo with a Next.js web app and a background worker that periodically queries the game's official API to build a data history, then surfaces it through dashboards and a chatbot."
+    },
+    role: {
+      fr: "Développeur solo",
+      en: "Solo Developer"
+    },
+    badges: [
+      { icon: RefreshCw, text: "Ingestion auto", tier: "primary" },
+      { icon: BarChart3, text: "Analyse statistique", tier: "secondary" }
+    ]
+  },
   {
     id: "outer-wilds-pomodoro",
     title: {
@@ -37,7 +143,7 @@ export const projectsData: ProjectData[] = [
     },
     image: "/images/projects/smartchef.jpg",
     link: "https://github.com/tbertome-iut90/smart-chef",
-    featured: true,
+    featured: false,
     year: "2025",
     features: {
       fr: [
@@ -92,7 +198,7 @@ export const projectsData: ProjectData[] = [
       en: "Event equipment rental platform with quote management and administrator back-office."
     },
     image: "/images/projects/aso70.jpg", // Placeholder
-    featured: true,
+    featured: false,
     year: "2025",
     madeAt: {
       fr: "ASO70",
@@ -141,7 +247,7 @@ export const projectsData: ProjectData[] = [
       en: "Prototype solution for digitizing an intervention management process."
     },
     image: "/images/projects/vecofroid.jpg", // Placeholder
-    featured: true,
+    featured: false,
     year: "2024",
     madeAt: {
       fr: "Vecofroid",

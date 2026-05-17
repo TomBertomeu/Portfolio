@@ -19,6 +19,7 @@ export interface Project {
   tagline?: string;
   description?: string;
   image?: string;
+  imageFit?: "cover" | "contain";
   link?: string;
   badges?: ProjectBadge[];
   featured?: boolean;
