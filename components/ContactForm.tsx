@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle, SquareArrowOutUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { container } from "@/lib/container";
-import { profile } from "@/data/profile";
 import Title from "./Title";
 import ScrollAnimation from "./ScrollAnimation";
 
@@ -27,6 +26,7 @@ function FormField({ id, label, required, children }: { id: string; label: strin
 
 export default function ContactForm() {
   const { t } = useLanguage();
+  const profile = container.getProfile();
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [status, setStatus] = useState<FormStatus>("idle");
 

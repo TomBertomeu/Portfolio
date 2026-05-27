@@ -1,5 +1,6 @@
 import { projectRepository } from "@/repositories/projectRepository";
 import { experienceRepository } from "@/repositories/experienceRepository";
+import { profileRepository } from "@/repositories/profileRepository";
 import { contactService } from "@/services/contactService";
 import {
   getFeaturedProjects,
@@ -25,4 +26,5 @@ export const container = {
     getAllExperiences(experienceRepository, lang),
   sendContactMessage: (message: ContactMessage) =>
     sendContactMessage(contactService, message),
+  getProfile: () => profileRepository.get(),
 };
