@@ -10,8 +10,20 @@ import ScrollAnimation from "./ScrollAnimation";
 
 const STATUS_RESET_DELAY_MS = 5000;
 const EMPTY_FORM = { name: "", email: "", message: "" };
+const INPUT_CLASS = "w-full rounded-xl border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[var(--primary-blue)] focus-visible:ring-2 focus-visible:ring-[var(--primary-blue)]/20";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
+
+function FormField({ id, label, required, children }: { id: string; label: string; required?: boolean; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <label htmlFor={id} className="text-sm font-medium">
+        {label}{required && <span className="text-red-500"> *</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
 
 export default function ContactForm() {
   const { t } = useLanguage();
@@ -67,7 +79,7 @@ export default function ContactForm() {
           >
             <Github className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
-              TomBertomeu
+              {profile.githubHandle}
               <SquareArrowOutUpRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
             </span>
           </a>
@@ -75,11 +87,11 @@ export default function ContactForm() {
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[#0077b5] transition-colors duration-200"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200"
           >
             <Linkedin className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
-              Tom Bertomeu
+              {profile.linkedinName}
               <SquareArrowOutUpRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
             </span>
           </a>
@@ -89,10 +101,7 @@ export default function ContactForm() {
       {/* Formulaire */}
       <ScrollAnimation direction="right" delay={200} className="bg-background/80 backdrop-blur-sm border border-border rounded-[28px] md:rounded-[44px] p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="name" className="text-sm font-medium">
-              {t("contactForm.labelName")} <span className="text-red-500">*</span>
-            </label>
+          <FormField id="name" label={t("contactForm.labelName")} required>
             <input
               type="text"
               id="name"
@@ -101,14 +110,11 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderName")}
-              className="w-full rounded-xl border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
+              className={INPUT_CLASS}
             />
-          </div>
+          </FormField>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm font-medium">
-              {t("contactForm.labelEmail")} <span className="text-red-500">*</span>
-            </label>
+          <FormField id="email" label={t("contactForm.labelEmail")} required>
             <input
               type="email"
               id="email"
@@ -117,14 +123,11 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderEmail")}
-              className="w-full rounded-xl border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
+              className={INPUT_CLASS}
             />
-          </div>
+          </FormField>
 
-          <div className="flex flex-col gap-2">
-            <label htmlFor="message" className="text-sm font-medium">
-              {t("contactForm.labelMessage")} <span className="text-red-500">*</span>
-            </label>
+          <FormField id="message" label={t("contactForm.labelMessage")} required>
             <textarea
               id="message"
               name="message"
@@ -133,9 +136,9 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderMessage")}
-              className="w-full rounded-xl border border-primary/30 bg-background px-5 py-3 text-sm placeholder:text-muted-foreground transition-colors resize-none focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
+              className={`${INPUT_CLASS} py-3 resize-none`}
             />
-          </div>
+          </FormField>
 
           <button
             type="submit"
@@ -143,11 +146,11 @@ export default function ContactForm() {
             className={`cursor-pointer relative w-full inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium overflow-hidden transition-all duration-300 ease-out active:scale-95 group disabled:cursor-not-allowed ${
               status === "success"
                 ? "border-transparent text-white bg-green-600"
-                : "border-primary/40 bg-transparent text-primary hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-lg hover:shadow-[#2563eb]/30 disabled:opacity-70"
+                : "border-primary/40 bg-transparent text-primary hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-lg hover:shadow-[var(--primary-blue)]/30 disabled:opacity-70"
             }`}
           >
             {status !== "success" && (
-              <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-gradient-to-r from-[#2563eb] to-[#10b981] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+              <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-green)] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
             )}
             {status === "sending" ? (
               <>

@@ -3,10 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ExternalLink, Github, Calendar, Building, Code, CheckCircle2, AlertTriangle, Lightbulb, Hammer, CircleDashed } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Calendar, Building, CheckCircle2, AlertTriangle, Lightbulb, Hammer, CircleDashed } from "lucide-react";
 import { resolveIcon } from "@/lib/icons";
 import { container } from "@/lib/container";
-import type { ProjectFeature } from "@/types/project";
+import type { FeatureStatus } from "@/types/project";
 import Badge from "@/components/Badge";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -14,7 +14,26 @@ import HeroBackground from "@/components/HeroBackground";
 import UnderlineAccent from "@/components/UnderlineAccent";
 import { notFound } from "next/navigation";
 
-export default function ProjectDetailClient({ id }: { id: string }) {
+const FEATURE_STATUS_STYLES: Record<FeatureStatus, { Icon: React.ElementType; iconColor: string; bgColor: string }> = {
+    completed: { Icon: CheckCircle2, iconColor: "text-primary", bgColor: "bg-primary/10" },
+    "in-progress": { Icon: Hammer, iconColor: "text-amber-500", bgColor: "bg-amber-500/10" },
+    planned: { Icon: CircleDashed, iconColor: "text-muted-foreground", bgColor: "bg-muted" },
+};
+
+function isGithubUrl(url: string) {
+    return url.includes("github.com");
+}
+
+function SectionHeading({ children, className = "mb-6" }: { children: React.ReactNode; className?: string }) {
+    return (
+        <h2 className={`text-3xl font-bold relative inline-block ${className}`}>
+            {children}
+            <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-primary rounded-full" />
+        </h2>
+    );
+}
+
+export default function ProjectDetail({ id }: { id: string }) {
     const { t, language } = useLanguage();
     const project = container.getProjectById(id, language);
 
@@ -35,7 +54,7 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-all active:scale-95 mb-8 group"
                         >
                             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                            {t("projectsPage.backToHome") || "Retour"}
+                            {t("projectsPage.backToHome")}
                         </Link>
                     </ScrollAnimation>
 
@@ -79,8 +98,8 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                             rel="noopener noreferrer"
                                             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95 duration-300"
                                         >
-                                            {project.link.includes("github.com") ? <Github className="w-5 h-5" /> : <ExternalLink className="w-5 h-5" />}
-                                            {project.link.includes("github.com") ? "Voir le code" : "Voir le projet"}
+                                            {isGithubUrl(project.link) ? <Github className="w-5 h-5" /> : <ExternalLink className="w-5 h-5" />}
+                                            {isGithubUrl(project.link) ? t("projectDetail.viewCode") : t("projectDetail.viewProject")}
                                         </a>
                                     )}
                                     {project.demoVideo && (
@@ -91,7 +110,7 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                             className="inline-flex items-center gap-2 bg-card border border-border text-foreground px-6 py-3 rounded-lg font-medium hover:bg-muted transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95 duration-300"
                                         >
                                             <ExternalLink className="w-5 h-5" />
-                                            Demo Video
+                                            {t("projectDetail.demoVideo")}
                                         </a>
                                     )}
                                 </div>
@@ -105,7 +124,7 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                     <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
                                         <Image
                                             src={project.image}
-                                            alt={project.title || "Project Image"}
+                                            alt={project.title ?? "Project"}
                                             fill
                                             className="object-cover"
                                             priority
@@ -125,23 +144,19 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                     {/* Context & Role Section */}
                     <ScrollAnimation direction="up">
                         <div className="prose prose-lg dark:prose-invert max-w-none">
-                            <h2 className="text-3xl font-bold mb-6 relative inline-block">
-                                {language === 'fr' ? "Contexte" : "Context"}
-                                <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-primary rounded-full"></span>
-                            </h2>
+                            <SectionHeading>{t("projectDetail.context")}</SectionHeading>
                             <div className="bg-card border border-border/50 rounded-2xl p-8 shadow-sm">
                                 <p className="text-lg leading-relaxed text-muted-foreground mb-6">
                                     {project.context || project.description}
                                 </p>
 
-                                {/* Tech Stack Inline */}
                                 <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-border/50">
                                     <div className="flex flex-wrap gap-2">
-                                        {project.badges?.map((badge, index) => {
+                                        {project.badges?.map((badge) => {
                                             const Icon = resolveIcon(badge.iconId);
                                             return (
                                                 <Badge
-                                                    key={index}
+                                                    key={badge.text}
                                                     text={badge.text}
                                                     icon={Icon ? <Icon className="w-3 h-3" /> : undefined}
                                                     className="bg-primary/5 text-primary border-primary/20 hover:bg-primary/10 transition-colors"
@@ -154,33 +169,15 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                         </div>
                     </ScrollAnimation>
 
-                    {/* Features Section - Visual Cards */}
+                    {/* Features Section */}
                     {project.features && project.features.length > 0 && (
                         <ScrollAnimation direction="up">
                             <div>
-                                <h2 className="text-3xl font-bold mb-8 relative inline-block">
-                                    {language === 'fr' ? "Ce que ça fait" : "What it does"}
-                                    <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-primary rounded-full"></span>
-                                </h2>
+                                <SectionHeading className="mb-8">{t("projectDetail.whatItDoes")}</SectionHeading>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {project.features.map((feature, index) => {
-                                        const isObject = typeof feature === 'object';
-                                        const text = isObject ? (feature as ProjectFeature).text : feature as string;
-                                        const status = isObject ? (feature as ProjectFeature).status : 'completed';
-
-                                        let Icon = CheckCircle2;
-                                        let iconColor = "text-primary";
-                                        let bgColor = "bg-primary/10";
-
-                                        if (status === 'in-progress') {
-                                            Icon = Hammer;
-                                            iconColor = "text-amber-500";
-                                            bgColor = "bg-amber-500/10";
-                                        } else if (status === 'planned') {
-                                            Icon = CircleDashed;
-                                            iconColor = "text-muted-foreground";
-                                            bgColor = "bg-muted";
-                                        }
+                                        const { text, status } = feature;
+                                        const { Icon, iconColor, bgColor } = FEATURE_STATUS_STYLES[status] ?? FEATURE_STATUS_STYLES.completed;
 
                                         return (
                                             <div key={index} className="group p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 relative overflow-hidden flex items-start gap-4">
@@ -198,18 +195,13 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                         </ScrollAnimation>
                     )}
 
-                    {/* Technical Deep Dive - Narrative Style */}
+                    {/* Technical Deep Dive */}
                     {(project.challenges || project.solutions) && (
                         <ScrollAnimation direction="up">
                             <div className="relative">
-
-                                <h2 className="text-3xl font-bold mb-10 relative inline-block">
-                                    {language === 'fr' ? "Challenge Technique" : "Technical Deep Dive"}
-                                    <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-primary rounded-full"></span>
-                                </h2>
+                                <SectionHeading className="mb-10">{t("projectDetail.technicalDeepDive")}</SectionHeading>
 
                                 <div className="space-y-12">
-                                    {/* Challenge */}
                                     {project.challenges && (
                                         <div className="relative flex gap-8">
                                             <div className="hidden md:flex flex-col items-center relative">
@@ -223,7 +215,7 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                             <div className="flex-1">
                                                 <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2 md:block">
                                                     <AlertTriangle className="w-5 h-5 text-amber-500 md:hidden" />
-                                                    {language === 'fr' ? "Le Problème" : "The Challenge"}
+                                                    {t("projectDetail.theChallenge")}
                                                 </h3>
                                                 <div className="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-transparent dark:from-amber-950/10 border border-amber-200/50 dark:border-amber-800/30 text-muted-foreground leading-relaxed">
                                                     {project.challenges}
@@ -232,7 +224,6 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                         </div>
                                     )}
 
-                                    {/* Solution */}
                                     {project.solutions && (
                                         <div className="relative flex gap-8">
                                             <div className="hidden md:flex flex-col items-center">
@@ -243,7 +234,7 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                             <div className="flex-1">
                                                 <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2 md:block">
                                                     <Lightbulb className="w-5 h-5 text-emerald-500 md:hidden" />
-                                                    {language === 'fr' ? "La Solution" : "The Solution"}
+                                                    {t("projectDetail.theSolution")}
                                                 </h3>
                                                 <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-transparent dark:from-emerald-950/10 border border-emerald-200/50 dark:border-emerald-800/30 text-muted-foreground leading-relaxed">
                                                     {project.solutions}

@@ -90,6 +90,16 @@
     "error": "Une erreur est survenue lors de l'envoi de votre message.",
     "privacy": "Les informations que vous fournissez sont strictement confidentielles et ne seront utilisées que pour répondre à votre message. Elles ne seront ni partagées ni utilisées à d'autres fins."
   },
+  "projectDetail": {
+    "context": "Contexte",
+    "whatItDoes": "Ce que ça fait",
+    "technicalDeepDive": "Challenge Technique",
+    "theChallenge": "Le Problème",
+    "theSolution": "La Solution",
+    "viewCode": "Voir le code",
+    "viewProject": "Voir le projet",
+    "demoVideo": "Démo Vidéo"
+  },
   "footer": {
     "copyright": "© 2025 Tom Bertomeu. Tous droits réservés.",
     "credits": "Conçu et développé par Tom Bertomeu dans Visual Studio Code avec Next.js, Tailwind CSS et Formspree. Déployé avec Hostinger."

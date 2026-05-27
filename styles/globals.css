@@ -16,10 +16,6 @@ html {
     /* Optional: just make scrollbar invisible */
 }
 
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #ff0000;
-}
 
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);

@@ -38,16 +38,16 @@ export default function Header() {
                     {/* Nav Links - Hidden on mobile, visible on md+ */}
                     <nav className="hidden md:flex items-center gap-6 text-sm font-black uppercase tracking-wider">
                         <Link href="/#about" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.about") || "À propos"}
+                            {t("nav.about")}
                         </Link>
                         <Link href="/#experience" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.experience") || "Expérience"}
+                            {t("nav.experience")}
                         </Link>
                         <Link href="/#projects" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.projects") || "Projets"}
+                            {t("nav.projects")}
                         </Link>
                         <Link href="/#contact" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.contact") || "Contact"}
+                            {t("nav.contact")}
                         </Link>
                     </nav>
 
