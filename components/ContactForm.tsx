@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { sendContactMessage } from "@/services/contactService";
+import { profile } from "@/data/profile";
 import Title from "./Title";
 import ScrollAnimation from "./ScrollAnimation";
 
@@ -60,14 +61,14 @@ export default function ContactForm() {
           <div className="w-full h-px bg-border mb-8"></div>
           <div className="flex gap-6">
             <a
-              href="mailto:tom.bertomeu.pro@gmail.com"
+              href={`mailto:${profile.email}`}
               className="text-muted-foreground hover:text-primary transition-all transform hover:scale-110 active:scale-95 duration-200"
               title="Email"
             >
               <Mail className="h-6 w-6" />
             </a>
             <a
-              href="https://github.com/TomBertomeu"
+              href={profile.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-all transform hover:scale-110 active:scale-95 duration-200"
@@ -76,7 +77,7 @@ export default function ContactForm() {
               <Github className="h-6 w-6" />
             </a>
             <a
-              href="https://www.linkedin.com/in/tom-bertomeu/"
+              href={profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-[#0077b5] transition-all transform hover:scale-110 active:scale-95 duration-200"
