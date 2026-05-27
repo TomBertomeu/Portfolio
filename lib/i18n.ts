@@ -6,7 +6,7 @@ export type Translations = typeof frJson;
 
 const TRANSLATIONS: Record<Language, Translations> = {
   fr: frJson,
-  en: enJson as unknown as Translations,
+  en: enJson,
 };
 
 export function getTranslations(language: Language): Translations {

@@ -10,8 +10,6 @@ import {
   LANGUAGE_STORAGE_KEY,
 } from "@/types/language";
 
-export type { Language };
-
 interface LanguageContextProps {
   t: (key: TranslationKey | "_language") => string;
   language: Language;

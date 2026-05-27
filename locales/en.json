@@ -16,6 +16,7 @@
     "name": "Tom Bertomeu",
     "role": "Fullstack Developer",
     "subtitle": "Hi! I'm Tom! I am a passionate developer, currently in the 3rd year of a Bachelor's degree in Computer Science (BUT Informatique) and on a work-study program.\n\nI love building web and mobile apps that are not only performant, but above all a joy to use. When I'm not coding, you'll probably find me watching a motorsport race or immersed in a video game.",
+    "degree": "Computer Science BUT",
     "school": "Computer Science BUT ⋅ IUT Nord Franche-Comté",
     "period": "Period",
     "periodValue": "September 2022 - Present",
@@ -64,9 +65,7 @@
   },
   "contact": {
     "title": "Contact me!",
-    "email": "Email",
-    "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "getInTouch": "Let's stay in touch"
   },
   "notFound": {
     "title": "404",

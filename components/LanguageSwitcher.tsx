@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { useLanguage, Language } from "@/contexts/LanguageProvider";
+import { useLanguage } from "@/contexts/LanguageProvider";
+import type { Language } from "@/types/language";
 import { FR, GB } from 'country-flag-icons/react/3x2';
 import { ChevronDown } from "lucide-react";
 
