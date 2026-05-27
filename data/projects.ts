@@ -1,4 +1,3 @@
-import { Layout, Database, Server, Smartphone, Brain, Clock, Code, RefreshCw, Plug, WifiOff, BarChart3 } from "lucide-react";
 import type { ProjectData } from "@/types/project";
 
 export const projectsData: ProjectData[] = [
@@ -29,8 +28,8 @@ export const projectsData: ProjectData[] = [
       en: "Solo Developer"
     },
     badges: [
-      { icon: Plug, text: "API Rebrickable", tier: "primary" },
-      { icon: Layout, text: "Next.js", tier: "secondary" }
+      { iconId: "plug", text: "API Rebrickable", tier: "primary" },
+      { iconId: "layout", text: "Next.js", tier: "secondary" }
     ]
   },
   {
@@ -72,9 +71,9 @@ export const projectsData: ProjectData[] = [
       en: "Offline mode with a client-side operation queue and deferred synchronization, plus a clean split between the field experience (Nuxt) and the business layer (NestJS) to isolate billing rules and ease their evolution."
     },
     badges: [
-      { icon: WifiOff, text: "Offline-first", tier: "primary" },
-      { icon: Layout, text: "Nuxt / Vue", tier: "secondary" },
-      { icon: Server, text: "NestJS", tier: "secondary" }
+      { iconId: "wifi-off", text: "Offline-first", tier: "primary" },
+      { iconId: "layout", text: "Nuxt / Vue", tier: "secondary" },
+      { iconId: "server", text: "NestJS", tier: "secondary" }
     ]
   },
   {
@@ -104,8 +103,8 @@ export const projectsData: ProjectData[] = [
       en: "Solo Developer"
     },
     badges: [
-      { icon: RefreshCw, text: "Ingestion auto", tier: "primary" },
-      { icon: BarChart3, text: "Analyse statistique", tier: "secondary" }
+      { iconId: "refresh-cw", text: "Ingestion auto", tier: "primary" },
+      { iconId: "bar-chart-3", text: "Analyse statistique", tier: "secondary" }
     ]
   },
   {
@@ -123,8 +122,8 @@ export const projectsData: ProjectData[] = [
     featured: false,
     year: "2025",
     badges: [
-      { icon: Clock, text: "React" },
-      { icon: Layout, text: "Tailwind CSS" }
+      { iconId: "clock", text: "React" },
+      { iconId: "layout", text: "Tailwind CSS" }
     ]
   },
   {
@@ -178,9 +177,9 @@ export const projectsData: ProjectData[] = [
       en: "Co-developer (Phase 1) then Fullstack Developer (Phase 2)"
     },
     badges: [
-      { icon: Brain, text: "LLM", tier: "primary" },
-      { icon: Smartphone, text: "React Native", tier: "secondary" },
-      { icon: Code, text: "TypeScript", tier: "secondary" },
+      { iconId: "brain", text: "LLM", tier: "primary" },
+      { iconId: "smartphone", text: "React Native", tier: "secondary" },
+      { iconId: "code", text: "TypeScript", tier: "secondary" },
     ]
   },
   {
@@ -205,9 +204,9 @@ export const projectsData: ProjectData[] = [
       en: "ASO70"
     },
     badges: [
-      { icon: Database, text: "Supabase", tier: "primary" },
-      { icon: Layout, text: "Next.js", tier: "secondary" },
-      { icon: Code, text: "TypeScript", tier: "secondary" }
+      { iconId: "database", text: "Supabase", tier: "primary" },
+      { iconId: "layout", text: "Next.js", tier: "secondary" },
+      { iconId: "code", text: "TypeScript", tier: "secondary" }
     ]
   },
   {
@@ -228,8 +227,8 @@ export const projectsData: ProjectData[] = [
       en: "University"
     },
     badges: [
-      { icon: Code, text: "Python" },
-      { icon: Brain, text: "Machine Learning" }
+      { iconId: "code", text: "Python" },
+      { iconId: "brain", text: "Machine Learning" }
     ]
   },
   {
@@ -254,9 +253,9 @@ export const projectsData: ProjectData[] = [
       en: "Vecofroid"
     },
     badges: [
-      { icon: Layout, text: "Vue.js", tier: "primary" },
-      { icon: Server, text: "Express", tier: "secondary" },
-      { icon: Database, text: "PostgreSQL", tier: "secondary" }
+      { iconId: "layout", text: "Vue.js", tier: "primary" },
+      { iconId: "server", text: "Express", tier: "secondary" },
+      { iconId: "database", text: "PostgreSQL", tier: "secondary" }
     ]
   },
   {
@@ -278,7 +277,7 @@ export const projectsData: ProjectData[] = [
       en: "University"
     },
     badges: [
-      { icon: Code, text: "C" }
+      { iconId: "code", text: "C" }
     ]
   },
   {
@@ -300,7 +299,7 @@ export const projectsData: ProjectData[] = [
       en: "University"
     },
     badges: [
-      { icon: Code, text: "Python" }
+      { iconId: "code", text: "Python" }
     ]
   },
   {
@@ -322,7 +321,7 @@ export const projectsData: ProjectData[] = [
       en: "University"
     },
     badges: [
-      { icon: Code, text: "Java" }
+      { iconId: "code", text: "Java" }
     ]
   },
   {
@@ -344,8 +343,8 @@ export const projectsData: ProjectData[] = [
       en: "University"
     },
     badges: [
-      { icon: Code, text: "HTML/CSS" },
-      { icon: Code, text: "JavaScript" }
+      { iconId: "code", text: "HTML/CSS" },
+      { iconId: "code", text: "JavaScript" }
     ]
   }
 ];

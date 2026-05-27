@@ -1,7 +1,5 @@
-import { LucideIcon } from "lucide-react";
-
 export interface ProjectBadge {
-  icon: LucideIcon;
+  iconId: string;
   text: string;
   tier?: "primary" | "secondary";
 }

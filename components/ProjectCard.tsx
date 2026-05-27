@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/types/project";
+import { resolveIcon } from "@/lib/icons";
 import Badge from "./Badge";
 import ProjectThumbnail from "./ProjectThumbnail";
 
@@ -43,11 +44,12 @@ export default function ProjectCard({ project, priority = false, featured = fals
             .sort((a, b) => (b.tier === "primary" ? 1 : 0) - (a.tier === "primary" ? 1 : 0))
             .map((badge, index) => {
               const isPrimary = badge.tier === "primary";
+              const Icon = isPrimary ? resolveIcon(badge.iconId) : undefined;
               return (
                 <Badge
                   key={index}
                   text={badge.text}
-                  icon={isPrimary ? <badge.icon className="w-3 h-3" /> : undefined}
+                  icon={Icon ? <Icon className="w-3 h-3" /> : undefined}
                   variant={isPrimary ? "primary" : "outline"}
                   size={featured && isPrimary ? "sm" : "xs"}
                 />

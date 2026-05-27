@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ExternalLink, Github, Calendar, Building, Code, CheckCircle2, AlertTriangle, Lightbulb, Hammer, CircleDashed } from "lucide-react";
+import { resolveIcon } from "@/lib/icons";
 import { findProjectById } from "@/repositories/projectRepository";
 import type { ProjectFeature } from "@/types/project";
 import Badge from "@/components/Badge";
@@ -136,14 +137,17 @@ export default function ProjectDetailClient({ id }: { id: string }) {
                                 {/* Tech Stack Inline */}
                                 <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-border/50">
                                     <div className="flex flex-wrap gap-2">
-                                        {project.badges?.map((badge, index) => (
-                                            <Badge
-                                                key={index}
-                                                text={badge.text}
-                                                icon={<badge.icon className="w-3 h-3" />}
-                                                className="bg-primary/5 text-primary border-primary/20 hover:bg-primary/10 transition-colors"
-                                            />
-                                        ))}
+                                        {project.badges?.map((badge, index) => {
+                                            const Icon = resolveIcon(badge.iconId);
+                                            return (
+                                                <Badge
+                                                    key={index}
+                                                    text={badge.text}
+                                                    icon={Icon ? <Icon className="w-3 h-3" /> : undefined}
+                                                    className="bg-primary/5 text-primary border-primary/20 hover:bg-primary/10 transition-colors"
+                                                />
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </div>
