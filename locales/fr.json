@@ -75,8 +75,7 @@
   },
   "contactForm": {
     "infoTitle": "Coordonnées",
-    "greeting": "J'aimerais avoir de vos nouvelles !",
-    "infoSubtitle": "Si vous avez des questions ou si vous voulez simplement dire bonjour, n'hésitez pas à utiliser le formulaire de contact !",
+    "infoSubtitle": "Via le formulaire ou directement sur ces réseaux :",
     "labelName": "Nom",
     "placeholderName": "Votre nom",
     "labelEmail": "E-mail",

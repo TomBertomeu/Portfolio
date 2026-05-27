@@ -76,8 +76,7 @@
   },
   "contactForm": {
     "infoTitle": "Contact Information",
-    "greeting": "I'd like to hear from you!",
-    "infoSubtitle": "If you have any inquiries or just want to say hi, please use the contact form!",
+    "infoSubtitle": "Via the form or directly on these networks:",
     "labelName": "Name",
     "placeholderName": "Your name",
     "labelGithub": "GitHub",

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle, SquareArrowOutUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { container } from "@/lib/container";
 import { profile } from "@/data/profile";
@@ -42,50 +42,47 @@ export default function ContactForm() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Informations de contact */}
-      <ScrollAnimation direction="left" className="flex flex-col h-full py-4">
-        <div>
-          <div className="mb-8">
-            <Title text={t("contact.title")} />
-          </div>
-          <div className="prose dark:prose-invert max-w-none">
-            <p className="text-xl font-medium text-primary mb-4">
-              {t("contactForm.greeting")}
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {t("contactForm.infoSubtitle")}
-            </p>
-          </div>
-        </div>
+      <ScrollAnimation direction="left" className="py-4">
+        <Title text={t("contact.title")} />
 
-        <div className="mt-8">
-          <div className="w-full h-px bg-border mb-8"></div>
-          <div className="flex gap-6">
-            <a
-              href={`mailto:${profile.email}`}
-              className="text-muted-foreground hover:text-primary transition-all transform hover:scale-110 active:scale-95 duration-200"
-              title="Email"
-            >
-              <Mail className="h-6 w-6" />
-            </a>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-all transform hover:scale-110 active:scale-95 duration-200"
-              title="GitHub"
-            >
-              <Github className="h-6 w-6" />
-            </a>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-[#0077b5] transition-all transform hover:scale-110 active:scale-95 duration-200"
-              title="LinkedIn"
-            >
-              <Linkedin className="h-6 w-6" />
-            </a>
-          </div>
+        <p className="text-lg text-muted-foreground mb-6">
+          {t("contactForm.infoSubtitle")}
+        </p>
+        <div className="flex flex-col gap-3">
+          <a
+            href={`mailto:${profile.email}`}
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-primary transition-colors duration-200"
+          >
+            <Mail className="h-5 w-5 shrink-0" />
+            <span className="flex items-center gap-1">
+              {profile.email}
+              <SquareArrowOutUpRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+            </span>
+          </a>
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors duration-200"
+          >
+            <Github className="h-5 w-5 shrink-0" />
+            <span className="flex items-center gap-1">
+              TomBertomeu
+              <SquareArrowOutUpRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+            </span>
+          </a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[#0077b5] transition-colors duration-200"
+          >
+            <Linkedin className="h-5 w-5 shrink-0" />
+            <span className="flex items-center gap-1">
+              Tom Bertomeu
+              <SquareArrowOutUpRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0" />
+            </span>
+          </a>
         </div>
       </ScrollAnimation>
 
