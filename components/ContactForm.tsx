@@ -146,7 +146,7 @@ export default function ContactForm() {
             className={`cursor-pointer relative w-full inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium overflow-hidden transition-all duration-300 ease-out active:scale-95 group disabled:cursor-not-allowed ${
               status === "success"
                 ? "border-transparent text-white bg-green-600"
-                : "border-primary/40 bg-transparent text-primary hover:text-white hover:border-transparent hover:shadow-lg hover:shadow-[#2563eb]/30 disabled:opacity-70"
+                : "border-primary/40 bg-transparent text-primary hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-lg hover:shadow-[#2563eb]/30 disabled:opacity-70"
             }`}
           >
             {status !== "success" && (
@@ -164,10 +164,10 @@ export default function ContactForm() {
               </>
             ) : (
               <>
-                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-0.5">
+                <span className="relative z-10">
                   {t("contactForm.send")}
                 </span>
-                <Send className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                <Send className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </>
             )}
           </button>
