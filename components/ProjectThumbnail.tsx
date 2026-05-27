@@ -9,7 +9,7 @@ interface ProjectThumbnailProps {
 
 export default function ProjectThumbnail({ project, priority = false }: Readonly<ProjectThumbnailProps>) {
     return (
-        <div className={`relative aspect-video w-full overflow-hidden rounded-sm border border-border/50 ${project.imageFit === "contain" ? "bg-white" : "bg-muted"}`}>
+        <div className={`relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 ${project.imageFit === "contain" ? "bg-white" : "bg-muted"}`}>
             {project.imageFit !== "contain" && (
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
             )}
