@@ -40,11 +40,11 @@ export default function Header() {
                         <Link href="/#about" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
                             {t("nav.about") || "À propos"}
                         </Link>
-                        <Link href="/#projects" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.projects") || "Projets"}
-                        </Link>
                         <Link href="/#experience" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
                             {t("nav.experience") || "Expérience"}
+                        </Link>
+                        <Link href="/#projects" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
+                            {t("nav.projects") || "Projets"}
                         </Link>
                         <Link href="/#contact" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
                             {t("nav.contact") || "Contact"}
