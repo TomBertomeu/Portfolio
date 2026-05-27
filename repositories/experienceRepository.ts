@@ -1,5 +1,5 @@
-import { experiencesData } from "@/data/experience";
-import type { Experience, ExperienceData } from "@/types/experience";
+import { experiencesData, type ExperienceData } from "@/data/experience";
+import type { Experience } from "@/types/experience";
 import type { Language } from "@/types/language";
 import type { IExperienceRepository } from "@/domain/ports/IExperienceRepository";
 

@@ -1,4 +1,14 @@
-import type { ExperienceData } from "@/types/experience";
+export interface ExperienceData {
+  id: string;
+  company: string;
+  type: "work" | "education";
+  current?: boolean;
+  technologies: string[];
+  link?: string;
+  title: { fr: string; en: string };
+  period: { fr: string; en: string };
+  description: { fr: string; en: string };
+}
 
 export const experiencesData: ExperienceData[] = [
   {

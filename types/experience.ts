@@ -9,9 +9,3 @@ export interface Experience {
   technologies: string[];
   link?: string;
 }
-
-export interface ExperienceData extends Omit<Experience, "title" | "period" | "description"> {
-  title: { fr: string; en: string };
-  period: { fr: string; en: string };
-  description: { fr: string; en: string };
-}

@@ -1,5 +1,5 @@
-import { projectsData } from "@/data/projects";
-import type { Project, ProjectData } from "@/types/project";
+import { projectsData, type ProjectData } from "@/data/projects";
+import type { Project } from "@/types/project";
 import type { Language } from "@/types/language";
 import type { IProjectRepository } from "@/domain/ports/IProjectRepository";
 

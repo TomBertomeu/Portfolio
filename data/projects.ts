@@ -1,4 +1,26 @@
-import type { ProjectData } from "@/types/project";
+import type { ProjectBadge, ProjectFeature } from "@/types/project";
+
+export interface ProjectData {
+  id: string;
+  image?: string;
+  imageFit?: "cover" | "contain";
+  link?: string;
+  badges?: ProjectBadge[];
+  featured?: boolean;
+  year?: string;
+  gallery?: string[];
+  demoVideo?: string;
+  title?: { fr: string; en: string };
+  tagline?: { fr: string; en: string };
+  description?: { fr: string; en: string };
+  madeAt?: { fr: string; en: string };
+  features?: { fr: ProjectFeature[]; en: ProjectFeature[] };
+  challenges?: { fr: string; en: string };
+  solutions?: { fr: string; en: string };
+  role?: { fr: string; en: string };
+  team?: { fr: string; en: string };
+  context?: { fr: string; en: string };
+}
 
 export const projectsData: ProjectData[] = [
   {
