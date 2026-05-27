@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageProvider";
-import { sendContactMessage } from "@/services/contactService";
+import { container } from "@/lib/container";
 import { profile } from "@/data/profile";
 import Title from "./Title";
 import ScrollAnimation from "./ScrollAnimation";
@@ -27,7 +27,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("sending");
 
-    const result = await sendContactMessage(formData);
+    const result = await container.sendContactMessage(formData);
 
     if (result.ok) {
       setStatus("success");
