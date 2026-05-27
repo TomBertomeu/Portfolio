@@ -17,10 +17,10 @@ export default function ProjectCard({ project, priority = false, featured = fals
   return (
     <Link
       href={`/projects/${project.id}`}
-      className={`group relative flex h-full flex-col gap-4 rounded-2xl border bg-card transition-all duration-300 ease-in-out cursor-pointer active:scale-[0.98] hover:shadow-[-6px_6px_20px_rgba(0,0,0,0.12)] ${
+      className={`group relative flex h-full flex-col gap-4 border bg-card transition-all duration-300 ease-in-out cursor-pointer active:scale-[0.98] hover:shadow-[-6px_6px_20px_rgba(0,0,0,0.12)] ${
         featured
-          ? "p-6 border-primary/30 shadow-md hover:border-primary/60"
-          : "p-4 border-border shadow-sm hover:border-primary/40"
+          ? "p-6 rounded-[36px] border-primary/30 shadow-md hover:border-primary/60"
+          : "p-4 rounded-[28px] border-border shadow-sm hover:border-primary/40"
       }`}
     >
       <ProjectThumbnail project={project} priority={priority} />
