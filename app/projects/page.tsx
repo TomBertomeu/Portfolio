@@ -81,10 +81,10 @@ export default function ProjectsPage() {
                         </td>
                         <td className="py-6 pr-4 hidden sm:table-cell">
                           <div className="flex flex-wrap gap-2">
-                            {project.badges?.map((badge, index) => (
-                              <Badge 
-                                key={index} 
-                                text={badge.text} 
+                            {project.badges?.map((badge) => (
+                              <Badge
+                                key={badge.text}
+                                text={badge.text}
                                 className="bg-primary/10 text-primary hover:bg-primary/20 border-none"
                               />
                             ))}
