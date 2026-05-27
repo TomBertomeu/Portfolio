@@ -122,7 +122,7 @@ export default function Home() {
             </Section>
 
             {/* Contact */}
-            <Section id="contact">
+            <Section id="contact" className="bg-transparent">
                 <ContactForm />
             </Section>
         </>

@@ -87,7 +87,7 @@ export default function ContactForm() {
       </ScrollAnimation>
 
       {/* Formulaire */}
-      <ScrollAnimation direction="right" delay={200} className="bg-muted/50 border border-border rounded-[28px] md:rounded-[44px] p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
+      <ScrollAnimation direction="right" delay={200} className="bg-background/80 backdrop-blur-sm border border-border rounded-[28px] md:rounded-[44px] p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-medium">

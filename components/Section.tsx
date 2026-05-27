@@ -1,5 +1,5 @@
 import React from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 interface SectionProps {
   id?: string;
@@ -11,7 +11,7 @@ export default function Section({ id, className, children }: Readonly<SectionPro
   return (
     <section
       id={id}
-      className={clsx("relative z-20 bg-background py-20", className)}
+      className={cn("relative z-20 bg-background py-20", className)}
     >
       <div className="mx-auto max-w-5xl px-4">
         {children}
