@@ -1,6 +1,6 @@
 import frJson from "@/locales/fr.json";
 import enJson from "@/locales/en.json";
-import type { Language } from "@/contexts/LanguageProvider";
+import type { Language } from "@/types/language";
 
 export type Translations = typeof frJson;
 

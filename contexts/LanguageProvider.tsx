@@ -2,13 +2,15 @@
 import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
 import { TranslationKey } from "@/types/i18n";
 import { getTranslations, type Translations } from "@/lib/i18n";
+import {
+  type Language,
+  SUPPORTED_LANGUAGES,
+  DEFAULT_LANGUAGE,
+  FALLBACK_BROWSER_LANGUAGE,
+  LANGUAGE_STORAGE_KEY,
+} from "@/types/language";
 
-export type Language = "fr" | "en";
-
-const SUPPORTED_LANGUAGES: readonly Language[] = ["fr", "en"];
-const DEFAULT_LANGUAGE: Language = "fr";
-const FALLBACK_BROWSER_LANGUAGE: Language = "en";
-const LANGUAGE_STORAGE_KEY = "language";
+export type { Language };
 
 interface LanguageContextProps {
   t: (key: TranslationKey | "_language") => string;

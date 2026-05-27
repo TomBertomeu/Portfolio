@@ -1,6 +1,6 @@
 import { projectsData } from "@/data/projects";
 import type { Project, ProjectData } from "@/types/project";
-import type { Language } from "@/contexts/LanguageProvider";
+import type { Language } from "@/types/language";
 
 const DEFAULT_FEATURED_COUNT = 3;
 

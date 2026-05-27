@@ -1,6 +1,6 @@
 import { experiencesData } from "@/data/experience";
 import type { Experience, ExperienceData } from "@/types/experience";
-import type { Language } from "@/contexts/LanguageProvider";
+import type { Language } from "@/types/language";
 
 function localizeExperience(exp: ExperienceData, lang: Language): Experience {
   return {
