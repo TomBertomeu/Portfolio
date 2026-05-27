@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { findAllProjects } from "@/repositories/projectRepository";
+import { container } from "@/lib/container";
 import Badge from "@/components/Badge";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import ScrollAnimation from "@/components/ScrollAnimation";
@@ -12,7 +12,7 @@ import UnderlineAccent from "@/components/UnderlineAccent";
 
 export default function ProjectsPage() {
   const { t, language } = useLanguage();
-  const sortedProjects = findAllProjects(language);
+  const sortedProjects = container.getAllProjects(language);
 
   return (
     <div className="min-h-screen flex flex-col pt-32 relative">

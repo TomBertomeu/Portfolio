@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ExternalLink, Github, Calendar, Building, Code, CheckCircle2, AlertTriangle, Lightbulb, Hammer, CircleDashed } from "lucide-react";
 import { resolveIcon } from "@/lib/icons";
-import { findProjectById } from "@/repositories/projectRepository";
+import { container } from "@/lib/container";
 import type { ProjectFeature } from "@/types/project";
 import Badge from "@/components/Badge";
 import { useLanguage } from "@/contexts/LanguageProvider";
@@ -16,7 +16,7 @@ import { notFound } from "next/navigation";
 
 export default function ProjectDetailClient({ id }: { id: string }) {
     const { t, language } = useLanguage();
-    const project = findProjectById(id, language);
+    const project = container.getProjectById(id, language);
 
     if (!project) {
         return notFound();

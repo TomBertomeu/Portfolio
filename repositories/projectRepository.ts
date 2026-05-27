@@ -1,8 +1,7 @@
 import { projectsData } from "@/data/projects";
 import type { Project, ProjectData } from "@/types/project";
 import type { Language } from "@/types/language";
-
-const DEFAULT_FEATURED_COUNT = 3;
+import type { IProjectRepository } from "@/domain/ports/IProjectRepository";
 
 function localizeProject(project: ProjectData, lang: Language): Project {
   return {
@@ -20,22 +19,15 @@ function localizeProject(project: ProjectData, lang: Language): Project {
   };
 }
 
-export function findAllProjects(lang: Language = "fr"): Project[] {
-  return projectsData.map((project) => localizeProject(project, lang));
+class StaticProjectRepository implements IProjectRepository {
+  findAll(lang: Language): Project[] {
+    return projectsData.map((p) => localizeProject(p, lang));
+  }
+
+  findById(id: string, lang: Language): Project | undefined {
+    const project = projectsData.find((p) => p.id === id);
+    return project ? localizeProject(project, lang) : undefined;
+  }
 }
 
-export function findProjectById(id: string, lang: Language = "fr"): Project | undefined {
-  const project = projectsData.find((p) => p.id === id);
-  return project ? localizeProject(project, lang) : undefined;
-}
-
-export function findFeaturedProjects(
-  lang: Language = "fr",
-  count: number = DEFAULT_FEATURED_COUNT,
-): Project[] {
-  return findAllProjects(lang).filter((p) => p.featured).slice(0, count);
-}
-
-export function findOtherProjects(lang: Language = "fr"): Project[] {
-  return findAllProjects(lang).filter((p) => !p.featured);
-}
+export const projectRepository: IProjectRepository = new StaticProjectRepository();
