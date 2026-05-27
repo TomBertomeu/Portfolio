@@ -90,7 +90,7 @@ export default function ContactForm() {
       </ScrollAnimation>
 
       {/* Formulaire */}
-      <ScrollAnimation direction="right" delay={200} className="bg-muted/50 border border-border rounded-2xl p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
+      <ScrollAnimation direction="right" delay={200} className="bg-muted/50 border border-border rounded-[28px] md:rounded-[44px] p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-medium">
@@ -104,7 +104,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderName")}
-              className="w-full rounded-full border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
+              className="w-full rounded-xl border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
             />
           </div>
 
@@ -120,7 +120,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderEmail")}
-              className="w-full rounded-full border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
+              className="w-full rounded-xl border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
             />
           </div>
 
@@ -136,7 +136,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderMessage")}
-              className="w-full rounded-2xl border border-primary/30 bg-background px-5 py-3 text-sm placeholder:text-muted-foreground transition-colors resize-none focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
+              className="w-full rounded-xl border border-primary/30 bg-background px-5 py-3 text-sm placeholder:text-muted-foreground transition-colors resize-none focus-visible:outline-none focus-visible:border-[#2563eb] focus-visible:ring-2 focus-visible:ring-[#2563eb]/20"
             />
           </div>
 
