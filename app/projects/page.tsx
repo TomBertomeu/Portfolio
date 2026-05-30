@@ -71,7 +71,7 @@ export default function ProjectsPage() {
                         <td className="py-6 pl-6 pr-4 text-muted-foreground font-mono text-sm">
                           {project.year || "-"}
                         </td>
-                        <td className="py-6 pr-4 font-semibold text-foreground transition-colors">
+                        <td className="py-6 pr-4 font-semibold text-foreground">
                           {project.title || "Untitled"}
                         </td>
                         <td className="py-6 pr-4 text-muted-foreground text-sm hidden md:table-cell">
