@@ -90,16 +90,6 @@
     "success": "Your message has been sent successfully!",
     "privacy": "The information you provide is strictly confidential and will only be used to respond to your message. It will neither be shared nor used for any other purposes."
   },
-  "projectDetail": {
-    "context": "Context",
-    "whatItDoes": "What it does",
-    "technicalDeepDive": "Technical Deep Dive",
-    "theChallenge": "The Challenge",
-    "theSolution": "The Solution",
-    "viewCode": "View the code",
-    "viewProject": "View the project",
-    "demoVideo": "Demo Video"
-  },
   "footer": {
     "copyright": "© 2025 Tom Bertomeu. All rights reserved.",
     "credits": "Designed and developed with ❤️ by Tom Bertomeu in Visual Studio Code. Built with Next.js, Tailwind CSS and Formspree. Deployed with Hostinger."

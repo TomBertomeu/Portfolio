@@ -36,7 +36,7 @@ domain/ports/       Interfaces (contracts)
                     ContactMessage, ContactResult (domain types for contact)
 
 domain/usecases/    Business logic — pure functions, depend only on ports + types
-                    getProjects.ts  (getFeaturedProjects, getOtherProjects, getAllProjects, getProjectById)
+                    getProjects.ts  (getFeaturedProjects, getAllProjects)
                     getExperiences.ts
                     sendContactMessage.ts
 
@@ -90,9 +90,8 @@ Client-side only. `LanguageProvider` detects browser language, falls back to `fr
 
 ### Routing
 
-- `/` — single-page portfolio (Hero, Experience, Projects preview, Contact)
-- `/projects` — full project archive
-- `/projects/[id]` — project detail (`page.tsx` server component for metadata + `client.tsx` for rendering)
+- `/` — single-page portfolio (Hero, About, Experience, Projects preview, Contact)
+- `/projects` — full project archive (read-only table, no detail pages)
 
 ### Fonts
 

@@ -12,18 +12,6 @@ export function getFeaturedProjects(
   return repo.findAll(lang).filter((p) => p.featured).slice(0, count);
 }
 
-export function getOtherProjects(repo: IProjectRepository, lang: Language): Project[] {
-  return repo.findAll(lang).filter((p) => !p.featured);
-}
-
 export function getAllProjects(repo: IProjectRepository, lang: Language): Project[] {
   return repo.findAll(lang);
-}
-
-export function getProjectById(
-  repo: IProjectRepository,
-  id: string,
-  lang: Language,
-): Project | undefined {
-  return repo.findById(id, lang);
 }
