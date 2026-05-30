@@ -36,7 +36,7 @@ domain/ports/       Interfaces (contracts)
                     ContactMessage, ContactResult (domain types for contact)
 
 domain/usecases/    Business logic — pure functions, depend only on ports + types
-                    getProjects.ts  (getFeaturedProjects, getOtherProjects, getAllProjects, getProjectById)
+                    getProjects.ts  (getFeaturedProjects, getAllProjects)
                     getExperiences.ts
                     sendContactMessage.ts
 
