@@ -8,14 +8,7 @@ function localizeProject(project: ProjectData, lang: Language): Project {
     ...project,
     title: project.title?.[lang],
     tagline: project.tagline?.[lang],
-    description: project.description?.[lang],
     madeAt: project.madeAt?.[lang],
-    features: project.features?.[lang],
-    challenges: project.challenges?.[lang],
-    solutions: project.solutions?.[lang],
-    role: project.role?.[lang],
-    team: project.team?.[lang],
-    context: project.context?.[lang],
   };
 }
 
