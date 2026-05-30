@@ -232,28 +232,6 @@ export const projectsData: ProjectData[] = [
     ]
   },
   {
-    id: "satellite-anomaly",
-    title: {
-      fr: "Détection d'Anomalies Satellite",
-      en: "Satellite Anomaly Detection"
-    },
-    description: {
-      fr: "Projet de Data Science visant à identifier des anomalies dans les données télémétriques de satellites via des algorithmes de Machine Learning.",
-      en: "Data Science project aiming to identify anomalies in satellite telemetry data via Machine Learning algorithms."
-    },
-    image: "/images/projects/satellite.jpg",
-    featured: false,
-    year: "2024",
-    madeAt: {
-      fr: "Université",
-      en: "University"
-    },
-    badges: [
-      { iconId: "code", text: "Python" },
-      { iconId: "brain", text: "Machine Learning" }
-    ]
-  },
-  {
     id: "vecofroid",
     title: {
       fr: "Gestion Vecofroid",
@@ -278,72 +256,6 @@ export const projectsData: ProjectData[] = [
       { iconId: "layout", text: "Vue.js", tier: "primary" },
       { iconId: "server", text: "Express", tier: "secondary" },
       { iconId: "database", text: "PostgreSQL", tier: "secondary" }
-    ]
-  },
-  {
-    id: "mastermind",
-    title: {
-      fr: "Mastermind",
-      en: "Mastermind"
-    },
-    description: {
-      fr: "Jeu du Mastermind développé en langage C.",
-      en: "Mastermind game developed in C language."
-    },
-    image: "/images/projects/mastermind.jpg", // Placeholder
-    link: "https://github.com/tbertome-iut90/Mastermind",
-    featured: false,
-    year: "2024",
-    madeAt: {
-      fr: "Université",
-      en: "University"
-    },
-    badges: [
-      { iconId: "code", text: "C" }
-    ]
-  },
-  {
-    id: "2d-matrix",
-    title: {
-      fr: "Visualisation 3D de Matrices",
-      en: "3D Matrix Visualization"
-    },
-    description: {
-      fr: "Programme de manipulation de matrices étendu pour permettre la visualisation 3D de fonctions mathématiques 2D.",
-      en: "Matrix manipulation program extended to allow 3D visualization of 2D mathematical functions."
-    },
-    image: "/images/projects/matrix.jpg", // Placeholder
-    link: "https://github.com/tbertome-iut90/2D-Matrix",
-    featured: false,
-    year: "2024",
-    madeAt: {
-      fr: "Université",
-      en: "University"
-    },
-    badges: [
-      { iconId: "code", text: "Python" }
-    ]
-  },
-  {
-    id: "stuckwin",
-    title: {
-      fr: "Stuckwin",
-      en: "Stuckwin"
-    },
-    description: {
-      fr: "Jeu de plateau en Java se jouant dans la console.",
-      en: "Board game in Java played in the console."
-    },
-    image: "/images/projects/stuckwin.jpg", // Placeholder
-    link: "https://github.com/tbertome-iut90/Stuckwin",
-    featured: false,
-    year: "2023",
-    madeAt: {
-      fr: "Université",
-      en: "University"
-    },
-    badges: [
-      { iconId: "code", text: "Java" }
     ]
   },
   {
