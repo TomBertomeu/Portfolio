@@ -17,7 +17,6 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 export default function Home() {
     const { t, language } = useLanguage();
     const featuredProjects = container.getFeaturedProjects(language);
-    const otherProjects = container.getOtherProjects(language);
 
     return (
         <>
