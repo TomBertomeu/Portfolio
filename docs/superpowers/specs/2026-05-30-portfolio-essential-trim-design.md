@@ -11,7 +11,7 @@ The portfolio currently ships 12 projects, a `/projects` archive, and a `/projec
 
 - **Structure:** Homepage (unchanged) + `/projects` archive table. All detail pages removed.
 - **Discarded content:** Rich per-project content (context/challenges/solutions/role/team/features) is thrown away, not kept dormant.
-- **Card behavior:** Cards/titles are clickable only when an external `link` exists; otherwise inert. Hover *animation* styles stay in code regardless; only the clickable affordances (`cursor-pointer`, ↗ `ArrowUpRight` icon) are conditionally hidden.
+- **Card behavior:** Cards/titles are clickable only when an external `link` exists; otherwise fully inert. The clickable (`<a>`) variant keeps all hover animation + affordances (`cursor-pointer`, ↗ `ArrowUpRight`), so the hover styling remains in the codebase for any linked card. The inert (`<div>`) variant has no hover animation, no `cursor-pointer`, no ↗. Group spotlight on the homepage dies naturally (no `<a>` to hover) and is left dormant in the markup.
 - **Projects kept (8):** `lego-rebuilder`, `geniacloud`, `coc-assistant`, `smartchef`, `outer-wilds-pomodoro`, `aso70`, `vecofroid`, `site-fortiche`.
 - **Projects cut (4, course exercises):** `satellite-anomaly`, `mastermind`, `2d-matrix`, `stuckwin`.
 - **Table title:** plain text (no detail to link to). External link stays in the existing "Lien" column — no double-link.
@@ -23,9 +23,12 @@ The portfolio currently ships 12 projects, a `/projects` archive, and a `/projec
 - Remove 4 course-project entries from `data/projects.ts`.
 
 ### `components/ProjectCard.tsx`
-- When `project.link` is set: render `<a href={link} target="_blank" rel="noopener noreferrer">`, keep `ArrowUpRight`, `cursor-pointer`, and all hover animation classes (behaves like today).
-- When no `link`: render a non-anchor element (`<div>`), keep the same hover animation classes, but omit `cursor-pointer` and the `ArrowUpRight` icon.
-- Featured 3 (lego/geniacloud/coc) have no link → render as inert display cards.
+- When `project.link` is set: render `<a href={link} target="_blank" rel="noopener noreferrer">`, keep `ArrowUpRight`, `cursor-pointer`, and all hover animation classes (behaves like today). The hover styling thus stays in the codebase, preserved for any card that has a link.
+- When no `link`: render a non-anchor element (`<div>`). Omit `cursor-pointer`, the `ArrowUpRight` icon, **and** all hover animation classes (shadow lift / scale / border-color transitions). Inert card = fully static, no hover reaction.
+- Featured 3 (lego/geniacloud/coc) have no link → render as inert static cards.
+
+### `app/page.tsx` (featured grid spotlight)
+- The group spotlight (`has-[a:hover]:[&>*:not(:has(a:hover))]:opacity-50` on the grid) keys off an `<a>:hover`. With all 3 featured cards link-less (rendered as `<div>`), no `<a>` exists → the spotlight never fires and is effectively disabled. The selector is left in place (harmless, dead) so the effect returns automatically if a featured project gains a link later. No active spotlight on the current homepage.
 
 ### `app/projects/page.tsx`
 - Title cell: replace `<Link href={/projects/${id}}>` with plain text. Keep the "Lien" column external-link behavior as-is.
@@ -57,7 +60,7 @@ Used by card/table/thumbnail, kept: `id`, `title`, `tagline`, `image`, `imageFit
 - `npx tsc --noEmit` passes (catches any missed consumer of removed fields/functions).
 - `npm run build` succeeds (static export; confirms `[id]` route removal doesn't break `generateStaticParams`).
 - `npm run lint` clean (no unused imports/vars left behind).
-- Manual: homepage renders 3 featured cards (inert, no ↗); `/projects` shows 8 rows, titles plain, external links in "Lien" column work; cards with a `link` (pomodoro, smartchef, site-fortiche) clickable with ↗.
+- Manual: homepage renders 3 featured cards (inert, no ↗, no hover reaction, no spotlight); `/projects` shows 8 rows, titles plain, external links in "Lien" column work; cards with a `link` (pomodoro, smartchef, site-fortiche) clickable with ↗ + hover animation intact.
 
 ## Out of scope
 
