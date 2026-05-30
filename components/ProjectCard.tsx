@@ -14,22 +14,32 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, priority = false, featured = false }: Readonly<ProjectCardProps>) {
-  return (
-    <Link
-      href={`/projects/${project.id}`}
-      className={`group relative flex h-full flex-col gap-4 border bg-card transition-all duration-300 ease-in-out cursor-pointer active:scale-[0.98] hover:shadow-[-6px_6px_20px_rgba(0,0,0,0.12)] ${
-        featured
-          ? "p-6 rounded-[36px] border-primary/30 shadow-md hover:border-primary/60"
-          : "p-4 rounded-[28px] border-border shadow-sm hover:border-primary/40"
-      }`}
-    >
+  const hasLink = Boolean(project.link);
+
+  const shapeClasses = featured
+    ? "p-6 rounded-[36px] border-primary/30 shadow-md"
+    : "p-4 rounded-[28px] border-border shadow-sm";
+
+  // Hover animation + clickable affordances apply only when the card links somewhere.
+  const interactiveClasses = hasLink
+    ? `transition-all duration-300 ease-in-out cursor-pointer active:scale-[0.98] hover:shadow-[-6px_6px_20px_rgba(0,0,0,0.12)] ${
+        featured ? "hover:border-primary/60" : "hover:border-primary/40"
+      }`
+    : "";
+
+  const baseClasses = `group relative flex h-full flex-col gap-4 border bg-card ${shapeClasses} ${interactiveClasses}`;
+
+  const content = (
+    <>
       <ProjectThumbnail project={project} priority={priority} />
 
       <div className="flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-3 mb-2">
-          <h3 className={`font-medium leading-snug text-foreground group-hover:text-primary transition-colors flex items-center gap-2 ${featured ? "text-2xl" : "text-lg min-h-[3.125rem]"}`}>
+          <h3 className={`font-medium leading-snug text-foreground transition-colors flex items-center gap-2 ${hasLink ? "group-hover:text-primary" : ""} ${featured ? "text-2xl" : "text-lg min-h-[3.125rem]"}`}>
             {project.title || "Untitled Project"}
-            <ArrowUpRight className={`shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary ${featured ? "w-5 h-5" : "w-4 h-4"}`} />
+            {hasLink && (
+              <ArrowUpRight className={`shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary ${featured ? "w-5 h-5" : "w-4 h-4"}`} />
+            )}
           </h3>
         </div>
 
@@ -57,6 +67,21 @@ export default function ProjectCard({ project, priority = false, featured = fals
             })}
         </div>
       </div>
-    </Link>
+    </>
   );
+
+  if (hasLink) {
+    return (
+      <Link
+        href={project.link!}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={baseClasses}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return <div className={baseClasses}>{content}</div>;
 }
