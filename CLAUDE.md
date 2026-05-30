@@ -90,9 +90,8 @@ Client-side only. `LanguageProvider` detects browser language, falls back to `fr
 
 ### Routing
 
-- `/` — single-page portfolio (Hero, Experience, Projects preview, Contact)
-- `/projects` — full project archive
-- `/projects/[id]` — project detail (`page.tsx` server component for metadata + `client.tsx` for rendering)
+- `/` — single-page portfolio (Hero, About, Experience, Projects preview, Contact)
+- `/projects` — full project archive (read-only table, no detail pages)
 
 ### Fonts
 
