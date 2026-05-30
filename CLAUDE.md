@@ -5,13 +5,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev      # Start dev server with Turbopack at localhost:3000
-npm run build    # Production build (static export → out/)
-npm run start    # Start production server
-npm run lint     # ESLint via next lint
+npm run dev        # Start dev server with Turbopack at localhost:3000
+npm run build      # Production build (static export → out/)
+npm run start      # Start production server
+npm run lint       # ESLint via next lint
+npm run typecheck  # TypeScript check (tsc --noEmit)
+npm run test       # Run Vitest suite once
+npm run test:watch # Run Vitest in watch mode
 ```
 
-No test suite configured. TypeScript check: `npx tsc --noEmit`.
+Tests live in `tests/` (Vitest, Node environment). They cover pure logic only:
+use cases, repository localization, i18n dictionaries, the Formspree contact
+service. CI (`.github/workflows/ci.yml`) runs lint → typecheck → test → build on
+every push and PR to `main`.
 
 ## Environment
 
