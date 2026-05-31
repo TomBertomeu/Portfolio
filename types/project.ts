@@ -15,4 +15,5 @@ export interface Project {
   featured?: boolean;
   year?: string;
   madeAt?: string;
+  linkLabel?: string;
 }

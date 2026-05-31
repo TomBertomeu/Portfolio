@@ -45,16 +45,18 @@
     "seeAll": "See all my projects"
   },
   "projectsPage": {
-    "title": "All Projects",
+    "title": "All my projects",
     "subtitle": "A complete list of projects I've worked on, from complex web applications to small experimental projects.",
-    "backToHome": "Tom Bertomeu",
+    "backToHome": "Home",
     "table": {
       "year": "Year",
       "project": "Project",
       "madeAt": "Made at",
       "tech": "Technologies",
       "link": "Link",
-      "view": "View"
+      "view": "View",
+      "viewProject": "View project",
+      "caption": "Project list: year, name, technologies and link"
     }
   },
   "experience": {
@@ -92,6 +94,6 @@
   },
   "footer": {
     "copyright": "© 2025 Tom Bertomeu. All rights reserved.",
-    "credits": "Designed and developed with ❤️ by Tom Bertomeu in Visual Studio Code. Built with Next.js, Tailwind CSS and Formspree. Deployed with Hostinger."
+    "credits": "Designed and developed by Tom Bertomeu with Next.js, Tailwind CSS and Formspree. Deployed with Hostinger."
   }
 }
