@@ -18,23 +18,16 @@ export default function ScrollAnimation({
 }: Readonly<ScrollAnimationProps>) {
   const [ref, isVisible] = useInView<HTMLDivElement>();
 
-  const getInitialTransform = () => {
-    switch (direction) {
-      case "left":  return "translate-y-8 md:translate-y-0 md:-translate-x-8";
-      case "right": return "translate-y-8 md:translate-y-0 md:translate-x-8";
-      case "up":    return "translate-y-8";
-      case "down":  return "-translate-y-8";
-      default:      return "";
-    }
-  };
-
+  // Visibility is controlled by CSS (styles/globals.css), gated on `html.js`, so the
+  // prerendered content stays visible for no-JS clients and crawlers. The animation
+  // only enhances; it never hides content from anyone who can't run the observer.
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out ${className} ${isVisible
-          ? "opacity-100 translate-x-0 translate-y-0"
-          : `opacity-0 ${getInitialTransform()}`
-        }`}
+      data-reveal
+      data-direction={direction}
+      data-visible={isVisible}
+      className={className}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}

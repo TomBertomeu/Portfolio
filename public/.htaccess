@@ -1,0 +1,5 @@
+# Redirect www -> apex (non-www), 301. Keeps a single canonical host.
+# Shipped via public/ so every static export (out/) includes it.
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.tom-bertomeu\.com$ [NC]
+RewriteRule ^(.*)$ https://tom-bertomeu.com/$1 [R=301,L]
