@@ -1,8 +1,11 @@
 {
   "hero": {
-    "headline": "I build things",
-    "headlineAccent": "that hold up.",
-    "subtitle": "Fullstack developer on alternance since September 2022, 3rd-year CS. Production code alongside the degree.",
+    "headline": "Building things that",
+    "headlineAccentParenthetical": "(actually)",
+    "headlineAccentRest": " hold up.",
+    "subtitle": "Fullstack Developer wrapping up a Computer Science BUT. I love creating clean, maintainable apps.",
+    "primaryCta": "Explore my work",
+    "secondaryCta": "Read my resume",
     "seeProjects": "See my projects",
     "scrollToAbout": "Scroll to content"
   },
@@ -24,11 +27,11 @@
     "greeting": "Hi! I'm",
     "name": "Tom Bertomeu",
     "role": "Fullstack Developer",
-    "subtitle": "Third year of a Computer Science degree (BUT Informatique) at IUT Nord Franche-Comté, on a work-study contract since September 2022. Three years of alternating between university and a company means real production code, real deadlines, and actual users alongside the curriculum.\n\nI build fullstack web and mobile apps: React, Next.js, TypeScript on the frontend, various backends. The details that usually get cut (accessibility, edge cases, performance on real devices) are the ones I care about most. Outside of code: motorsport and video games.",
+    "subtitle": "Third year of a Computer Science degree (BUT Informatique) at IUT Nord Franche-Comté, on a work-study contract since August 2025. I split my time between university and a company: real production code, real deadlines, and actual users alongside the curriculum.\n\nI build fullstack web and mobile apps: React, Next.js, TypeScript on the frontend, various backends. The details that usually get cut (accessibility, edge cases, performance on real devices) are the ones I care about most. Outside of code: motorsport and video games.",
     "degree": "Computer Science BUT",
     "school": "Computer Science BUT ⋅ IUT Nord Franche-Comté",
     "period": "Period",
-    "periodValue": "September 2022 - Present",
+    "periodValue": "August 2025 - Present",
     "downloadCv": "View my CV",
     "interest1": "Motorsport",
     "interest2": "Science Fiction",
@@ -49,8 +52,7 @@
     }
   },
   "projects": {
-    "title": "My projects",
-    "intro": "Here are some of the projects I've worked on, showcasing my skills in different technologies and domains.",
+    "title": "Things I've built",
     "seeAll": "See all my projects"
   },
   "projectsPage": {
@@ -75,8 +77,7 @@
     "labelJob": "Job"
   },
   "contact": {
-    "title": "Get in touch",
-    "getInTouch": "Let's stay in touch"
+    "title": "Get in touch"
   },
   "notFound": {
     "title": "404",
@@ -86,12 +87,12 @@
   },
   "contactForm": {
     "infoTitle": "Contact Information",
-    "infoSubtitle": "Via the form or directly on these networks:",
+    "infoSubtitle": "Reach out directly or send a message through the form:",
     "labelName": "Name",
     "placeholderName": "Your name",
     "labelGithub": "GitHub",
     "labelLinkedin": "LinkedIn",
-    "error": "An error occurred while sending your message.",
+    "error": "Message failed to send. Try again or write to me directly:",
     "labelEmail": "Email",
     "placeholderEmail": "your.email@example.com",
     "labelMessage": "Message",

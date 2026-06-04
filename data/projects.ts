@@ -25,7 +25,6 @@ export const projectsData: ProjectData[] = [
       fr: "Reconstituer mes sets LEGO à partir de pièces en vrac.",
       en: "Rebuilding my LEGO sets from loose bricks."
     },
-    image: "/images/projects/lego-rebuilder.jpg",
     link: "",
     featured: true,
     year: "2025",

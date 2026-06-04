@@ -1,8 +1,11 @@
 {
   "hero": {
-    "headline": "Je construis des choses",
-    "headlineAccent": "qui tiennent la route.",
-    "subtitle": "Développeur fullstack en alternance depuis septembre 2022, 3e année de BUT. Du code en production avec le diplôme.",
+    "headline": "Construire des choses qui tiennent",
+    "headlineAccentParenthetical": "(vraiment)",
+    "headlineAccentRest": " la route.",
+    "subtitle": "Développeur Fullstack en fin de BUT Informatique. J'aime concevoir des applications propres et maintenables.",
+    "primaryCta": "Découvrir mon travail",
+    "secondaryCta": "Consulter mon CV",
     "seeProjects": "Voir mes projets",
     "scrollToAbout": "Défiler vers le contenu"
   },
@@ -24,11 +27,11 @@
     "greeting": "Salut! Moi, c'est",
     "name": "Tom Bertomeu",
     "role": "Développeur Fullstack",
-    "subtitle": "3ème année de BUT Informatique à l'IUT Nord Franche-Comté, en alternance depuis septembre 2022. Trois ans à partager mon temps entre l'université et l'entreprise : du code en production, de vraies échéances et de vrais utilisateurs en parallèle des cours.\n\nJe développe des applications web et mobiles fullstack : React, Next.js, TypeScript côté frontend, différents backends selon les projets. Les détails qu'on coupe en général (accessibilité, cas limites, performance sur des appareils réels) sont ceux qui m'intéressent le plus. En dehors du code : sport automobile et jeux vidéo.",
+    "subtitle": "3ème année de BUT Informatique à l'IUT Nord Franche-Comté, en alternance depuis août 2025. Je partage mon temps entre l'université et l'entreprise : du code en production, de vraies échéances et de vrais utilisateurs en parallèle des cours.\n\nJe développe des applications web et mobiles fullstack : React, Next.js, TypeScript côté frontend, différents backends selon les projets. Les détails qu'on coupe en général (accessibilité, cas limites, performance sur des appareils réels) sont ceux qui m'intéressent le plus. En dehors du code : sport automobile et jeux vidéo.",
     "degree": "BUT Informatique",
     "school": "IUT Nord Franche-Comté",
     "period": "Période",
-    "periodValue": "Septembre 2022 - Aujourd'hui",
+    "periodValue": "Août 2025 - Aujourd'hui",
     "downloadCv": "Consulter mon CV",
     "interest1": "Sport automobile",
     "interest2": "Science-fiction",
@@ -49,8 +52,7 @@
     }
   },
   "projects": {
-    "title": "Mes projets",
-    "intro": "Voici quelques-uns des projets sur lesquels j'ai travaillé, mettant en valeur mes compétences dans différents domaines technologiques.",
+    "title": "Ce que j'ai construit",
     "seeAll": "Voir tous mes projets"
   },
   "projectsPage": {
@@ -75,8 +77,7 @@
     "labelJob": "Emploi"
   },
   "contact": {
-    "title": "Me contacter",
-    "getInTouch": "Restons en contact"
+    "title": "Me contacter"
   },
   "notFound": {
     "title": "404",
@@ -86,7 +87,7 @@
   },
   "contactForm": {
     "infoTitle": "Coordonnées",
-    "infoSubtitle": "Via le formulaire ou directement sur ces réseaux :",
+    "infoSubtitle": "Contactez-moi directement ou envoyez un message via le formulaire :",
     "labelName": "Nom",
     "placeholderName": "Votre nom",
     "labelEmail": "E-mail",
@@ -98,7 +99,7 @@
     "send": "Envoyer le message",
     "sending": "Envoi en cours...",
     "success": "Votre message a été envoyé avec succès !",
-    "error": "Une erreur est survenue lors de l'envoi de votre message.",
+    "error": "Échec de l'envoi. Réessayez ou écrivez-moi directement :",
     "privacy": "Les informations que vous fournissez sont strictement confidentielles et ne seront utilisées que pour répondre à votre message. Elles ne seront ni partagées ni utilisées à d'autres fins."
   },
   "footer": {

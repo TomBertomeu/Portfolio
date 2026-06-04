@@ -173,9 +173,14 @@ export default function ContactForm() {
           </button>
 
           {status === "error" && (
-            <div className="flex items-center gap-2 text-sm text-red-500 mt-2">
-              <AlertCircle className="h-4 w-4" />
-              {t("contactForm.error")}
+            <div className="flex items-start gap-2 text-sm text-red-500 mt-2">
+              <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+              <span>
+                {t("contactForm.error")}{" "}
+                <a href={`mailto:${profile.email}`} className="underline hover:no-underline">
+                  {profile.email}
+                </a>
+              </span>
             </div>
           )}
 

@@ -55,7 +55,7 @@ export default function ProjectsPage() {
           </ScrollAnimation>
 
           <ScrollAnimation direction="down" delay={100}>
-            <h1 className="font-handwritten text-5xl md:text-7xl font-bold mb-6 relative inline-block">
+            <h1 className="font-handwritten text-5xl md:text-7xl font-bold mb-6 relative inline-block [text-wrap:balance]">
                 <span className="relative z-10">{t("projectsPage.title")}</span>
                 <UnderlineAccent strong />
             </h1>

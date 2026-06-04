@@ -11,9 +11,7 @@ html {
 
 ::-webkit-scrollbar {
     width: 0;
-    /* Remove scrollbar space */
     background: transparent;
-    /* Optional: just make scrollbar invisible */
 }
 
 
@@ -95,7 +93,7 @@ html {
     /* Custom Background Variables */
     --primary-blue: #2563eb;
     --primary-green: #10b981;
-    --grid-color: rgba(37, 99, 235, 0.05);
+    --grid-color: rgba(37, 99, 235, 0.025);
     --grid-size: 60px;
 }
 
@@ -133,7 +131,7 @@ html {
     --sidebar-ring: oklch(0.55 0.20 264);
 
     /* Custom Background Variables Dark Mode */
-    --grid-color: rgba(37, 99, 235, 0.18);
+    --grid-color: rgba(37, 99, 235, 0.10);
 }
 
 @layer base {
@@ -145,6 +143,14 @@ html {
         @apply bg-background text-foreground font-sans;
         overflow-x: hidden;
     }
+}
+
+/* Logo gradient — brand signature blue→green */
+.logo-gradient {
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 /* Scroll indicator bob (Hero ChevronDown) */
@@ -161,11 +167,11 @@ html {
     }
 
     10% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     90% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     100% {
@@ -181,11 +187,11 @@ html {
     }
 
     10% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     90% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     100% {
@@ -201,11 +207,11 @@ html {
     }
 
     10% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     90% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     100% {
@@ -221,11 +227,11 @@ html {
     }
 
     10% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     90% {
-        opacity: 0.4;
+        opacity: 0.25;
     }
 
     100% {
@@ -253,7 +259,6 @@ html {
     mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
     -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
     pointer-events: none;
-    /* Ensure clicks pass through */
 }
 
 .beam {
@@ -341,5 +346,10 @@ html.js [data-reveal][data-direction="right"]:not([data-visible="true"]) {
     html.js [data-reveal]:not([data-visible="true"]) {
         opacity: 1;
         transform: none;
+    }
+
+    .beam {
+        animation: none;
+        opacity: 0;
     }
 }

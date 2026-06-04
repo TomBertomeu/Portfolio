@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -21,7 +21,25 @@ export default function Header() {
     const { t, language } = useLanguage();
     const scrolled = useScrollY() > SCROLL_THRESHOLD;
     const [menuOpen, setMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState<string>("");
     const cvHref = `/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`;
+
+    useEffect(() => {
+        const sectionIds = NAV_LINKS.map(l => l.href.replace("/#", ""));
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) setActiveSection(entry.target.id);
+                });
+            },
+            { rootMargin: "-100px 0px -45% 0px", threshold: 0 }
+        );
+        sectionIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <header
@@ -34,7 +52,7 @@ export default function Header() {
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
                 {/* Logo */}
                 <Link href="/" className="shrink-0 hover:opacity-80 transition-opacity">
-                    <span className={`font-black uppercase tracking-wider whitespace-nowrap inline-block transition-all duration-500 ease-in-out ${scrolled
+                    <span className={`logo-gradient font-black uppercase tracking-wider whitespace-nowrap inline-block transition-all duration-500 ease-in-out ${scrolled
                         ? "text-lg sm:text-xl"
                         : "text-2xl sm:text-3xl"
                     }`}>
@@ -46,18 +64,19 @@ export default function Header() {
                 <div className="flex items-center gap-6">
                     {/* Nav Links - Hidden on mobile, visible on md+ */}
                     <nav className="hidden md:flex items-center gap-6 text-sm font-black uppercase tracking-wider">
-                        <Link href="/#about" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.about")}
-                        </Link>
-                        <Link href="/#experience" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.experience")}
-                        </Link>
-                        <Link href="/#projects" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.projects")}
-                        </Link>
-                        <Link href="/#contact" className="hover:text-[var(--primary-blue)] transition-all active:scale-95">
-                            {t("nav.contact")}
-                        </Link>
+                        {NAV_LINKS.map(link => {
+                            const isActive = activeSection === link.href.replace("/#", "");
+                            return (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    aria-current={isActive ? "location" : undefined}
+                                    className={`transition-all active:scale-95 ${isActive ? "text-[var(--primary-blue)]" : "hover:text-[var(--primary-blue)]"}`}
+                                >
+                                    {t(link.key)}
+                                </Link>
+                            );
+                        })}
                     </nav>
 
                     {/* Separator */}
@@ -101,16 +120,20 @@ export default function Header() {
                 } bg-background/95 backdrop-blur-sm`}
             >
                 <div className="mx-auto flex max-w-7xl flex-col px-4 py-2">
-                    {NAV_LINKS.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={() => setMenuOpen(false)}
-                            className="py-3 text-sm font-black uppercase tracking-wider hover:text-[var(--primary-blue)] active:scale-95 transition-all"
-                        >
-                            {t(link.key)}
-                        </Link>
-                    ))}
+                    {NAV_LINKS.map((link) => {
+                        const isActive = activeSection === link.href.replace("/#", "");
+                        return (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                onClick={() => setMenuOpen(false)}
+                                aria-current={isActive ? "location" : undefined}
+                                className={`py-3 text-sm font-black uppercase tracking-wider active:scale-95 transition-all ${isActive ? "text-[var(--primary-blue)]" : "hover:text-[var(--primary-blue)]"}`}
+                            >
+                                {t(link.key)}
+                            </Link>
+                        );
+                    })}
                     <a
                         href={cvHref}
                         target="_blank"

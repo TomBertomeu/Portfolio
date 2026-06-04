@@ -26,7 +26,7 @@ export default function ExperienceSection() {
           const cardContent = (
             <>
               <header
-                className="md:col-span-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground mt-1"
+                className="md:col-span-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground mt-1"
                 aria-label={exp.period}
               >
                 <div className="flex items-center gap-2">

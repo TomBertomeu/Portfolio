@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { ImageOff } from "lucide-react";
 import type { Project } from "@/types/project";
 
 interface ProjectThumbnailProps {
@@ -12,6 +13,12 @@ export default function ProjectThumbnail({ project, priority = false }: Readonly
         <div className={`relative aspect-video w-full overflow-hidden rounded-xl border border-border/50 ${project.imageFit === "contain" ? "bg-white" : "bg-muted"}`}>
             {project.imageFit !== "contain" && (
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
+            )}
+
+            {!project.image && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <ImageOff className="w-8 h-8 text-muted-foreground" />
+                </div>
             )}
 
             {project.image && (

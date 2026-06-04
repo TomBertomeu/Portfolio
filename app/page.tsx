@@ -30,25 +30,11 @@ export default function Home() {
                             <Title text={t("nav.about")} />
                         </ScrollAnimation>
                         <ScrollAnimation direction="left" delay={200}>
-                            <div className="prose prose-lg dark:prose-invert text-muted-foreground whitespace-pre-line mb-4 md:mb-8">
+                            <div className="prose prose-lg dark:prose-invert text-muted-foreground whitespace-pre-line [text-wrap:pretty] mb-4 md:mb-8">
                                 {t("about.subtitle")}
                             </div>
                         </ScrollAnimation>
 
-                        <div className="hidden md:flex flex-wrap gap-4">
-                            <a
-                                href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="cursor-pointer relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-transparent px-5 py-2.5 text-primary font-medium overflow-hidden transition-all duration-300 ease-out hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-lg hover:shadow-[#2563eb]/30 active:scale-95 group"
-                            >
-                                <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-gradient-to-r from-[#2563eb] to-[#10b981] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-                                <span className="relative z-10">
-                                    {t("about.downloadCv")}
-                                </span>
-                                <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                            </a>
-                        </div>
                     </div>
 
                     <ScrollAnimation direction="right" delay={300} className="flex justify-center md:justify-end">
@@ -63,20 +49,6 @@ export default function Home() {
                         </div>
                     </ScrollAnimation>
 
-                    <div className="flex md:hidden justify-center mt-6">
-                        <a
-                            href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="cursor-pointer relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-transparent px-5 py-2.5 text-primary font-medium overflow-hidden transition-all duration-300 ease-out hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-lg hover:shadow-[#2563eb]/30 active:scale-95 group"
-                        >
-                            <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-gradient-to-r from-[#2563eb] to-[#10b981] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-                            <span className="relative z-10">
-                                {t("about.downloadCv")}
-                            </span>
-                            <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                        </a>
-                    </div>
                 </div>
             </Section>
 
@@ -109,9 +81,9 @@ export default function Home() {
                 <div className="flex justify-center mt-6">
                     <Link
                         href="/projects"
-                        className="cursor-pointer relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-transparent px-5 py-2.5 text-primary font-medium overflow-hidden transition-all duration-300 ease-out hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-lg hover:shadow-[#2563eb]/30 active:scale-95 group"
+                        className="cursor-pointer relative inline-flex items-center gap-2 rounded-full border border-primary/40 bg-transparent px-5 py-2.5 text-primary font-medium overflow-hidden transition-all duration-300 ease-out hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-lg hover:shadow-[var(--primary-blue)]/30 active:scale-95 group"
                     >
-                        <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-gradient-to-r from-[#2563eb] to-[#10b981] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+                        <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--primary-green)] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
                         <span className="relative z-10">
                             {t("projects.seeAll") || "Voir tous les projets"}
                         </span>
