@@ -1,18 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { useScrollY } from "@/hooks/useScrollY";
-import { FileText } from "lucide-react";
+import { FileText, Menu, X } from "lucide-react";
 
 const SCROLL_THRESHOLD = 50;
+
+const NAV_LINKS = [
+    { href: "/#about", key: "nav.about" },
+    { href: "/#experience", key: "nav.experience" },
+    { href: "/#projects", key: "nav.projects" },
+    { href: "/#contact", key: "nav.contact" },
+] as const;
 
 export default function Header() {
     const { t, language } = useLanguage();
     const scrolled = useScrollY() > SCROLL_THRESHOLD;
+    const [menuOpen, setMenuOpen] = useState(false);
+    const cvHref = `/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`;
 
     return (
         <header
@@ -24,8 +33,8 @@ export default function Header() {
         >
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
                 {/* Logo */}
-                <Link href="/" className="hover:opacity-80 transition-opacity">
-                    <span className={`shimmer font-black uppercase tracking-wider inline-block transition-all duration-500 ease-in-out ${scrolled
+                <Link href="/" className="shrink-0 hover:opacity-80 transition-opacity">
+                    <span className={`font-black uppercase tracking-wider whitespace-nowrap inline-block transition-all duration-500 ease-in-out ${scrolled
                         ? "text-lg sm:text-xl"
                         : "text-2xl sm:text-3xl"
                     }`}>
@@ -57,7 +66,7 @@ export default function Header() {
                     {/* Actions */}
                     <div className="flex items-center gap-2">
                         <a
-                            href={`/cv/BERTOMEU_TOM-CV_Portfolio_${language.toUpperCase()}.pdf`}
+                            href={cvHref}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hidden md:inline-flex items-center gap-2 text-sm font-black uppercase tracking-wider hover:text-[var(--primary-blue)] active:scale-95 transition-all mr-2"
@@ -68,9 +77,52 @@ export default function Header() {
                         </a>
                         <LanguageSwitcher />
                         <ThemeToggle />
+
+                        {/* Hamburger - mobile only */}
+                        <button
+                            type="button"
+                            onClick={() => setMenuOpen((open) => !open)}
+                            aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
+                            aria-expanded={menuOpen}
+                            className="md:hidden cursor-pointer relative inline-flex h-11 w-11 items-center justify-center rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground active:scale-95 transition-all"
+                        >
+                            {menuOpen
+                                ? <X className="h-5 w-5" strokeWidth={2.75} />
+                                : <Menu className="h-5 w-5" strokeWidth={2.75} />}
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {/* Mobile menu panel */}
+            <nav
+                className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+                    menuOpen ? "max-h-96 border-b border-border" : "max-h-0"
+                } bg-background/95 backdrop-blur-sm`}
+            >
+                <div className="mx-auto flex max-w-7xl flex-col px-4 py-2">
+                    {NAV_LINKS.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setMenuOpen(false)}
+                            className="py-3 text-sm font-black uppercase tracking-wider hover:text-[var(--primary-blue)] active:scale-95 transition-all"
+                        >
+                            {t(link.key)}
+                        </Link>
+                    ))}
+                    <a
+                        href={cvHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-2 border-t border-border py-3 text-sm font-black uppercase tracking-wider hover:text-[var(--primary-blue)] active:scale-95 transition-all"
+                    >
+                        <FileText className="w-4 h-4" strokeWidth={2.75} />
+                        {t("about.downloadCv")}
+                    </a>
+                </div>
+            </nav>
 
             {/* Animated Border */}
             <div

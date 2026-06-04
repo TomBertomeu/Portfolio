@@ -9,7 +9,7 @@ import ScrollAnimation from "./ScrollAnimation";
 
 const STATUS_RESET_DELAY_MS = 5000;
 const EMPTY_FORM = { name: "", email: "", message: "" };
-const INPUT_CLASS = "w-full rounded-xl border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[var(--primary-blue)] focus-visible:ring-2 focus-visible:ring-[var(--primary-blue)]/20";
+const INPUT_CLASS = "w-full rounded-xl border border-primary/30 bg-background px-5 py-3 md:py-2.5 text-base md:text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[var(--primary-blue)] focus-visible:ring-2 focus-visible:ring-[var(--primary-blue)]/20";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
@@ -63,7 +63,7 @@ export default function ContactForm() {
         <div className="flex flex-col gap-3">
           <a
             href={`mailto:${profile.email}`}
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-primary transition-colors duration-200"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-primary transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Mail className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
@@ -75,7 +75,7 @@ export default function ContactForm() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors duration-200"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Github className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
@@ -87,7 +87,7 @@ export default function ContactForm() {
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Linkedin className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">

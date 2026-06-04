@@ -15,7 +15,7 @@ export default function ExperienceSection() {
 
   return (
     <Section id="experience">
-      <ScrollAnimation direction="left">
+      <ScrollAnimation direction="up">
         <Title text={t("experience.title")} />
       </ScrollAnimation>
 
@@ -73,7 +73,7 @@ export default function ExperienceSection() {
           );
 
           return (
-            <ScrollAnimation key={exp.id} direction="left" delay={index * 100}>
+            <ScrollAnimation key={exp.id} direction="up" delay={index * 100}>
               {exp.link ? (
                 <a href={exp.link} target="_blank" rel="noopener noreferrer" className={cardClassName}>
                   {cardContent}

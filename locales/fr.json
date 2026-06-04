@@ -2,7 +2,9 @@
   "hero": {
     "headline": "Je construis des choses",
     "headlineAccent": "qui tiennent la route.",
-    "subtitle": "Développeur Fullstack · Alternance · 3ème année BUT"
+    "subtitle": "Développeur fullstack en alternance depuis septembre 2022, 3e année de BUT. Du code en production avec le diplôme.",
+    "seeProjects": "Voir mes projets",
+    "scrollToAbout": "Défiler vers le contenu"
   },
   "nav": {
     "home": "Accueil",

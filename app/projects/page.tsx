@@ -69,10 +69,45 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Projects Table */}
+      {/* Projects list */}
       <div className="bg-muted py-16 flex-grow relative z-10">
         <div className="mx-auto max-w-7xl px-4">
-          <ScrollAnimation direction="up" delay={100}>
+          {/* Mobile: stacked cards (< sm) */}
+          <div className="flex flex-col gap-4 sm:hidden">
+            {sortedProjects.map((project, index) => (
+              <ScrollAnimation key={project.id} direction="up" delay={Math.min(index, 4) * 75}>
+                <div className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm shadow-sm p-5">
+                  <div className="flex items-baseline justify-between gap-3 mb-2">
+                    <span className="font-mono text-sm text-muted-foreground">{project.year}</span>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                        aria-label={`${t("projectsPage.table.view")} ${project.title}`}
+                      >
+                        <span className="whitespace-nowrap">
+                          {project.linkLabel ?? t("projectsPage.table.viewProject")}
+                        </span>
+                        <ArrowUpRight className="w-4 h-4 flex-shrink-0" />
+                      </a>
+                    )}
+                  </div>
+                  <div className="font-semibold text-foreground">{project.title}</div>
+                  {project.madeAt && (
+                    <div className="text-sm text-muted-foreground mt-0.5 mb-3">{project.madeAt}</div>
+                  )}
+                  <div className={project.madeAt ? "" : "mt-3"}>
+                    <TechBadges badges={project.badges} />
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+
+          {/* Desktop / tablet: table (sm+) */}
+          <ScrollAnimation direction="up" delay={100} className="hidden sm:block">
             <div className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm shadow-md">
               <div className="overflow-x-auto md:overflow-visible rounded-xl">
                 <table className="w-full text-left border-collapse">
@@ -99,11 +134,8 @@ export default function ProjectsPage() {
                           {project.madeAt && (
                             <div className="text-sm text-muted-foreground mt-0.5">{project.madeAt}</div>
                           )}
-                          <div className="mt-2 sm:hidden">
-                            <TechBadges badges={project.badges} />
-                          </div>
                         </td>
-                        <td className="py-6 pr-4 hidden sm:table-cell">
+                        <td className="py-6 pr-4">
                           <TechBadges badges={project.badges} />
                         </td>
                         <td className="py-6 pl-4 pr-6">

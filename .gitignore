@@ -42,3 +42,6 @@ next-env.d.ts
 
 # impeccable (design critique tool artifacts)
 .impeccable/
+
+# playwright mcp (browser session artifacts)
+.playwright-mcp/

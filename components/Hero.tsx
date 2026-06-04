@@ -2,6 +2,7 @@
 
 import React from 'react';
 import HeroBackground from './HeroBackground';
+import Link from "next/link";
 import { useScrollY } from "@/hooks/useScrollY";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -34,11 +35,11 @@ export default function Hero() {
                     </span>
                 </h1>
 
-                <p className="mt-5 md:mt-6 text-sm md:text-base text-muted-foreground tracking-wide">
+                <p className="mt-5 md:mt-6 text-sm md:text-base text-muted-foreground tracking-wide max-w-xl mx-auto text-balance">
                     {t("hero.subtitle")}
                 </p>
 
-                <div className="mt-8 md:mt-10">
+                <div className="mt-8 md:mt-10 flex flex-wrap items-center justify-center gap-4">
                     <a
                         href={cvHref}
                         target="_blank"
@@ -49,13 +50,28 @@ export default function Hero() {
                         <span className="relative z-10">{t("about.downloadCv")}</span>
                         <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </a>
+
+                    <Link
+                        href="/#projects"
+                        className="inline-flex items-center gap-2 rounded-full border border-[#2563eb]/50 bg-transparent px-5 py-2.5 text-[#2563eb] dark:text-blue-400 dark:border-blue-400/50 font-medium transition-all duration-300 ease-out hover:border-[#2563eb] dark:hover:border-blue-400 hover:-translate-y-px hover:shadow-md hover:shadow-[#2563eb]/20 active:scale-95"
+                    >
+                        {t("hero.seeProjects")}
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </Link>
                 </div>
 
-                <div className="absolute bottom-8 left-0 right-0 flex justify-center pointer-events-none">
-                    <ChevronDown
-                        className="w-5 h-5 text-muted-foreground animate-[scroll-bob_2s_ease-in-out_infinite] motion-reduce:animate-none"
-                        aria-hidden="true"
-                    />
+                <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+                    <button
+                        type="button"
+                        onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+                        aria-label={t("hero.scrollToAbout")}
+                        className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
+                    >
+                        <ChevronDown
+                            className="w-5 h-5 animate-[scroll-bob_2s_ease-in-out_infinite] motion-reduce:animate-none"
+                            aria-hidden="true"
+                        />
+                    </button>
                 </div>
             </div>
         </section>

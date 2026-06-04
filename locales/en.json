@@ -2,7 +2,9 @@
   "hero": {
     "headline": "I build things",
     "headlineAccent": "that hold up.",
-    "subtitle": "Fullstack Developer · Work-Study · 3rd-year CS"
+    "subtitle": "Fullstack developer on alternance since September 2022, 3rd-year CS. Production code alongside the degree.",
+    "seeProjects": "See my projects",
+    "scrollToAbout": "Scroll to content"
   },
   "nav": {
     "home": "Home",
