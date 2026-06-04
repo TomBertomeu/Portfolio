@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import React from "react";
 import "@/styles/globals.css";
-import "@/styles/shimmer-effect.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageProvider";
@@ -62,7 +61,6 @@ export const metadata: Metadata = {
 export const viewport = {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
