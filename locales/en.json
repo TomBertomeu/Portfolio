@@ -1,11 +1,18 @@
 {
+  "hero": {
+    "headline": "I build things",
+    "headlineAccent": "that hold up.",
+    "subtitle": "Fullstack Developer · Work-Study · 3rd-year CS"
+  },
   "nav": {
     "home": "Home",
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "lang": {
     "en": "English",
@@ -15,7 +22,7 @@
     "greeting": "Hi! I'm",
     "name": "Tom Bertomeu",
     "role": "Fullstack Developer",
-    "subtitle": "Hi! I'm Tom! I am a passionate developer, currently in the 3rd year of a Bachelor's degree in Computer Science (BUT Informatique) and on a work-study program.\n\nI love building web and mobile apps that are not only performant, but above all a joy to use. When I'm not coding, you'll probably find me watching a motorsport race or immersed in a video game.",
+    "subtitle": "Third year of a Computer Science degree (BUT Informatique) at IUT Nord Franche-Comté, on a work-study contract since September 2022. Three years of alternating between university and a company means real production code, real deadlines, and actual users alongside the curriculum.\n\nI build fullstack web and mobile apps: React, Next.js, TypeScript on the frontend, various backends. The details that usually get cut (accessibility, edge cases, performance on real devices) are the ones I care about most. Outside of code: motorsport and video games.",
     "degree": "Computer Science BUT",
     "school": "Computer Science BUT ⋅ IUT Nord Franche-Comté",
     "period": "Period",
@@ -66,7 +73,7 @@
     "labelJob": "Job"
   },
   "contact": {
-    "title": "Contact me!",
+    "title": "Get in touch",
     "getInTouch": "Let's stay in touch"
   },
   "notFound": {
@@ -93,7 +100,7 @@
     "privacy": "The information you provide is strictly confidential and will only be used to respond to your message. It will neither be shared nor used for any other purposes."
   },
   "footer": {
-    "copyright": "© 2025 Tom Bertomeu. All rights reserved.",
+    "copyright": "© 2026 Tom Bertomeu. All rights reserved.",
     "credits": "Designed and developed by Tom Bertomeu with Next.js, Tailwind CSS and Formspree. Deployed with Hostinger."
   }
 }

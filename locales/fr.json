@@ -1,11 +1,18 @@
 {
+  "hero": {
+    "headline": "Je construis des choses",
+    "headlineAccent": "qui tiennent la route.",
+    "subtitle": "Développeur Fullstack · Alternance · 3ème année BUT"
+  },
   "nav": {
     "home": "Accueil",
     "about": "À propos",
     "skills": "Compétences",
     "projects": "Projets",
     "experience": "Expérience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
   },
   "lang": {
     "en": "Anglais",
@@ -15,7 +22,7 @@
     "greeting": "Salut! Moi, c'est",
     "name": "Tom Bertomeu",
     "role": "Développeur Fullstack",
-    "subtitle": "Salut ! Moi c'est Tom ! Je suis un développeur passionné, actuellement en alternance en 3ème année de BUT Informatique.\n\nJ'adore créer des applications web et mobiles qui sont non seulement performantes, mais surtout agréables à utiliser. Quand je ne code pas, vous me trouverez probablement en train de suivre un sport automobile ou plongé dans un jeu vidéo.",
+    "subtitle": "3ème année de BUT Informatique à l'IUT Nord Franche-Comté, en alternance depuis septembre 2022. Trois ans à partager mon temps entre l'université et l'entreprise : du code en production, de vraies échéances et de vrais utilisateurs en parallèle des cours.\n\nJe développe des applications web et mobiles fullstack : React, Next.js, TypeScript côté frontend, différents backends selon les projets. Les détails qu'on coupe en général (accessibilité, cas limites, performance sur des appareils réels) sont ceux qui m'intéressent le plus. En dehors du code : sport automobile et jeux vidéo.",
     "degree": "BUT Informatique",
     "school": "IUT Nord Franche-Comté",
     "period": "Période",
@@ -66,7 +73,7 @@
     "labelJob": "Emploi"
   },
   "contact": {
-    "title": "Contactez-moi !",
+    "title": "Me contacter",
     "getInTouch": "Restons en contact"
   },
   "notFound": {
@@ -93,7 +100,7 @@
     "privacy": "Les informations que vous fournissez sont strictement confidentielles et ne seront utilisées que pour répondre à votre message. Elles ne seront ni partagées ni utilisées à d'autres fins."
   },
   "footer": {
-    "copyright": "© 2025 Tom Bertomeu. Tous droits réservés.",
+    "copyright": "© 2026 Tom Bertomeu. Tous droits réservés.",
     "credits": "Conçu et développé par Tom Bertomeu avec Next.js, Tailwind CSS et Formspree. Déployé avec Hostinger."
   }
 }
