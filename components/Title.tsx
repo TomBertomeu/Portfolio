@@ -9,7 +9,7 @@ interface TitleProps {
 
 export default function Title({ text, className, centered = false }: Readonly<TitleProps>) {
     return (
-        <div className={clsx("flex flex-col mb-8 md:mb-10", centered ? "items-center" : "items-center md:items-start")}>
+        <div className={clsx("flex flex-col mb-12 md:mb-16", centered ? "items-center" : "items-center md:items-start")}>
             <h2 className={clsx("font-handwritten text-5xl md:text-7xl font-bold relative inline-block [text-wrap:balance]", !centered && "text-center md:text-left", className)}>
                 <span className="relative z-10">{text}</span>
                 <UnderlineAccent strong />
