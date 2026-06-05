@@ -61,7 +61,7 @@ export default function Home() {
                     <Title text={t("projects.title")} centered />
                 </ScrollAnimation>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1.35fr_1fr] gap-6 mt-12 md:mt-16 mb-12 items-center has-[a:hover]:[&>*:not(:has(a:hover))]:opacity-50">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1.35fr_1fr] gap-3 sm:gap-6 mt-12 md:mt-16 mb-12 items-center has-[a:hover]:[&>*:not(:has(a:hover))]:opacity-50">
                     {featuredProjects.map((project, index) => {
                         const isMain = index === 1;
                         const directions = ["left", "up", "right"] as const;
