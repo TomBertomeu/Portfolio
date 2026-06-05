@@ -52,12 +52,12 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
       {/* Informations de contact */}
-      <ScrollAnimation direction="left" className="py-4">
+      <ScrollAnimation direction="left" className="py-2 md:py-4">
         <Title text={t("contact.title")} />
 
-        <p className="text-lg text-muted-foreground mb-6">
+        <p className="text-lg text-muted-foreground mb-4 md:mb-6">
           {t("contactForm.infoSubtitle")}
         </p>
         <div className="flex flex-col gap-3">
@@ -100,7 +100,7 @@ export default function ContactForm() {
 
       {/* Formulaire */}
       <ScrollAnimation direction="right" delay={200} className="bg-background/80 backdrop-blur-sm border border-border rounded-[28px] md:rounded-[44px] p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           <FormField id="name" label={t("contactForm.labelName")} required>
             <input
               type="text"
