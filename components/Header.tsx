@@ -7,6 +7,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { useScrollY } from "@/hooks/useScrollY";
 import { FileText, Menu, X } from "lucide-react";
+import type { Language } from "@/types/language";
 
 const SCROLL_THRESHOLD = 50;
 
@@ -18,7 +19,7 @@ const NAV_LINKS = [
 ] as const;
 
 export default function Header() {
-    const { t, language } = useLanguage();
+    const { t, language, setLanguage } = useLanguage();
     const scrolled = useScrollY() > SCROLL_THRESHOLD;
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState<string>("");
@@ -56,7 +57,7 @@ export default function Header() {
                 <Link href="/" className="shrink-0 hover:opacity-80 transition-opacity">
                     <span className={`logo-gradient font-black uppercase tracking-wider whitespace-nowrap inline-block transition-all duration-500 ease-in-out ${scrolled
                         ? "text-lg sm:text-xl"
-                        : "text-lg sm:text-2xl"
+                        : "text-xl sm:text-2xl"
                     }`}>
                         Tom Bertomeu.
                     </span>
@@ -64,7 +65,7 @@ export default function Header() {
 
                 {/* Navigation & Actions */}
                 <div className="flex items-center gap-6">
-                    {/* Nav Links - Hidden on mobile, visible on md+ */}
+                    {/* Nav Links - Hidden on mobile */}
                     <nav className="hidden md:flex items-center gap-6 text-sm font-black uppercase tracking-wider">
                         {NAV_LINKS.map(link => {
                             const isActive = activeSection === link.href.replace("/#", "");
@@ -96,8 +97,12 @@ export default function Header() {
                             <FileText className="w-4 h-4" strokeWidth={2.75} />
                             <span className="hidden lg:inline">CV</span>
                         </a>
-                        <LanguageSwitcher />
-                        <ThemeToggle />
+
+                        {/* Language + Theme — desktop only */}
+                        <div className="hidden md:flex items-center gap-2">
+                            <LanguageSwitcher />
+                            <ThemeToggle />
+                        </div>
 
                         {/* Hamburger - mobile only */}
                         <button
@@ -146,6 +151,23 @@ export default function Header() {
                         <FileText className="w-4 h-4" strokeWidth={2.75} />
                         {t("about.downloadCv")}
                     </a>
+
+                    {/* Language + Theme — mobile menu */}
+                    <div className="mt-2 pt-2 border-t border-border flex items-center justify-between">
+                        <div className="flex items-center gap-1">
+                            {(["fr", "en"] as Language[]).map((lang) => (
+                                <button
+                                    key={lang}
+                                    type="button"
+                                    onClick={() => setLanguage(lang)}
+                                    className={`rounded-lg px-3 py-2 text-sm font-black uppercase tracking-wider transition-all active:scale-95 ${language === lang ? "bg-accent text-[var(--primary-blue)]" : "hover:bg-accent hover:text-[var(--primary-blue)]"}`}
+                                >
+                                    {lang}
+                                </button>
+                            ))}
+                        </div>
+                        <ThemeToggle />
+                    </div>
                 </div>
             </nav>
 
