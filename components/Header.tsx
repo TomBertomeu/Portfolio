@@ -45,10 +45,10 @@ export default function Header() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500
-                ${scrolled
-                    ? "py-4 bg-background/95 backdrop-blur-sm"
-                    : menuOpen
-                        ? "py-8 bg-background/95 backdrop-blur-sm"
+                ${menuOpen
+                    ? `${scrolled ? "pt-4" : "pt-8"} pb-0 bg-background/95 backdrop-blur-sm`
+                    : scrolled
+                        ? "py-4 bg-background/95 backdrop-blur-sm"
                         : "py-8 bg-transparent backdrop-blur-none"
                 }`}
         >
@@ -153,7 +153,7 @@ export default function Header() {
                     </a>
 
                     {/* Language + Theme — mobile menu */}
-                    <div className="mt-2 pt-2 border-t border-border flex items-center justify-between">
+                    <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1">
                             {(["fr", "en"] as Language[]).map((lang) => (
                                 <button
@@ -173,7 +173,7 @@ export default function Header() {
 
             {/* Animated Border */}
             <div
-                className={`absolute bottom-0 left-0 h-[1px] bg-border transition-all duration-500 ease-in-out ${scrolled ? "w-full" : "w-0"
+                className={`absolute bottom-0 left-0 h-[1px] bg-border transition-all duration-500 ease-in-out ${scrolled && !menuOpen ? "w-full" : "w-0"
                     }`}
             />
         </header>
