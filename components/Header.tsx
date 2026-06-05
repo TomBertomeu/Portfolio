@@ -56,7 +56,7 @@ export default function Header() {
                 <Link href="/" className="shrink-0 hover:opacity-80 transition-opacity">
                     <span className={`logo-gradient font-black uppercase tracking-wider whitespace-nowrap inline-block transition-all duration-500 ease-in-out ${scrolled
                         ? "text-lg sm:text-xl"
-                        : "text-xl sm:text-2xl"
+                        : "text-lg sm:text-2xl"
                     }`}>
                         Tom Bertomeu.
                     </span>
