@@ -43,10 +43,12 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500
                 ${scrolled
-                    ? "py-4 bg-background/80 backdrop-blur-sm"
-                    : "py-8 bg-transparent backdrop-blur-none"
+                    ? "py-4 bg-background/95 backdrop-blur-sm"
+                    : menuOpen
+                        ? "py-8 bg-background/95 backdrop-blur-sm"
+                        : "py-8 bg-transparent backdrop-blur-none"
                 }`}
         >
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4">
@@ -54,7 +56,7 @@ export default function Header() {
                 <Link href="/" className="shrink-0 hover:opacity-80 transition-opacity">
                     <span className={`logo-gradient font-black uppercase tracking-wider whitespace-nowrap inline-block transition-all duration-500 ease-in-out ${scrolled
                         ? "text-lg sm:text-xl"
-                        : "text-2xl sm:text-3xl"
+                        : "text-xl sm:text-2xl"
                     }`}>
                         Tom Bertomeu.
                     </span>
@@ -117,9 +119,9 @@ export default function Header() {
             <nav
                 className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
                     menuOpen ? "max-h-96 border-b border-border" : "max-h-0"
-                } bg-background/95 backdrop-blur-sm`}
+                }`}
             >
-                <div className="mx-auto flex max-w-7xl flex-col px-4 py-2">
+                <div className="mx-auto flex max-w-7xl flex-col px-4 py-3 gap-1">
                     {NAV_LINKS.map((link) => {
                         const isActive = activeSection === link.href.replace("/#", "");
                         return (
@@ -128,7 +130,7 @@ export default function Header() {
                                 href={link.href}
                                 onClick={() => setMenuOpen(false)}
                                 aria-current={isActive ? "location" : undefined}
-                                className={`py-3 text-sm font-black uppercase tracking-wider active:scale-95 transition-all ${isActive ? "text-[var(--primary-blue)]" : "hover:text-[var(--primary-blue)]"}`}
+                                className={`rounded-lg px-3 py-2.5 text-sm font-black uppercase tracking-wider active:scale-95 transition-all ${isActive ? "text-[var(--primary-blue)] bg-accent" : "hover:text-[var(--primary-blue)] hover:bg-accent"}`}
                             >
                                 {t(link.key)}
                             </Link>
@@ -139,7 +141,7 @@ export default function Header() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setMenuOpen(false)}
-                        className="flex items-center gap-2 border-t border-border py-3 text-sm font-black uppercase tracking-wider hover:text-[var(--primary-blue)] active:scale-95 transition-all"
+                        className="mt-2 flex items-center justify-center gap-2 rounded-full border border-primary/40 px-5 py-2.5 text-sm font-black uppercase tracking-wider text-primary hover:text-[var(--primary-blue)] hover:border-[var(--primary-blue)] active:scale-95 transition-all"
                     >
                         <FileText className="w-4 h-4" strokeWidth={2.75} />
                         {t("about.downloadCv")}
