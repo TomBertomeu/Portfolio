@@ -23,6 +23,14 @@ export function useInView<T extends Element = HTMLDivElement>({
     const node = ref.current;
     if (!node) return;
 
+    // Reveal above-the-fold content on the first commit instead of waiting for the
+    // observer's async callback: avoids a blank flash for content already in view.
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setIsInView(true);
+      if (once) return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

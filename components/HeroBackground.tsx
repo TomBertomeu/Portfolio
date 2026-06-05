@@ -15,7 +15,7 @@ const BEAMS: BeamConfig[] = [
     { direction: "beam-h",     position: 480,  duration: 9,    delay: 1   },
     { direction: "beam-h-rev", position: 600,  duration: 15,   delay: 3.5 },
     { direction: "beam-v",     position: 180,  duration: 10,   delay: 0.5 },
-    { direction: "beam-v-rev", position: 600,  duration: 8,    delay: 2.5 },
+    { direction: "beam-v-rev", position: 800,  duration: 8,    delay: 2.5 },
     { direction: "beam-v",     position: 960,  duration: 11,   delay: 1.5 },
     { direction: "beam-v-rev", position: 1320, duration: 13,   delay: 0   },
 ];

@@ -9,6 +9,7 @@ function localizeProject(project: ProjectData, lang: Language): Project {
     title: project.title?.[lang],
     tagline: project.tagline?.[lang],
     madeAt: project.madeAt?.[lang],
+    linkLabel: project.linkLabel?.[lang],
   };
 }
 

@@ -11,6 +11,7 @@ export interface ProjectData {
   title?: { fr: string; en: string };
   tagline?: { fr: string; en: string };
   madeAt?: { fr: string; en: string };
+  linkLabel?: { fr: string; en: string };
 }
 
 export const projectsData: ProjectData[] = [
@@ -24,7 +25,6 @@ export const projectsData: ProjectData[] = [
       fr: "Reconstituer mes sets LEGO à partir de pièces en vrac.",
       en: "Rebuilding my LEGO sets from loose bricks."
     },
-    image: "/images/projects/lego-rebuilder.jpg",
     link: "",
     featured: true,
     year: "2025",
@@ -84,6 +84,7 @@ export const projectsData: ProjectData[] = [
     },
     image: "/images/projects/pomodoro.jpg",
     link: "https://outer-wilds-pomodoro.vercel.app/",
+    linkLabel: { fr: "Démo", en: "Demo" },
     featured: false,
     year: "2025",
     badges: [
@@ -103,6 +104,7 @@ export const projectsData: ProjectData[] = [
     },
     image: "/images/projects/smartchef.jpg",
     link: "https://github.com/tbertome-iut90/smart-chef",
+    linkLabel: { fr: "Code source", en: "Source code" },
     featured: false,
     year: "2025",
     badges: [
@@ -165,6 +167,7 @@ export const projectsData: ProjectData[] = [
     },
     image: "/images/projects/fortiche.jpg",
     link: "https://projectsae.github.io/sae-1-05-06/",
+    linkLabel: { fr: "Site", en: "Website" },
     featured: false,
     year: "2022",
     madeAt: {

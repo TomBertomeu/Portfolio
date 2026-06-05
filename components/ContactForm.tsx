@@ -9,7 +9,7 @@ import ScrollAnimation from "./ScrollAnimation";
 
 const STATUS_RESET_DELAY_MS = 5000;
 const EMPTY_FORM = { name: "", email: "", message: "" };
-const INPUT_CLASS = "w-full rounded-xl border border-primary/30 bg-background px-5 py-2.5 text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[var(--primary-blue)] focus-visible:ring-2 focus-visible:ring-[var(--primary-blue)]/20";
+const INPUT_CLASS = "w-full rounded-xl border border-primary/30 bg-background px-5 py-3 md:py-2.5 text-base md:text-sm placeholder:text-muted-foreground transition-colors focus-visible:outline-none focus-visible:border-[var(--primary-blue)] focus-visible:ring-2 focus-visible:ring-[var(--primary-blue)]/20";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
@@ -52,18 +52,18 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
       {/* Informations de contact */}
-      <ScrollAnimation direction="left" className="py-4">
+      <ScrollAnimation direction="left" className="py-2 md:py-4">
         <Title text={t("contact.title")} />
 
-        <p className="text-lg text-muted-foreground mb-6">
+        <p className="text-lg text-muted-foreground mb-4 md:mb-6">
           {t("contactForm.infoSubtitle")}
         </p>
         <div className="flex flex-col gap-3">
           <a
             href={`mailto:${profile.email}`}
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-primary transition-colors duration-200"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-primary transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Mail className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
@@ -75,7 +75,7 @@ export default function ContactForm() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors duration-200"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Github className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
@@ -87,7 +87,7 @@ export default function ContactForm() {
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Linkedin className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
@@ -100,7 +100,7 @@ export default function ContactForm() {
 
       {/* Formulaire */}
       <ScrollAnimation direction="right" delay={200} className="bg-background/80 backdrop-blur-sm border border-border rounded-[28px] md:rounded-[44px] p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           <FormField id="name" label={t("contactForm.labelName")} required>
             <input
               type="text"
@@ -173,9 +173,14 @@ export default function ContactForm() {
           </button>
 
           {status === "error" && (
-            <div className="flex items-center gap-2 text-sm text-red-500 mt-2">
-              <AlertCircle className="h-4 w-4" />
-              {t("contactForm.error")}
+            <div className="flex items-start gap-2 text-sm text-red-500 mt-2">
+              <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+              <span>
+                {t("contactForm.error")}{" "}
+                <a href={`mailto:${profile.email}`} className="underline hover:no-underline">
+                  {profile.email}
+                </a>
+              </span>
             </div>
           )}
 
