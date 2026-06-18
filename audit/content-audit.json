@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "last_audit": "2026-06-05",
+  "files": [
+    {
+      "path": "locales/fr.json",
+      "status": "verified",
+      "verified_at": "2026-06-05",
+      "claims_verified": 11,
+      "claims_pending": 0,
+      "notes": ""
+    },
+    {
+      "path": "locales/en.json",
+      "status": "partial",
+      "verified_at": "2026-06-05",
+      "claims_verified": 11,
+      "claims_pending": 1,
+      "notes": "Pending: formulation anglaise du BUT Informatique (Bachelor equivalent) — à traiter en vocab-audit"
+    }
+  ]
+}

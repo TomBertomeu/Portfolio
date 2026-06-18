@@ -57,8 +57,8 @@ export default function Hero() {
                         className="cursor-pointer relative inline-flex items-center gap-2 rounded-full border border-[var(--primary-blue)]/50 bg-background px-5 py-2.5 text-[var(--primary-blue)] dark:text-blue-400 dark:border-blue-400/50 font-medium overflow-hidden transition-all duration-300 ease-out hover:text-white hover:border-transparent hover:-translate-y-px hover:shadow-md hover:shadow-[var(--primary-blue)]/20 active:scale-95 group"
                     >
                         <span className="absolute -inset-y-4 -inset-x-8 rounded-full bg-[var(--primary-blue)] -translate-x-[110%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-                        <span className="relative z-10">{t("hero.secondaryCta")}</span>
-                        <ExternalLink className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                        <span className="relative z-10 transition-colors duration-300 group-hover:text-white">{t("hero.secondaryCta")}</span>
+                        <ExternalLink className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white" />
                     </a>
                 </div>
 

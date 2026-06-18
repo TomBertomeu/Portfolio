@@ -17,6 +17,7 @@ export interface ProjectData {
 export const projectsData: ProjectData[] = [
   {
     id: "lego-rebuilder",
+    image: "/images/projects/lego-set-rebuilder.png",
     title: {
       fr: "Outil de reconstruction LEGO",
       en: "LEGO Set Rebuilder"

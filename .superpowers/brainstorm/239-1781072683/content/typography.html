@@ -1,0 +1,75 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap');
+  .typo-mock {
+    padding: 28px 24px; min-height: 240px;
+    background: #f7f6f3; color: #16202e;
+    background-image: linear-gradient(rgba(37,99,235,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .typo-label { font-family: monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #10981f00; color: #0e9d6e; }
+  .typo-sub { font-size: 11.5px; color: #4a5a70; max-width: 80%; border-left: 2px solid #2563eb; padding-left: 10px; line-height: 1.6; }
+  .typo-cta { margin-top: 14px; font-family: monospace; font-size: 10px; color: #2563eb; }
+</style>
+
+<h2>Quel serif pour les titres ? (mode clair « papier technique » en fond)</h2>
+<p class="subtitle">Même hero, trois voix différentes. Le fond clair montre aussi le traitement light mode proposé : papier chaud + grille bleue discrète. Détails et libellés restent en mono.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="fraunces" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="typo-mock">
+        <div class="typo-label">fig. 1 — portfolio · 2026</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 34px; line-height: 1.1; margin: 10px 0; font-weight: 600;">
+          Tom Bertomeu<br><em style="color:#0e9d6e; font-weight: 400; font-size: 24px;">développeur front-end</em>
+        </div>
+        <div class="typo-sub">Les outils évoluent. Le soin du travail, lui, reste.</div>
+        <div class="typo-cta">→ voir les projets</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Fraunces</h3>
+      <p>Serif « old-style » avec du caractère et un léger grain rétro. Expressif, assumé, très distinctif. L'italique est superbe. <strong>Ma recommandation</strong> — la personnalité qu'il faut pour contrer le « trop générique ».</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="newsreader" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="typo-mock">
+        <div class="typo-label">fig. 1 — portfolio · 2026</div>
+        <div style="font-family: 'Newsreader', serif; font-size: 34px; line-height: 1.1; margin: 10px 0; font-weight: 600;">
+          Tom Bertomeu<br><em style="color:#0e9d6e; font-weight: 400; font-size: 24px;">développeur front-end</em>
+        </div>
+        <div class="typo-sub">Les outils évoluent. Le soin du travail, lui, reste.</div>
+        <div class="typo-cta">→ voir les projets</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Newsreader</h3>
+      <p>Serif éditorial de presse, élégant et fluide. Plus discret que Fraunces, très lisible. Esprit journal/revue — raffiné sans excentricité.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="sourceserif" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="typo-mock">
+        <div class="typo-label">fig. 1 — portfolio · 2026</div>
+        <div style="font-family: 'Source Serif 4', serif; font-size: 34px; line-height: 1.1; margin: 10px 0; font-weight: 600;">
+          Tom Bertomeu<br><em style="color:#0e9d6e; font-weight: 400; font-size: 24px;">développeur front-end</em>
+        </div>
+        <div class="typo-sub">Les outils évoluent. Le soin du travail, lui, reste.</div>
+        <div class="typo-cta">→ voir les projets</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Source Serif 4</h3>
+      <p>Serif contemporain dessiné par Adobe, sobre et net. Le plus neutre des trois — sérieux, technique, mais moins mémorable.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <p class="subtitle">Si le fond « papier chaud + grille bleue » du mode clair ne te va pas, dis-le aussi en terminal.</p>
+</div>

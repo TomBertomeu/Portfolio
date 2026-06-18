@@ -108,56 +108,55 @@ export default function ProjectsPage() {
 
           {/* Desktop / tablet: table (sm+) */}
           <ScrollAnimation direction="up" delay={100} className="hidden sm:block">
-            <div className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm shadow-md">
-              <div className="overflow-x-auto md:overflow-visible rounded-xl">
-                <table className="w-full text-left border-collapse">
-                  <caption className="sr-only">{t("projectsPage.table.caption")}</caption>
-                  <thead className="bg-card/95 backdrop-blur-sm">
-                    <tr className="border-b border-border/50 text-muted-foreground text-sm">
-                      <th className="py-4 pl-6 pr-4 font-medium">{t("projectsPage.table.year")}</th>
-                      <th className="py-4 pr-4 font-medium">{t("projectsPage.table.project")}</th>
-                      <th className="py-4 pr-4 font-medium hidden sm:table-cell">{t("projectsPage.table.tech")}</th>
-                      <th className="py-4 pl-4 pr-6 font-medium">{t("projectsPage.table.link")}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {sortedProjects.map((project) => (
-                      <tr 
-                        key={project.id} 
-                        className="group border-b border-border/50 last:border-0 hover:bg-muted/50 transition-colors"
-                      >
-                        <td className="py-6 pl-6 pr-4 text-muted-foreground font-mono text-sm">
-                          {project.year}
-                        </td>
-                        <td className="py-6 pr-4">
-                          <div className="font-semibold text-foreground">{project.title}</div>
-                          {project.madeAt && (
-                            <div className="text-sm text-muted-foreground mt-0.5">{project.madeAt}</div>
-                          )}
-                        </td>
-                        <td className="py-6 pr-4">
-                          <TechBadges badges={project.badges} />
-                        </td>
-                        <td className="py-6 pl-4 pr-6">
-                          {project.link && (
-                            <a
-                              href={project.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors group/link"
-                              aria-label={`${t("projectsPage.table.view")} ${project.title}`}
-                            >
-                              <span className="text-sm whitespace-nowrap">
-                                {project.linkLabel ?? t("projectsPage.table.viewProject")}
-                              </span>
-                              <ArrowUpRight className="w-4 h-4 flex-shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
-                            </a>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <div className="relative">
+              {/* Floating table header */}
+              <div className="relative z-20 rounded-2xl border border-border/60 bg-card/95 backdrop-blur-sm shadow-sm">
+                <div className="grid grid-cols-[130px_1fr_1fr_200px] items-center text-sm text-muted-foreground">
+                  <div className="py-4 pl-6 pr-4 font-medium">{t("projectsPage.table.year")}</div>
+                  <div className="py-4 px-4 font-medium">{t("projectsPage.table.project")}</div>
+                  <div className="py-4 px-4 font-medium">{t("projectsPage.table.tech")}</div>
+                  <div className="py-4 pl-4 pr-6 font-medium">{t("projectsPage.table.link")}</div>
+                </div>
+              </div>
+
+              {/* Table body */}
+              <div className="relative z-10 -mt-4 rounded-b-2xl border border-border/50 bg-card/80 pt-6 shadow-lg backdrop-blur-sm" role="table" aria-label={t("projectsPage.table.caption")}>
+                {sortedProjects.map((project) => (
+                  <div
+                    key={project.id}
+                    role="row"
+                    className="group grid grid-cols-[130px_1fr_1fr_200px] items-center border-b border-border/50 last:border-0 hover:bg-muted/50 transition-colors"
+                  >
+                    <div role="cell" className="py-5 pl-6 pr-4 text-muted-foreground font-mono text-sm">
+                      {project.year}
+                    </div>
+                    <div role="cell" className="py-5 px-4">
+                      <div className="font-semibold text-foreground">{project.title}</div>
+                      {project.madeAt && (
+                        <div className="text-sm text-muted-foreground mt-0.5">{project.madeAt}</div>
+                      )}
+                    </div>
+                    <div role="cell" className="py-5 px-4">
+                      <TechBadges badges={project.badges} />
+                    </div>
+                    <div role="cell" className="py-5 pl-4 pr-6">
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors group/link"
+                          aria-label={`${t("projectsPage.table.view")} ${project.title}`}
+                        >
+                          <span className="text-sm whitespace-nowrap">
+                            {project.linkLabel ?? t("projectsPage.table.viewProject")}
+                          </span>
+                          <ArrowUpRight className="w-4 h-4 flex-shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </ScrollAnimation>

@@ -1,0 +1,75 @@
+<style>
+  .hero-mock { padding: 28px 24px; min-height: 230px; display: flex; flex-direction: column; justify-content: center; }
+  .mock-label { font-family: monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
+</style>
+
+<h2>Quelle direction visuelle pour « l'artisan du code » ?</h2>
+<p class="subtitle">Palette conservée : bleu #2563eb → vert #10b981. Trois interprétations du craft — clique celle qui te parle.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="editorial" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero-mock" style="background:#faf9f7; color:#1a1a1a;">
+        <div class="mock-label" style="color:#2563eb;">01 — Portfolio</div>
+        <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 34px; line-height: 1.15; margin: 10px 0; font-weight: 600;">
+          Tom Bertomeu<br><em style="color:#10b981; font-weight:400;">développeur</em>
+        </div>
+        <div style="font-size: 12px; max-width: 80%; color:#555; border-left: 2px solid #2563eb; padding-left: 10px;">
+          Les outils évoluent. Le soin du travail, lui, reste.
+        </div>
+        <div style="margin-top: 14px; font-family: monospace; font-size: 10px; color:#2563eb; text-decoration: underline; text-underline-offset: 3px;">
+          voir les projets ↘
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Atelier éditorial</h3>
+      <p>Inspiration presse/print : serif de caractère pour les titres, mono pour les détails, larges marges, filets et numérotation. Le bleu/vert en accents rares — soulignés, lettrines, annotations. Se démarque radicalement des portfolios dev habituels. <strong>Ma recommandation.</strong></p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="blueprint" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero-mock" style="background:#0c1220; color:#e8edf5; background-image: linear-gradient(rgba(37,99,235,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.12) 1px, transparent 1px); background-size: 24px 24px;">
+        <div class="mock-label" style="color:#10b981;">fig. 1 — bertomeu_tom.spec</div>
+        <div style="font-family: monospace; font-size: 28px; margin: 10px 0; font-weight: 700;">
+          Tom Bertomeu<span style="color:#2563eb;">_</span>
+        </div>
+        <div style="font-size: 11px; font-family: monospace; color:#9fb0c8;">
+          ├─ développeur front-end<br>
+          └─ précision · durabilité · craft
+        </div>
+        <div style="margin-top: 14px; display:inline-block; border: 1px solid #2563eb; padding: 5px 12px; font-family: monospace; font-size: 10px; color:#e8edf5; width: fit-content;">
+          [ projets → ]
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Plan d'architecte</h3>
+      <p>Esthétique dessin technique : grille fine omniprésente, cotations, libellés mono, marques de repère. Héritier direct de ta grille/beams actuelle mais poussé à fond. Bleu dominant (blueprint), vert pour les validations. Très « ingénieur », assumé tech.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="swiss" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="hero-mock" style="background:#ffffff; color:#0a0a0a;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom: 3px solid #0a0a0a; padding-bottom: 6px;">
+          <span class="mock-label">Tom Bertomeu</span>
+          <span class="mock-label" style="color:#10b981;">disponible</span>
+        </div>
+        <div style="font-family: Helvetica, Arial, sans-serif; font-size: 38px; line-height: 0.95; margin: 16px 0 8px; font-weight: 800; letter-spacing: -0.03em;">
+          DÉVELOP—<br>PEUR<span style="color:#2563eb;">.</span>
+        </div>
+        <div style="display:flex; gap: 16px; font-size: 10px; font-family: monospace; color:#666; margin-top: 8px;">
+          <span>01 À propos</span><span>02 Expérience</span><span style="color:#2563eb;">03 Projets</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Suisse moderne</h3>
+      <p>Grille typographique stricte, sans-serif massif, sections numérotées, hiérarchie franche, quasi-monochrome avec micro-accents bleu/vert. Confiance par la rigueur. Sobre et pro, mais direction la plus répandue des trois.</p>
+    </div>
+  </div>
+
+</div>
