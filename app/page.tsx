@@ -24,18 +24,29 @@ export default function Home() {
 
             {/* About Section */}
             <Section id="about" className="bg-muted">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
-                    <div>
-                        <ScrollAnimation direction="left">
-                            <Title text={t("nav.about")} />
-                        </ScrollAnimation>
-                        <ScrollAnimation direction="left" delay={200}>
-                            <div className="prose prose-lg dark:prose-invert text-muted-foreground whitespace-pre-line [text-wrap:pretty] mb-4 md:mb-8">
-                                {t("about.subtitle")}
-                            </div>
-                        </ScrollAnimation>
-
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6 md:gap-12 items-center">
+                    <ScrollAnimation direction="left">
+                        <p className="font-mono text-sm uppercase tracking-widest text-primary mb-4">
+                            {t("nav.about")}
+                        </p>
+                        <p className="text-2xl md:text-3xl text-foreground [text-wrap:pretty] leading-relaxed mb-6">
+                            {t("about.lead")}{" "}
+                            <span className="text-primary font-medium">{t("about.leadAccent")}</span>
+                        </p>
+                        <p className="text-base md:text-lg text-muted-foreground [text-wrap:pretty] leading-relaxed mb-8">
+                            {t("about.body")}
+                        </p>
+                        <ul className="flex flex-wrap gap-3 list-none p-0 m-0">
+                            {[t("about.fact1"), t("about.fact2"), t("about.fact3")].map((fact) => (
+                                <li
+                                    key={fact}
+                                    className="rounded-full border border-primary/30 bg-background/40 px-4 py-1.5 text-sm text-foreground/80"
+                                >
+                                    {fact}
+                                </li>
+                            ))}
+                        </ul>
+                    </ScrollAnimation>
 
                     <ScrollAnimation direction="right" delay={300} className="flex justify-center md:justify-end">
                         <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-lg rotate-3">
@@ -48,7 +59,6 @@ export default function Home() {
                             />
                         </div>
                     </ScrollAnimation>
-
                 </div>
             </Section>
 
