@@ -14,7 +14,7 @@ Two audiences read this portfolio; both must be served without one undermining t
 
 ## Product Purpose
 
-Personal portfolio for Tom Bertomeu, fullstack developer (3rd-year CS BUT, alternance). Exists to convert readers into contacts — a message sent, a CV downloaded, an interview requested. Secondary: positions Tom as someone who takes craft seriously, not just a junior who built a portfolio because the bootcamp said to.
+Personal portfolio for Tom Bertomeu, fullstack developer (BUT Informatique completed 2026, now in a Mastère EADL — software architecture, Bac+5 — on a work-study track at GEN'IAtest). Exists to convert readers into contacts — a message sent, a CV downloaded, an interview requested. Secondary: positions Tom as someone who takes craft seriously, not just a junior who built a portfolio because the bootcamp said to.
 
 ## Brand Personality
 
