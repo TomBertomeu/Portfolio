@@ -3,7 +3,7 @@
     "headline": "Construire des choses qui tiennent",
     "headlineAccentParenthetical": "(vraiment)",
     "headlineAccentRest": " la route.",
-    "subtitle": "Développeur Fullstack en fin de BUT Informatique. J'aime concevoir des applications propres et maintenables.",
+    "subtitle": "Développeur Fullstack en Mastère Architecture et Développement Logiciel. J'aime concevoir des applications propres et maintenables.",
     "primaryCta": "Découvrir mon travail",
     "secondaryCta": "Consulter mon CV",
     "seeProjects": "Voir mes projets",
@@ -26,10 +26,10 @@
   "about": {
     "lead": "Pour moi, la qualité du code et la clarté de l'interface sont",
     "leadAccent": "les deux faces d'un même métier.",
-    "body": "Développeur fullstack en fin de BUT Informatique, je construis des produits de bout en bout — du modèle de données à l'interface. Mes projets sont là pour le montrer plutôt que pour le promettre. Soutenu par mon entreprise pour la suite, je cherche aujourd'hui une école pour pousser cette exigence en cycle ingénieur ou en master.",
-    "fact1": "Fin de BUT Informatique (Bac+3)",
-    "fact2": "En alternance, entreprise partante pour la suite",
-    "fact3": "Vise un cycle ingénieur ou un master",
+    "body": "Développeur fullstack en alternance, je construis des produits de bout en bout — du modèle de données à l'interface. Mes projets sont là pour le montrer plutôt que pour le promettre. BUT Informatique en poche, je poursuis en Mastère Expert en Architecture et Développement Logiciel pour porter cette exigence jusqu'à l'architecture des systèmes.",
+    "fact1": "Mastère EADL (Bac+5), 2026 – 2028",
+    "fact2": "En alternance chez GEN'IAtest",
+    "fact3": "BUT Informatique obtenu en 2026",
     "downloadCv": "Consulter mon CV",
     "profileImageAlt": "Ma photo de profil"
   },

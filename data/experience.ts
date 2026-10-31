@@ -19,8 +19,8 @@ export const experiencesData: ExperienceData[] = [
     },
     company: "GEN'IAtest",
     period: {
-      fr: "2025 - 2026",
-      en: "2025 - 2026"
+      fr: "2025 - aujourd'hui",
+      en: "2025 - present"
     },
     description: {
       fr: "Reprise d'un projet de gestion globale des activités de la coopérative. Refactorisation du code existant pour améliorer la maintenabilité et l'évolutivité, et poursuite du développement des fonctionnalités.",

@@ -3,7 +3,7 @@
     "headline": "Building things that",
     "headlineAccentParenthetical": "(actually)",
     "headlineAccentRest": " hold up.",
-    "subtitle": "Fullstack Developer wrapping up a Computer Science BUT. I love creating clean, maintainable apps.",
+    "subtitle": "Fullstack Developer pursuing a Master's in Software Architecture & Development. I love creating clean, maintainable apps.",
     "primaryCta": "Explore my work",
     "secondaryCta": "Read my resume",
     "seeProjects": "See my projects",
@@ -26,10 +26,10 @@
   "about": {
     "lead": "To me, code quality and interface clarity are",
     "leadAccent": "two sides of the same craft.",
-    "body": "A fullstack developer finishing my Computer Science degree, I build products end to end — from the data model to the interface. My projects are there to show it, not just promise it. With my company backing me for what's next, I'm now looking for a school to take that standard further, in an engineering or master's program.",
-    "fact1": "Final-year CS degree (Bac+3)",
-    "fact2": "Apprenticeship — company on board for what's next",
-    "fact3": "Aiming for an engineering or master's track",
+    "body": "A fullstack developer on a work-study track, I build products end to end — from the data model to the interface. My projects are there to show it, not just promise it. With my Computer Science degree done, I'm now pursuing a Master's in Software Architecture & Development to take that standard all the way to system architecture.",
+    "fact1": "Master's in Software Architecture (Bac+5), 2026 – 2028",
+    "fact2": "Work-study at GEN'IAtest",
+    "fact3": "CS degree (BUT) completed in 2026",
     "downloadCv": "View my CV",
     "profileImageAlt": "My profile picture"
   },

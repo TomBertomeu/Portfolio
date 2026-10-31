@@ -25,7 +25,7 @@ const caveat = Caveat({
 
 const SITE_URL = "https://tom-bertomeu.com";
 const SITE_DESCRIPTION =
-    "Tom Bertomeu, développeur Fullstack et étudiant en BUT Informatique. Portfolio professionnel.";
+    "Tom Bertomeu, développeur Fullstack en alternance et étudiant en Mastère Expert en Architecture et Développement Logiciel. Portfolio professionnel.";
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
