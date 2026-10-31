@@ -37,12 +37,12 @@ export const projectsData: ProjectData[] = [
   {
     id: "geniacloud",
     title: {
-      fr: "GEN'IAcloud",
-      en: "GEN'IAcloud"
+      fr: "Application de saisie terrain",
+      en: "Field Data-Entry App"
     },
     tagline: {
-      fr: "Fluidifier la saisie terrain et la facturation chez une coopérative agricole.",
-      en: "Streamlining field data entry and billing for an agricultural cooperative."
+      fr: "Fiabiliser les informations remontées du terrain vers les services de la coopérative.",
+      en: "Making field data sent to the cooperative's departments more reliable."
     },
     image: "/images/projects/geniatest.jpg",
     imageFit: "contain",

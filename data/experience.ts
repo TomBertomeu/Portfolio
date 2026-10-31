@@ -23,8 +23,8 @@ export const experiencesData: ExperienceData[] = [
       en: "2025 - present"
     },
     description: {
-      fr: "Reprise d'un projet de gestion globale des activités de la coopérative. Refactorisation du code existant pour améliorer la maintenabilité et l'évolutivité, et poursuite du développement des fonctionnalités.",
-      en: "Took over a global activity management project for the cooperative. Refactored existing code to enhance maintainability and scalability, while continuing feature development."
+      fr: "Développement d'une application de saisie terrain pour fiabiliser les informations remontées du terrain vers les services de la coopérative. Reprise et refactorisation d'un projet existant pour améliorer sa maintenabilité et son évolutivité.",
+      en: "Developing a field data-entry app to make information sent from the field to the cooperative's departments more reliable. Took over and refactored an existing project to improve its maintainability and scalability."
     },
     type: "work",
     current: true,
