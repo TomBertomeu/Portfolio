@@ -36,10 +36,10 @@ export default function ProjectCard({ project, priority = false, featured = fals
 
       <div className="flex flex-1 flex-col">
         <div className="flex items-start justify-between gap-2 mb-1 sm:mb-2">
-          <h3 className={`font-medium leading-snug text-foreground transition-colors flex items-center gap-1.5 ${hasLink ? "group-hover:text-primary" : ""} ${featured ? "text-lg sm:text-2xl sm:min-h-[3.125rem]" : "text-base sm:text-lg"}`}>
+          <h3 className={`font-medium leading-snug text-foreground transition-colors flex items-center gap-1.5 ${hasLink ? "group-hover:text-[var(--primary-blue)]" : ""} ${featured ? "text-lg sm:text-2xl sm:min-h-[3.125rem]" : "text-base sm:text-lg"}`}>
             {project.title || "Untitled Project"}
             {hasLink && (
-              <ArrowUpRight className={`shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-primary ${featured ? "w-4 h-4 sm:w-5 sm:h-5" : "w-4 h-4"}`} />
+              <ArrowUpRight className={`shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-[var(--primary-blue)] ${featured ? "w-4 h-4 sm:w-5 sm:h-5" : "w-4 h-4"}`} />
             )}
           </h3>
         </div>

@@ -63,7 +63,7 @@ export default function ContactForm() {
         <div className="flex flex-col gap-3">
           <a
             href={`mailto:${profile.email}`}
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-primary transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Mail className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">
@@ -75,7 +75,7 @@ export default function ContactForm() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-foreground transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
+            className="group flex items-center gap-3 text-lg text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200 -mx-2 rounded-lg px-2 py-2"
           >
             <Github className="h-5 w-5 shrink-0" />
             <span className="flex items-center gap-1">

@@ -67,7 +67,7 @@ export default function Hero() {
                         type="button"
                         onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
                         aria-label={t("hero.scrollToAbout")}
-                        className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
+                        className="text-muted-foreground hover:text-[var(--primary-blue)] transition-colors duration-200 cursor-pointer"
                     >
                         <ChevronDown
                             className="w-5 h-5 animate-[scroll-bob_2s_ease-in-out_infinite] motion-reduce:animate-none"

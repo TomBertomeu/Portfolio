@@ -47,7 +47,7 @@ export default function ProjectsPage() {
           <ScrollAnimation direction="down">
             <Link 
                 href="/" 
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-[var(--primary-blue)] transition-colors mb-8 group"
             >
                 <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
                 {t("projectsPage.backToHome")}
@@ -84,7 +84,7 @@ export default function ProjectsPage() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
+                        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-[var(--primary-blue)] transition-colors"
                         aria-label={`${t("projectsPage.table.view")} ${project.title}`}
                       >
                         <span className="whitespace-nowrap">
@@ -145,7 +145,7 @@ export default function ProjectsPage() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors group/link"
+                          className="inline-flex items-center gap-1 text-muted-foreground hover:text-[var(--primary-blue)] transition-colors group/link"
                           aria-label={`${t("projectsPage.table.view")} ${project.title}`}
                         >
                           <span className="text-sm whitespace-nowrap">
