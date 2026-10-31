@@ -49,7 +49,7 @@ export default function ExperienceSection() {
               </header>
 
               <div className="md:col-span-3 flex flex-col gap-4">
-                <h3 className="font-medium leading-snug text-foreground text-lg group-hover:text-primary transition-colors">
+                <h3 className="font-medium leading-snug text-foreground text-lg group-hover:text-[var(--primary-blue)] transition-colors">
                   <div>
                     <span className="font-bold">{exp.title}</span>
                     <span className="text-primary"> · </span>
