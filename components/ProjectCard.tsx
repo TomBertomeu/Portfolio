@@ -6,6 +6,7 @@ import type { Project } from "@/types/project";
 import { resolveIcon } from "@/lib/icons";
 import Badge from "./Badge";
 import ProjectThumbnail from "./ProjectThumbnail";
+import { useLanguage } from "@/contexts/LanguageProvider";
 
 interface ProjectCardProps {
   project: Project;
@@ -14,7 +15,12 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, priority = false, featured = false }: Readonly<ProjectCardProps>) {
+  const { t } = useLanguage();
   const hasLink = Boolean(project.link);
+  const statusLabel =
+    project.status === "private" ? t("projects.statusPrivate")
+    : project.status === "wip" ? t("projects.statusWip")
+    : undefined;
 
   const shapeClasses = featured
     ? "sm:p-6 sm:rounded-[36px] sm:border-primary/30 sm:shadow-md"
@@ -42,6 +48,11 @@ export default function ProjectCard({ project, priority = false, featured = fals
               <ArrowUpRight className={`shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 text-muted-foreground group-hover:text-[var(--primary-blue)] ${featured ? "w-4 h-4 sm:w-5 sm:h-5" : "w-4 h-4"}`} />
             )}
           </h3>
+          {!hasLink && statusLabel && (
+            <span className="shrink-0 mt-1 rounded-full border border-dashed border-border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-muted-foreground">
+              {statusLabel}
+            </span>
+          )}
         </div>
 
         {project.tagline && (

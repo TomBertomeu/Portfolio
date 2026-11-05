@@ -1,7 +1,8 @@
-import type { ProjectBadge } from "@/types/project";
+import type { ProjectBadge, ProjectStatus } from "@/types/project";
 
 export interface ProjectData {
   id: string;
+  status?: ProjectStatus;
   image?: string;
   imageFit?: "cover" | "contain";
   link?: string;
@@ -26,7 +27,7 @@ export const projectsData: ProjectData[] = [
       fr: "Reconstituer mes sets LEGO à partir de pièces en vrac.",
       en: "Rebuilding my LEGO sets from loose bricks."
     },
-    link: "",
+    status: "wip",
     featured: true,
     year: "2025",
     badges: [
@@ -46,6 +47,7 @@ export const projectsData: ProjectData[] = [
     },
     image: "/images/projects/geniatest.jpg",
     imageFit: "contain",
+    status: "private",
     featured: true,
     year: "2025",
     madeAt: {
@@ -69,7 +71,7 @@ export const projectsData: ProjectData[] = [
       en: "Building a history to analyze your clan on Clash of Clans."
     },
     image: "/images/projects/coc_assistant.png",
-    link: "",
+    status: "wip",
     featured: true,
     year: "2025",
     badges: [
@@ -125,6 +127,7 @@ export const projectsData: ProjectData[] = [
       en: "Event rentals and tailor-made back-office."
     },
     image: "/images/projects/aso70.jpg",
+    status: "private",
     featured: false,
     year: "2025",
     madeAt: {
@@ -148,6 +151,7 @@ export const projectsData: ProjectData[] = [
       en: "Digitizing field intervention management."
     },
     image: "/images/projects/vecofroid.jpg",
+    status: "private",
     featured: false,
     year: "2024",
     madeAt: {

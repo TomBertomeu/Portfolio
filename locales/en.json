@@ -53,7 +53,9 @@
   },
   "projects": {
     "title": "Things I've built",
-    "seeAll": "See all my projects"
+    "seeAll": "See all my projects",
+    "statusPrivate": "Internal project",
+    "statusWip": "In development"
   },
   "projectsPage": {
     "title": "All my projects",
@@ -64,10 +66,9 @@
       "project": "Project",
       "madeAt": "Made at",
       "tech": "Technologies",
-      "link": "Link",
       "view": "View",
       "viewProject": "View project",
-      "caption": "Project list: year, name, technologies and link"
+      "caption": "Project list: year, name and technologies"
     }
   },
   "experience": {

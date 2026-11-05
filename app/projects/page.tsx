@@ -9,7 +9,7 @@ import { useLanguage } from "@/contexts/LanguageProvider";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import HeroBackground from "@/components/HeroBackground";
 import UnderlineAccent from "@/components/UnderlineAccent";
-import type { ProjectBadge } from "@/types/project";
+import type { Project, ProjectBadge } from "@/types/project";
 
 function TechBadges({ badges }: Readonly<{ badges?: ProjectBadge[] }>) {
   return (
@@ -33,6 +33,39 @@ function TechBadges({ badges }: Readonly<{ badges?: ProjectBadge[] }>) {
   );
 }
 
+/** Either the outbound link (demo, source…) or an explicit reason there is none. */
+function ProjectOutcome({ project, className = "" }: Readonly<{ project: Project; className?: string }>) {
+  const { t } = useLanguage();
+
+  if (project.link) {
+    return (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-[var(--primary-blue)] transition-colors group/link ${className}`}
+        aria-label={`${t("projectsPage.table.view")} ${project.title}`}
+      >
+        <span className="whitespace-nowrap">{project.linkLabel ?? t("projectsPage.table.viewProject")}</span>
+        <ArrowUpRight className="w-4 h-4 flex-shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
+      </a>
+    );
+  }
+
+  const statusLabel =
+    project.status === "private" ? t("projects.statusPrivate")
+    : project.status === "wip" ? t("projects.statusWip")
+    : undefined;
+
+  if (!statusLabel) return null;
+
+  return (
+    <span className={`inline-flex rounded-full border border-dashed border-border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wide text-muted-foreground ${className}`}>
+      {statusLabel}
+    </span>
+  );
+}
+
 export default function ProjectsPage() {
   const { t, language } = useLanguage();
   const sortedProjects = container.getAllProjects(language);
@@ -45,8 +78,8 @@ export default function ProjectsPage() {
       <div className="pb-12 relative z-10">
         <div className="mx-auto max-w-7xl px-4 text-center flex flex-col items-center">
           <ScrollAnimation direction="down">
-            <Link 
-                href="/" 
+            <Link
+                href="/"
                 className="inline-flex items-center gap-2 text-muted-foreground hover:text-[var(--primary-blue)] transition-colors mb-8 group"
             >
                 <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
@@ -79,20 +112,7 @@ export default function ProjectsPage() {
                 <div className="rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm shadow-sm p-5">
                   <div className="flex items-baseline justify-between gap-3 mb-2">
                     <span className="font-mono text-sm text-muted-foreground">{project.year}</span>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-[var(--primary-blue)] transition-colors"
-                        aria-label={`${t("projectsPage.table.view")} ${project.title}`}
-                      >
-                        <span className="whitespace-nowrap">
-                          {project.linkLabel ?? t("projectsPage.table.viewProject")}
-                        </span>
-                        <ArrowUpRight className="w-4 h-4 flex-shrink-0" />
-                      </a>
-                    )}
+                    <ProjectOutcome project={project} />
                   </div>
                   <div className="font-semibold text-foreground">{project.title}</div>
                   {project.madeAt && (
@@ -111,11 +131,10 @@ export default function ProjectsPage() {
             <div className="relative">
               {/* Floating table header */}
               <div className="relative z-20 rounded-2xl border border-border/60 bg-card/95 backdrop-blur-sm shadow-sm">
-                <div className="grid grid-cols-[130px_1fr_1fr_200px] items-center text-sm text-muted-foreground">
+                <div className="grid grid-cols-[130px_1.2fr_1fr] items-center text-sm text-muted-foreground">
                   <div className="py-4 pl-6 pr-4 font-medium">{t("projectsPage.table.year")}</div>
                   <div className="py-4 px-4 font-medium">{t("projectsPage.table.project")}</div>
-                  <div className="py-4 px-4 font-medium">{t("projectsPage.table.tech")}</div>
-                  <div className="py-4 pl-4 pr-6 font-medium">{t("projectsPage.table.link")}</div>
+                  <div className="py-4 pl-4 pr-6 font-medium">{t("projectsPage.table.tech")}</div>
                 </div>
               </div>
 
@@ -125,35 +144,22 @@ export default function ProjectsPage() {
                   <div
                     key={project.id}
                     role="row"
-                    className="group grid grid-cols-[130px_1fr_1fr_200px] items-center border-b border-border/50 last:border-0 hover:bg-muted/50 transition-colors"
+                    className="group grid grid-cols-[130px_1.2fr_1fr] items-center border-b border-border/50 last:border-0 hover:bg-muted/50 transition-colors"
                   >
                     <div role="cell" className="py-5 pl-6 pr-4 text-muted-foreground font-mono text-sm">
                       {project.year}
                     </div>
                     <div role="cell" className="py-5 px-4">
-                      <div className="font-semibold text-foreground">{project.title}</div>
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <span className="font-semibold text-foreground">{project.title}</span>
+                        <ProjectOutcome project={project} />
+                      </div>
                       {project.madeAt && (
                         <div className="text-sm text-muted-foreground mt-0.5">{project.madeAt}</div>
                       )}
                     </div>
-                    <div role="cell" className="py-5 px-4">
-                      <TechBadges badges={project.badges} />
-                    </div>
                     <div role="cell" className="py-5 pl-4 pr-6">
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-muted-foreground hover:text-[var(--primary-blue)] transition-colors group/link"
-                          aria-label={`${t("projectsPage.table.view")} ${project.title}`}
-                        >
-                          <span className="text-sm whitespace-nowrap">
-                            {project.linkLabel ?? t("projectsPage.table.viewProject")}
-                          </span>
-                          <ArrowUpRight className="w-4 h-4 flex-shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1" />
-                        </a>
-                      )}
+                      <TechBadges badges={project.badges} />
                     </div>
                   </div>
                 ))}
