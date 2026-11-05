@@ -1,12 +1,17 @@
 import type { ProjectBadge, ProjectStatus } from "@/types/project";
 
+/** Badge whose label may differ per language; tech names stay plain strings. */
+export interface ProjectBadgeData extends Omit<ProjectBadge, "text"> {
+  text: string | { fr: string; en: string };
+}
+
 export interface ProjectData {
   id: string;
   status?: ProjectStatus;
   image?: string;
   imageFit?: "cover" | "contain";
   link?: string;
-  badges?: ProjectBadge[];
+  badges?: ProjectBadgeData[];
   featured?: boolean;
   year?: string;
   title?: { fr: string; en: string };
@@ -31,7 +36,7 @@ export const projectsData: ProjectData[] = [
     featured: true,
     year: "2025",
     badges: [
-      { iconId: "plug", text: "API Rebrickable", tier: "primary" },
+      { iconId: "plug", text: { fr: "API Rebrickable", en: "Rebrickable API" }, tier: "primary" },
       { iconId: "layout", text: "Next.js", tier: "secondary" }
     ]
   },
@@ -75,8 +80,8 @@ export const projectsData: ProjectData[] = [
     featured: true,
     year: "2025",
     badges: [
-      { iconId: "refresh-cw", text: "Ingestion auto", tier: "primary" },
-      { iconId: "bar-chart-3", text: "Analyse statistique", tier: "secondary" }
+      { iconId: "refresh-cw", text: { fr: "Ingestion auto", en: "Auto ingestion" }, tier: "primary" },
+      { iconId: "bar-chart-3", text: { fr: "Analyse statistique", en: "Statistical analysis" }, tier: "secondary" }
     ]
   },
   {

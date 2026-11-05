@@ -7,7 +7,7 @@ import { FR, GB } from 'country-flag-icons/react/3x2';
 import { ChevronDown } from "lucide-react";
 
 export function LanguageSwitcher() {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +39,7 @@ export function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={`${currentLanguage.label} — select language`}
+        aria-label={`${currentLanguage.label} — ${t("lang.select")}`}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         className="cursor-pointer inline-flex h-11 md:h-9 items-center justify-center gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"

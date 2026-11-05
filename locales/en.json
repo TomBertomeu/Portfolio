@@ -17,11 +17,13 @@
     "experience": "Experience",
     "contact": "Contact",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle theme"
   },
   "lang": {
     "en": "English",
-    "fr": "French"
+    "fr": "French",
+    "select": "Select language"
   },
   "about": {
     "greeting": "Hi! I'm",

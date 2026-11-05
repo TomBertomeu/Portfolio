@@ -32,6 +32,18 @@ describe("projectRepository.findAll", () => {
     expect(lego?.status).toBe("wip");
   });
 
+  it("localizes badge labels and leaves tech names untouched", () => {
+    const coc = (lang: "fr" | "en") =>
+      projectRepository.findAll(lang).find((p) => p.id === "coc-assistant")?.badges?.map((b) => b.text);
+
+    expect(coc("fr")).toEqual(["Ingestion auto", "Analyse statistique"]);
+    expect(coc("en")).toEqual(["Auto ingestion", "Statistical analysis"]);
+
+    for (const project of projectRepository.findAll("en")) {
+      for (const badge of project.badges ?? []) expect(typeof badge.text).toBe("string");
+    }
+  });
+
   it("flattens localized fields to plain strings", () => {
     const [first] = projectRepository.findAll("fr");
 

@@ -10,6 +10,10 @@ function localizeProject(project: ProjectData, lang: Language): Project {
     tagline: project.tagline?.[lang],
     madeAt: project.madeAt?.[lang],
     linkLabel: project.linkLabel?.[lang],
+    badges: project.badges?.map((badge) => ({
+      ...badge,
+      text: typeof badge.text === "string" ? badge.text : badge.text[lang],
+    })),
   };
 }
 
