@@ -1,6 +1,8 @@
 # Audit UI — Portfolio (anti-ui-slop)
 
-Date : 5 novembre 2026 · Branche : `content/mastere-eadl`
+Date : 5 novembre 2026 · Branche auditée : `content/mastere-eadl` (refonte « À propos »
+incluse) · Corrections reportées sur `fix/ui-audit-p1`, basée sur `main` avec l'ancienne
+section « À propos »
 Méthode : lecture du code (`app/`, `components/`, `styles/`, `locales/`, `data/`), rendu
 du dev server dans le navigateur intégré en **1440×900** et **375×812**, thème clair et
 sombre, FR et EN, pages `/`, `/projects` et 404. Contrastes mesurés sur les couleurs
@@ -83,6 +85,9 @@ accordée au thème.
 ## P2 — Moyen
 
 ### 4. La section « À propos » n'a pas de titre
+*Concerne uniquement la refonte de `content/mastere-eadl`. La version en ligne (et
+`fix/ui-audit-p1`) garde le `<h2>` via `Title` : point sans objet sur cette branche.*
+
 `app/page.tsx:27-29` : l'eyebrow « À PROPOS » est un `<p>`. Plan de la page relevé :
 H1 → H2 Expérience → H2 Ce que j'ai construit → H2 Me contacter. Le lien de navigation
 « À propos » envoie sur une section sans heading (lecteurs d'écran, SEO, cohérence avec
