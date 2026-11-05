@@ -19,6 +19,19 @@ describe("projectRepository.findAll", () => {
     expect(frIds).toEqual(enIds);
   });
 
+  it("never exposes an empty link: a project is either linked or has a status", () => {
+    for (const project of projectRepository.findAll("fr")) {
+      expect(project.link === undefined || project.link.length > 0).toBe(true);
+      expect(Boolean(project.link) || project.status !== undefined).toBe(true);
+    }
+  });
+
+  it("keeps the status untouched by localization", () => {
+    const lego = projectRepository.findAll("en").find((p) => p.id === "lego-rebuilder");
+
+    expect(lego?.status).toBe("wip");
+  });
+
   it("flattens localized fields to plain strings", () => {
     const [first] = projectRepository.findAll("fr");
 

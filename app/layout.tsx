@@ -69,10 +69,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <head>
                 {/* Mark JS as available before first paint so scroll-reveal can hide content
                     only for JS users. No-JS clients and crawlers never get `.js`, so the
-                    prerendered content stays visible (see styles/globals.css). */}
+                    prerendered content stays visible (see styles/globals.css).
+                    Also set `lang` from the saved/browser language before hydration so
+                    assistive tech reads the right language from the first paint; the
+                    LanguageProvider swaps the prerendered French copy right after hydration. */}
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: "document.documentElement.classList.add('js')",
+                        __html:
+                            "document.documentElement.classList.add('js');" +
+                            "try{var l=localStorage.getItem('language')||navigator.language.slice(0,2);" +
+                            "if(l==='fr'||l==='en')document.documentElement.lang=l}catch(e){}",
                     }}
                 />
             </head>

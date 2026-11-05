@@ -4,8 +4,12 @@ export interface ProjectBadge {
   tier?: "primary" | "secondary";
 }
 
+/** Why a project has no public link: internal/client work, or still being built. */
+export type ProjectStatus = "private" | "wip";
+
 export interface Project {
   id: string;
+  status?: ProjectStatus;
   title?: string;
   tagline?: string;
   image?: string;

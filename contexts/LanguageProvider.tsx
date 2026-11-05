@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
+import React, { createContext, useContext, ReactNode, useState, useEffect, useLayoutEffect } from "react";
 import { TranslationKey } from "@/types/i18n";
 import { getTranslations, type Translations } from "@/lib/i18n";
 import {
@@ -46,33 +46,26 @@ function resolveTranslationKey(translations: Translations, path: string): string
   return path;
 }
 
+// The static export is prerendered in DEFAULT_LANGUAGE so crawlers, social previews
+// and no-JS clients get real content. The browser/saved language is applied in a
+// layout effect right after hydration, before the first post-hydration paint.
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language | null>(null);
-  const [translations, setTranslations] = useState<Translations>(() => getTranslations(DEFAULT_LANGUAGE));
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [language, setLanguage] = useState<Language>(DEFAULT_LANGUAGE);
+  const translations = getTranslations(language);
 
-  useEffect(() => {
-    const initial = detectInitialLanguage();
-    setLanguage(initial);
-    setTranslations(getTranslations(initial));
-    setIsLoaded(true);
+  useLayoutEffect(() => {
+    setLanguage(detectInitialLanguage());
   }, []);
 
   useEffect(() => {
-    if (!language || !isLoaded) return;
-    setTranslations(getTranslations(language));
     localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
     document.documentElement.lang = language;
-  }, [language, isLoaded]);
+  }, [language]);
 
   const t = (key: TranslationKey | "_language") => {
-    if (key === "_language") return language || DEFAULT_LANGUAGE;
+    if (key === "_language") return language;
     return resolveTranslationKey(translations, key);
   };
-
-  if (!isLoaded || !language) {
-    return <div className="fixed inset-0 z-[9999] bg-background"></div>;
-  }
 
   return (
     <LanguageContext.Provider value={{ t, language, setLanguage }}>
