@@ -100,7 +100,14 @@ export default function ContactForm() {
 
       {/* Formulaire */}
       <ScrollAnimation direction="right" delay={200} className="bg-background/80 backdrop-blur-sm border border-border rounded-[28px] md:rounded-[44px] p-4 md:p-8 shadow-[-6px_6px_10px_rgba(0,0,0,0.1)]">
-        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+        {/* toolname / tooldescription / toolparamdescription: declarative WebMCP
+            annotations so an in-browser agent can fill and submit the form. */}
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 md:space-y-6"
+          toolname="send_contact_message"
+          tooldescription="Send a message to Tom Bertomeu through the portfolio contact form (name, email and message are required)."
+        >
           <FormField id="name" label={t("contactForm.labelName")} required>
             <input
               type="text"
@@ -110,6 +117,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderName")}
+              toolparamdescription="Sender's full name"
               className={INPUT_CLASS}
             />
           </FormField>
@@ -123,6 +131,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderEmail")}
+              toolparamdescription="Sender's email address, used for the reply"
               className={INPUT_CLASS}
             />
           </FormField>
@@ -136,6 +145,7 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               placeholder={t("contactForm.placeholderMessage")}
+              toolparamdescription="Body of the message"
               className={`${INPUT_CLASS} py-3 resize-none`}
             />
           </FormField>

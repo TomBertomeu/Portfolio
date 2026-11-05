@@ -1,0 +1,11 @@
+# tom-bertomeu.com — portfolio personnel de Tom Bertomeu, développeur Fullstack.
+# Résumé lisible par les agents : https://tom-bertomeu.com/llms.txt
+# Versions Markdown : https://tom-bertomeu.com/index.md, https://tom-bertomeu.com/projects.md
+
+User-agent: *
+Allow: /
+# Content Signals (https://contentsignals.org): indexation et usage par des
+# assistants IA autorisés, entraînement de modèles refusé.
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+Sitemap: https://tom-bertomeu.com/sitemap.xml

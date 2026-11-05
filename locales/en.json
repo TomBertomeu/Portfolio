@@ -105,8 +105,32 @@
     "success": "Your message has been sent successfully!",
     "privacy": "The information you provide is strictly confidential and will only be used to respond to your message. It will neither be shared nor used for any other purposes."
   },
+  "legal": {
+    "title": "Legal notice",
+    "summary": "Site publisher, hosting provider and data handling.",
+    "intro": "Legal information about tom-bertomeu.com, as required by the French Digital Economy Act (LCEN).",
+    "publisherHeading": "Site publisher",
+    "publisherBody": "This site is a personal portfolio published by Tom Bertomeu, Fullstack Developer, in a non-professional capacity.",
+    "publisherContact": "Contact:",
+    "hostingHeading": "Hosting",
+    "hostingBody": "The site is hosted by Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Cyprus.",
+    "hostingLink": "hostinger.com",
+    "dataHeading": "Personal data",
+    "dataBody": "The contact form sends your name, email address and message to Formspree, which forwards them to the publisher by email. This data is used only to answer your request; it is neither shared nor reused for any other purpose.\n\nThe site uses no tracking cookies and no audience-measurement tool. Only your language and theme preferences are stored locally in your browser (localStorage) and never leave your device.\n\nTo exercise your rights of access, rectification or erasure, write to the contact address above.",
+    "ipHeading": "Intellectual property",
+    "ipBody": "The contents of this site (texts, visuals, CV) belong to Tom Bertomeu unless stated otherwise. The names and logos of the companies, schools and technologies mentioned belong to their respective owners.",
+    "agentsHeading": "Robots and automated agents",
+    "agentsBody": "Indexing this site in search engines and reading it with AI assistants is allowed. Using its contents to train AI models is not. This policy is declared in robots.txt (Content-Signal), and an agent-readable summary is available in llms.txt.",
+    "backHome": "Back to home"
+  },
+  "llms": {
+    "languagesNote": "The site is available in French (default language) and English. The Markdown files and this summary mirror the French version.",
+    "pagesHeading": "Pages",
+    "optionalHeading": "Optional"
+  },
   "footer": {
     "copyright": "© 2026 Tom Bertomeu. All rights reserved.",
-    "credits": "Designed and developed by Tom Bertomeu with Next.js, Tailwind CSS and Formspree. Deployed with Hostinger."
+    "credits": "Designed and developed by Tom Bertomeu with Next.js, Tailwind CSS and Formspree. Deployed with Hostinger.",
+    "navLabel": "Site links"
   }
 }

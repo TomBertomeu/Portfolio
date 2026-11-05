@@ -98,6 +98,21 @@ Client-side only. `LanguageProvider` detects browser language, falls back to `fr
 
 - `/` — single-page portfolio (Hero, About, Experience, Projects preview, Contact)
 - `/projects` — full project archive (read-only table, no detail pages)
+- `/legal` — mentions légales (publisher, host, data, AI/agent policy)
+
+`app/*/page.tsx` are thin server shells: per-page `metadata` (canonical, Markdown
+alternate) + `<JsonLd>` + the client page component in `components/`.
+
+### Agent / crawler surface
+
+- `public/robots.txt` — crawl policy, `Content-Signal` (search + ai-input yes, ai-train no), sitemap pointer
+- `app/sitemap.xml/route.ts` — sitemap from `lib/sitemap.ts` (`SITE_PATHS` in `lib/site.ts`); a route handler, not
+  `app/sitemap.ts`, because the metadata convention 500s under `next dev --turbopack` with `output: "export"`
+- `app/llms.txt`, `app/index.md`, `app/projects.md` — static route handlers; bodies come from the pure
+  builders in `lib/agentContent.ts` fed by `lib/agentContentInput.ts` (French, the prerendered language)
+- `lib/structuredData.ts` — JSON-LD graphs (Person + WebSite + page node); the entity is a `Person`, not an Organization
+- `public/.htaccess` — serves the `.md` twin on `Accept: text/markdown`, emits `Link` headers (Apache/LiteSpeed only, not testable locally)
+- `components/WebMcpTools.tsx` — registers `navigator.modelContext` tools when the browser exposes WebMCP; the contact form carries `toolname`/`toolparamdescription` attributes (typed in `types/webmcp.d.ts`)
 
 ### Fonts
 

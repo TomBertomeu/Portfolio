@@ -29,7 +29,7 @@ export default function Hero() {
                 className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4"
             >
                 <h1 className="text-5xl font-bold tracking-tight sm:text-7xl text-foreground max-w-3xl leading-tight text-balance">
-                    {t("hero.headline")} {" "}
+                    {t("hero.headline")}{" "}
                     <span className="font-handwritten font-normal text-blue-600 dark:text-blue-500">
                         {t("hero.headlineAccentParenthetical")}
                     </span>

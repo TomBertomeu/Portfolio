@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import WebMcpTools from "@/components/WebMcpTools";
+import { SITE_DESCRIPTION, SITE_LOCALE, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import { Geist, Geist_Mono, Caveat } from "next/font/google";
 
 const geistSans = Geist({
@@ -23,36 +25,33 @@ const caveat = Caveat({
     weight: ["400", "500", "600", "700"],
 });
 
-const SITE_URL = "https://tom-bertomeu.com";
-const SITE_DESCRIPTION =
-    "Tom Bertomeu, développeur Fullstack en alternance et étudiant en Mastère Expert en Architecture et Développement Logiciel. Portfolio professionnel.";
-
+// Canonical URLs and Markdown alternates are declared per page (app/*/page.tsx).
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
-    title: "Tom Bertomeu",
-    description: SITE_DESCRIPTION,
-    alternates: {
-        canonical: "/",
+    title: {
+        default: SITE_NAME,
+        template: `%s | ${SITE_NAME}`,
     },
+    description: SITE_DESCRIPTION,
     openGraph: {
         type: "website",
-        locale: "fr_FR",
+        locale: SITE_LOCALE,
         url: "/",
-        siteName: "Tom Bertomeu",
-        title: "Tom Bertomeu, développeur Fullstack",
+        siteName: SITE_NAME,
+        title: SITE_TITLE,
         description: SITE_DESCRIPTION,
         images: [
             {
                 url: "/images/og.png",
                 width: 1200,
                 height: 630,
-                alt: "Tom Bertomeu, développeur Fullstack",
+                alt: SITE_TITLE,
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Tom Bertomeu, développeur Fullstack",
+        title: SITE_TITLE,
         description: SITE_DESCRIPTION,
         images: ["/images/og.png"],
     },
@@ -84,6 +83,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </head>
             <body className={`min-h-screen ${geistSans.variable} ${geistMono.variable} ${caveat.variable} antialiased font-sans`}>
                 <LanguageProvider>
+                    <WebMcpTools />
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"

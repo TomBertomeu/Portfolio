@@ -105,8 +105,32 @@
     "error": "Échec de l'envoi. Réessayez ou écrivez-moi directement :",
     "privacy": "Les informations que vous fournissez sont strictement confidentielles et ne seront utilisées que pour répondre à votre message. Elles ne seront ni partagées ni utilisées à d'autres fins."
   },
+  "legal": {
+    "title": "Mentions légales",
+    "summary": "Éditeur, hébergeur et traitement des données du site.",
+    "intro": "Informations légales relatives au site tom-bertomeu.com, conformément à la loi pour la confiance dans l'économie numérique (LCEN).",
+    "publisherHeading": "Éditeur du site",
+    "publisherBody": "Ce site est un portfolio personnel édité par Tom Bertomeu, développeur Fullstack, à titre non professionnel.",
+    "publisherContact": "Contact :",
+    "hostingHeading": "Hébergement",
+    "hostingBody": "Le site est hébergé par Hostinger International Ltd., 61 Lordou Vironos Street, 6023 Larnaca, Chypre.",
+    "hostingLink": "hostinger.com",
+    "dataHeading": "Données personnelles",
+    "dataBody": "Le formulaire de contact transmet votre nom, votre adresse e-mail et votre message à Formspree, qui les relaie à l'éditeur par e-mail. Ces données servent uniquement à répondre à votre demande ; elles ne sont ni partagées ni réutilisées à d'autres fins.\n\nLe site n'utilise aucun cookie de suivi ni outil de mesure d'audience. Seules vos préférences de langue et de thème sont enregistrées localement dans votre navigateur (localStorage) et ne quittent jamais votre appareil.\n\nPour exercer vos droits d'accès, de rectification ou de suppression, écrivez à l'adresse de contact ci-dessus.",
+    "ipHeading": "Propriété intellectuelle",
+    "ipBody": "Les contenus de ce site (textes, visuels, CV) sont la propriété de Tom Bertomeu, sauf mention contraire. Les noms et logos des entreprises, écoles et technologies cités appartiennent à leurs propriétaires respectifs.",
+    "agentsHeading": "Robots et agents automatisés",
+    "agentsBody": "L'indexation du site par les moteurs de recherche et sa consultation par des assistants IA sont autorisées. L'utilisation de ses contenus pour entraîner des modèles d'IA est refusée. Cette politique est déclarée dans le fichier robots.txt (Content-Signal) et un résumé lisible par les agents est disponible dans llms.txt.",
+    "backHome": "Retour à l'accueil"
+  },
+  "llms": {
+    "languagesNote": "Le site existe en français (langue par défaut) et en anglais. Les fichiers Markdown et ce résumé reflètent la version française.",
+    "pagesHeading": "Pages",
+    "optionalHeading": "Optional"
+  },
   "footer": {
     "copyright": "© 2026 Tom Bertomeu. Tous droits réservés.",
-    "credits": "Conçu et développé par Tom Bertomeu avec Next.js, Tailwind CSS et Formspree. Déployé avec Hostinger."
+    "credits": "Conçu et développé par Tom Bertomeu avec Next.js, Tailwind CSS et Formspree. Déployé avec Hostinger.",
+    "navLabel": "Liens du site"
   }
 }

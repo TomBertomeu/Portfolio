@@ -1,5 +1,39 @@
-# Redirect www -> apex (non-www), 301. Keeps a single canonical host.
 # Shipped via public/ so every static export (out/) includes it.
 RewriteEngine On
+
+# Redirect www -> apex (non-www), 301. Keeps a single canonical host.
 RewriteCond %{HTTP_HOST} ^www\.tom-bertomeu\.com$ [NC]
 RewriteRule ^(.*)$ https://tom-bertomeu.com/$1 [R=301,L]
+
+# ---------------------------------------------------------------------------
+# Agent-readiness: Markdown alternates, llms.txt discovery, Link headers.
+# The .md and llms.txt files are generated at build time (app/*/route.ts).
+# ---------------------------------------------------------------------------
+AddType text/markdown .md
+AddCharset UTF-8 .md .txt .xml
+
+# Remember which Markdown twin belongs to the requested page (used by the
+# Link header below). mod_dir's index.html subrequest sees it as REDIRECT_*.
+RewriteRule ^$ - [E=MD_ALT:/index.md]
+RewriteRule ^projects/?$ - [E=MD_ALT:/projects.md]
+
+# Content negotiation: a client that asks for `Accept: text/markdown` gets
+# the Markdown twin instead of the HTML page.
+RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+RewriteRule ^$ /index.md [L]
+RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+RewriteRule ^projects/?$ /projects.md [L]
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|md)$">
+        Header always set Vary "Accept"
+    </FilesMatch>
+
+    # RFC 8288 Link header advertising llms.txt on every HTML page, plus the
+    # page's Markdown alternate when there is one.
+    <FilesMatch "\.html$">
+        Header always set Link "<https://tom-bertomeu.com/llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"llms.txt\""
+        Header always add Link "<https://tom-bertomeu.com%{MD_ALT}e>; rel=\"alternate\"; type=\"text/markdown\"" env=MD_ALT
+        Header always add Link "<https://tom-bertomeu.com%{REDIRECT_MD_ALT}e>; rel=\"alternate\"; type=\"text/markdown\"" env=REDIRECT_MD_ALT
+    </FilesMatch>
+</IfModule>
