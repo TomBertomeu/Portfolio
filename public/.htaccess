@@ -32,8 +32,8 @@ RewriteRule ^projects/?$ /projects.md [L]
     # RFC 8288 Link header advertising llms.txt on every HTML page, plus the
     # page's Markdown alternate when there is one.
     <FilesMatch "\.html$">
-        Header always set Link "<https://tom-bertomeu.com/llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"llms.txt\""
-        Header always add Link "<https://tom-bertomeu.com%{MD_ALT}e>; rel=\"alternate\"; type=\"text/markdown\"" env=MD_ALT
-        Header always add Link "<https://tom-bertomeu.com%{REDIRECT_MD_ALT}e>; rel=\"alternate\"; type=\"text/markdown\"" env=REDIRECT_MD_ALT
+        Header always set Link '<https://tom-bertomeu.com/llms.txt>; rel="alternate"; type="text/plain"; title="llms.txt"'
+        Header always add Link '<https://tom-bertomeu.com%{MD_ALT}e>; rel="alternate"; type="text/markdown"' env=MD_ALT
+        Header always add Link '<https://tom-bertomeu.com%{REDIRECT_MD_ALT}e>; rel="alternate"; type="text/markdown"' env=REDIRECT_MD_ALT
     </FilesMatch>
 </IfModule>
